@@ -7,14 +7,17 @@ import { Label } from '@/components/ui/label';
 
 const contacts = [
   { icon: 'Phone', label: 'Телефон', value: '+7 (900) 000-00-00', href: 'tel:+79000000000' },
-  { icon: 'Mail', label: 'Почта', value: 'hello@iceberg-video.ru', href: 'mailto:hello@iceberg-video.ru' },
+  { icon: 'Mail', label: 'Почта', value: 'daumsam@mail.ru', href: 'mailto:daumsam@mail.ru' },
   { icon: 'Send', label: 'Telegram', value: '@iceberg_video', href: 'https://t.me/iceberg_video' },
   { icon: 'Instagram', label: 'Instagram', value: '@iceberg.video', href: '#' },
 ];
 
+const SEND_LEAD_URL = 'https://functions.poehali.dev/2c609e31-a278-4787-9035-9753fda9bb86';
+
 const Contacts = () => {
   const [form, setForm] = useState({ name: '', phone: '', date: '', message: '' });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [sending, setSending] = useState(false);
 
   const set = (key: string, value: string) => {
     setForm((f) => ({ ...f, [key]: value }));
@@ -30,13 +33,28 @@ const Contacts = () => {
     return Object.keys(next).length === 0;
   };
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!validate()) return;
-    toast.success('Заявка отправлена!', {
-      description: 'Мы свяжемся с вами в течение дня и обсудим детали.',
-    });
-    setForm({ name: '', phone: '', date: '', message: '' });
+    if (!validate() || sending) return;
+    setSending(true);
+    try {
+      const res = await fetch(SEND_LEAD_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error('send failed');
+      toast.success('Заявка отправлена!', {
+        description: 'Мы свяжемся с вами в течение дня и обсудим детали.',
+      });
+      setForm({ name: '', phone: '', date: '', message: '' });
+    } catch {
+      toast.error('Не удалось отправить заявку', {
+        description: 'Попробуйте ещё раз или позвоните нам по телефону.',
+      });
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -128,10 +146,11 @@ const Contacts = () => {
 
               <button
                 type="submit"
-                className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-4 font-display font-semibold text-primary-foreground shadow-[0_16px_34px_-14px_hsl(var(--primary))] hover:-translate-y-0.5 transition-transform"
+                disabled={sending}
+                className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-4 font-display font-semibold text-primary-foreground shadow-[0_16px_34px_-14px_hsl(var(--primary))] hover:-translate-y-0.5 transition-transform disabled:opacity-60 disabled:hover:translate-y-0"
               >
-                <Icon name="Send" size={18} />
-                Оставить заявку
+                <Icon name={sending ? 'Loader2' : 'Send'} size={18} className={sending ? 'animate-spin' : ''} />
+                {sending ? 'Отправляем…' : 'Оставить заявку'}
               </button>
               <p className="text-center text-xs text-muted-foreground">
                 Нажимая кнопку, вы соглашаетесь на обработку персональных данных.
