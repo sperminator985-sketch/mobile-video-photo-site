@@ -6,19 +6,40 @@ const IMG_1 = 'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb
 const IMG_2 = 'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/9e7ff3d4-3a05-4ca2-9f6d-dc82719c8e12.jpg';
 const IMG_3 = 'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/8f49721f-72c1-4f51-93fe-054022fb44b7.jpg';
 
+const MORNING_PHOTOS = [
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/e49f0aeb-b88c-44a4-b238-4eea0be4eaaa.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/2484ac00-045a-48b9-b62a-51a0039a5fe0.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/d892b2c8-2032-4164-bbc6-4863ccf13436.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/ee41f31c-063c-4558-9bf9-56c01ca49f38.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/9d8ce887-c5e1-487a-95d2-29027bc04a22.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/7c1e8806-325b-4bdd-b8b8-9a3ab26f5fb6.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/f5b5e46a-63fb-4343-bd60-4822f2d8c417.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/e1b678b7-8b9d-454d-ad28-2e161881edec.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/6faaaabe-fa08-4697-adb9-cc160832bfea.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/bcb6b76c-5e51-4ad6-92f1-d0c96bde14ee.jpg',
+];
+
 type Item = {
   id: number;
   type: 'video' | 'photo';
   title: string;
   meta: string;
   img: string;
+  gallery?: string[];
 };
 
 const items: Item[] = [
   { id: 1, type: 'video', title: 'Аня и Кирилл', meta: 'Свадебный фильм · 6 мин', img: IMG_1 },
   { id: 2, type: 'photo', title: 'Марина и Дмитрий', meta: 'Репортаж · 320 кадров', img: IMG_3 },
   { id: 3, type: 'video', title: 'Первый танец', meta: 'Highlights · 3 мин', img: IMG_2 },
-  { id: 4, type: 'photo', title: 'Утро невесты', meta: 'Фотосессия · 180 кадров', img: IMG_3 },
+  {
+    id: 4,
+    type: 'photo',
+    title: 'Утро невесты',
+    meta: 'Фотосессия · 10 кадров',
+    img: MORNING_PHOTOS[0],
+    gallery: MORNING_PHOTOS,
+  },
   { id: 5, type: 'video', title: 'Лиза и Артём', meta: 'Свадебный фильм · 7 мин', img: IMG_1 },
   { id: 6, type: 'photo', title: 'Церемония у воды', meta: 'Репортаж · 260 кадров', img: IMG_2 },
 ];
@@ -32,8 +53,24 @@ const filters = [
 const Portfolio = () => {
   const [filter, setFilter] = useState<'all' | 'video' | 'photo'>('all');
   const [active, setActive] = useState<Item | null>(null);
+  const [slide, setSlide] = useState(0);
 
   const shown = filter === 'all' ? items : items.filter((i) => i.type === filter);
+
+  const openItem = (item: Item) => {
+    setActive(item);
+    setSlide(0);
+  };
+
+  const nextSlide = () => {
+    if (!active?.gallery) return;
+    setSlide((s) => (s + 1) % active.gallery!.length);
+  };
+
+  const prevSlide = () => {
+    if (!active?.gallery) return;
+    setSlide((s) => (s - 1 + active.gallery!.length) % active.gallery!.length);
+  };
 
   return (
     <section id="portfolio" className="py-24 bg-secondary/50">
@@ -67,7 +104,7 @@ const Portfolio = () => {
           {shown.map((item) => (
             <button
               key={item.id}
-              onClick={() => setActive(item)}
+              onClick={() => openItem(item)}
               className="group relative text-left overflow-hidden rounded-[1.5rem] border border-border bg-card animate-scale-in"
             >
               <div className="aspect-[4/5] overflow-hidden">
@@ -95,10 +132,52 @@ const Portfolio = () => {
         <DialogContent className="max-w-3xl p-0 overflow-hidden bg-card border-border">
           {active && (
             <div>
-              <img src={active.img} alt={active.title} className="w-full aspect-video object-cover" />
+              <div className="relative bg-black">
+                <img
+                  src={active.gallery ? active.gallery[slide] : active.img}
+                  alt={active.title}
+                  className="w-full aspect-video object-contain bg-black"
+                />
+                {active.gallery && (
+                  <>
+                    <button
+                      onClick={prevSlide}
+                      className="absolute left-3 top-1/2 -translate-y-1/2 inline-flex h-10 w-10 items-center justify-center rounded-full bg-card/80 text-foreground hover:bg-card transition-colors"
+                      aria-label="Предыдущее фото"
+                    >
+                      <Icon name="ChevronLeft" size={20} />
+                    </button>
+                    <button
+                      onClick={nextSlide}
+                      className="absolute right-3 top-1/2 -translate-y-1/2 inline-flex h-10 w-10 items-center justify-center rounded-full bg-card/80 text-foreground hover:bg-card transition-colors"
+                      aria-label="Следующее фото"
+                    >
+                      <Icon name="ChevronRight" size={20} />
+                    </button>
+                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 rounded-full bg-card/85 px-3 py-1 text-xs font-display font-semibold text-foreground">
+                      {slide + 1} / {active.gallery.length}
+                    </div>
+                  </>
+                )}
+              </div>
               <div className="p-6">
                 <div className="font-display font-bold text-2xl mb-1">{active.title}</div>
                 <div className="text-muted-foreground">{active.meta}</div>
+                {active.gallery && (
+                  <div className="mt-4 grid grid-cols-5 gap-2">
+                    {active.gallery.map((src, i) => (
+                      <button
+                        key={src}
+                        onClick={() => setSlide(i)}
+                        className={`aspect-square overflow-hidden rounded-lg border-2 transition-colors ${
+                          i === slide ? 'border-primary' : 'border-transparent'
+                        }`}
+                      >
+                        <img src={src} alt="" className="h-full w-full object-cover" />
+                      </button>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           )}
