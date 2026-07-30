@@ -92,18 +92,11 @@ const items: Item[] = [
   },
 ];
 
-const filters = [
-  { key: 'all', label: 'Всё' },
-  { key: 'video', label: 'Видео' },
-  { key: 'photo', label: 'Фото' },
-] as const;
-
 const Portfolio = () => {
-  const [filter, setFilter] = useState<'all' | 'video' | 'photo'>('all');
   const [active, setActive] = useState<Item | null>(null);
   const [slide, setSlide] = useState(0);
 
-  const shown = filter === 'all' ? items : items.filter((i) => i.type === filter);
+  const shown = items;
 
   const openItem = (item: Item) => {
     setActive(item);
@@ -123,29 +116,13 @@ const Portfolio = () => {
   return (
     <section id="portfolio" className="py-24 bg-secondary/50">
       <div className="container">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
-          <div>
-            <div className="font-display font-medium text-xs tracking-[0.22em] uppercase text-primary mb-4">
-              Портфолио
-            </div>
-            <h2 className="font-display font-extrabold text-4xl md:text-5xl leading-[1.05] tracking-[-0.02em]">
-              Видео и фото со свадеб
-            </h2>
+        <div className="mb-10">
+          <div className="font-display font-medium text-xs tracking-[0.22em] uppercase text-primary mb-4">
+            Портфолио
           </div>
-
-          <div className="inline-flex rounded-full bg-card p-1.5 border border-border self-start">
-            {filters.map((f) => (
-              <button
-                key={f.key}
-                onClick={() => setFilter(f.key)}
-                className={`rounded-full px-5 py-2 text-sm font-display font-semibold transition-colors ${
-                  filter === f.key ? 'bg-primary text-primary-foreground' : 'text-foreground/70 hover:text-foreground'
-                }`}
-              >
-                {f.label}
-              </button>
-            ))}
-          </div>
+          <h2 className="font-display font-extrabold text-4xl md:text-5xl leading-[1.05] tracking-[-0.02em]">
+            Видео и фото со свадеб
+          </h2>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
