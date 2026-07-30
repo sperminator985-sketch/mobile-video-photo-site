@@ -41,9 +41,8 @@ const Hero = () => {
         </a>
       </div>
 
-      <div className="container pb-8 flex justify-center gap-2 text-center text-sm text-muted-foreground">
-        <b className="font-semibold text-foreground">Свободные даты сезона 2026</b>
-        <span>— пишите, забронируем ваш&nbsp;день</span>
+      <div className="container pb-8 flex justify-center text-center text-sm text-muted-foreground">
+        <span>Снимаем свадьбы так, чтобы их хотелось пересматривать.</span>
       </div>
     </section>
   );
