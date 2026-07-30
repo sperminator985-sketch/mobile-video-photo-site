@@ -84,8 +84,8 @@ const Contacts = () => {
           Контакты и заявки
         </div>
         <div className="grid lg:grid-cols-2 gap-12 items-start">
-          <div>
-            <h2 className="font-display font-extrabold text-[clamp(1.35rem,3vw,2.5rem)] leading-[1.05] tracking-[-0.02em] mb-5 whitespace-nowrap">
+          <div className="min-w-0">
+            <h2 className="font-display font-extrabold text-[clamp(1.5rem,6vw,2.5rem)] leading-[1.05] tracking-[-0.02em] mb-5">
               Забронируем ваш день
             </h2>
             <p className="text-lg text-muted-foreground mb-10 max-w-md">
@@ -97,14 +97,14 @@ const Contacts = () => {
                 <a
                   key={c.label}
                   href={c.href}
-                  className={`flex items-center gap-4 rounded-2xl bg-card p-4 border border-border hover:-translate-y-0.5 transition-transform ${c.label === 'Адрес' ? 'sm:col-span-2' : ''}`}
+                  className={`flex items-center gap-4 rounded-2xl bg-card p-4 border border-border hover:-translate-y-0.5 transition-transform min-w-0 ${c.label === 'Адрес' ? 'sm:col-span-2' : ''}`}
                 >
                   <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-secondary text-accent shrink-0">
                     <Icon name={c.icon} size={20} />
                   </span>
                   <span className="min-w-0">
                     <span className="block text-xs text-muted-foreground">{c.label}</span>
-                    <span className="block font-display font-semibold text-foreground text-sm whitespace-nowrap">{c.value}</span>
+                    <span className={`block font-display font-semibold text-foreground text-xs sm:text-sm ${c.label === 'Адрес' ? '' : 'whitespace-nowrap'}`}>{c.value}</span>
                   </span>
                 </a>
               ))}

@@ -71,7 +71,7 @@ const About = () => {
               <div className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-secondary text-accent mb-5">
                 <Icon name={v.icon} size={26} />
               </div>
-              <h3 className="font-display font-bold text-xl mb-3 whitespace-nowrap">{v.title}</h3>
+              <h3 className="font-display font-bold text-lg sm:text-xl mb-3">{v.title}</h3>
               <p className="text-muted-foreground leading-relaxed">{v.text}</p>
             </div>
           ))}

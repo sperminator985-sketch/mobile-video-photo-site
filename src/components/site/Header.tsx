@@ -27,10 +27,10 @@ const Header = () => {
         scrolled ? 'bg-card/85 backdrop-blur-md shadow-[0_8px_30px_-18px_rgba(46,65,111,0.5)]' : 'bg-transparent'
       }`}
     >
-      <div className="container flex items-center justify-between h-[72px]">
-        <a href="#top" className="flex items-center gap-3">
-          <img src={LOGO} alt="Айсберг-видео" className="h-9 w-auto" />
-          <span className="font-display font-bold text-lg tracking-tight text-foreground">Айсберг-видео</span>
+      <div className="container flex items-center justify-between h-[72px] gap-2">
+        <a href="#top" className="flex items-center gap-2 sm:gap-3 min-w-0 shrink">
+          <img src={LOGO} alt="Айсберг-видео" className="h-8 sm:h-9 w-auto shrink-0" />
+          <span className="font-display font-bold text-base sm:text-lg tracking-tight text-foreground truncate">Айсберг-видео</span>
         </a>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -52,7 +52,7 @@ const Header = () => {
         </nav>
 
         <Sheet>
-          <SheetTrigger className="md:hidden inline-flex items-center justify-center h-11 w-11 rounded-full bg-card/80 text-foreground">
+          <SheetTrigger className="md:hidden inline-flex items-center justify-center h-11 w-11 rounded-full bg-card/80 text-foreground shrink-0">
             <Icon name="Menu" size={22} />
           </SheetTrigger>
           <SheetContent side="right" className="w-[80%] bg-card border-border">
