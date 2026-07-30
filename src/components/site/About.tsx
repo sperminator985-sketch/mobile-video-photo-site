@@ -49,13 +49,13 @@ const About = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4">
             {stats.map((s) => (
               <div
                 key={s.label}
-                className="rounded-[1.5rem] bg-card p-6 border border-border shadow-[0_20px_50px_-30px_rgba(46,65,111,0.5)]"
+                className="rounded-[1.5rem] bg-card p-4 sm:p-6 border border-border shadow-[0_20px_50px_-30px_rgba(46,65,111,0.5)]"
               >
-                <div className="font-display font-extrabold text-3xl sm:text-4xl text-primary mb-1 break-words">{s.value}</div>
+                <div className="font-display font-extrabold text-2xl sm:text-3xl md:text-4xl text-primary mb-1 whitespace-nowrap">{s.value}</div>
                 <div className="text-sm text-muted-foreground">{s.label}</div>
               </div>
             ))}
