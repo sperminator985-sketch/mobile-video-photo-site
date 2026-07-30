@@ -69,7 +69,7 @@ const items: Item[] = [
     id: 3,
     type: 'video',
     title: 'Свадебный клип-2',
-    meta: 'Highlights · 3 мин',
+    meta: '',
     img: IMG_2,
     video: 'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/bucket/d48c33a7-4d06-48de-b5f9-8497442820de.mp4',
   },
