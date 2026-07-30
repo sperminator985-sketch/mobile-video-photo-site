@@ -85,7 +85,7 @@ const Contacts = () => {
             <div className="font-display font-medium text-xs tracking-[0.22em] uppercase text-primary mb-4">
               Контакты и заявка
             </div>
-            <h2 className="font-display font-extrabold text-3xl md:text-5xl leading-[1.05] tracking-[-0.02em] mb-5 whitespace-nowrap">
+            <h2 className="font-display font-extrabold text-[clamp(1.35rem,3vw,2.5rem)] leading-[1.05] tracking-[-0.02em] mb-5 whitespace-nowrap">
               Забронируем ваш день
             </h2>
             <p className="text-lg text-muted-foreground mb-10 max-w-md">
