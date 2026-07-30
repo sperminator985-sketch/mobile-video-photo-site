@@ -29,7 +29,7 @@ const About = () => {
   return (
     <section id="about" className="py-24 bg-background">
       <div className="container">
-        <div className="font-display font-medium text-xs tracking-[0.22em] uppercase text-primary mb-4 text-center">
+        <div className="font-display font-medium text-base tracking-[0.22em] uppercase text-primary mb-4 text-center">
           О нас
         </div>
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
