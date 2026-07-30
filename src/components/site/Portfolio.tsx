@@ -56,7 +56,7 @@ type Item = {
 };
 
 const items: Item[] = [
-  { id: 1, type: 'video', title: 'Аня и Кирилл', meta: '', img: IMG_1 },
+  { id: 1, type: 'video', title: 'Свадебный клип-1', meta: '', img: IMG_1 },
   {
     id: 2,
     type: 'photo',
