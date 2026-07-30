@@ -7,7 +7,7 @@ const LOGO = 'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7
 const links = [
   { href: '#about', label: 'О нас' },
   { href: '#portfolio', label: 'Работы' },
-  { href: '#packages', label: 'Пакеты и цены' },
+  { href: '#packages', label: 'Цены' },
   { href: '#contacts', label: 'Контакты' },
 ];
 
