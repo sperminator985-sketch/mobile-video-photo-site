@@ -28,10 +28,6 @@ const Hero = () => {
           <span className="text-primary">в главной роли</span>
         </h1>
 
-        <p className="text-muted-foreground text-[1.05rem] md:text-[1.15rem] leading-relaxed max-w-[46ch] animate-fade-in">
-          Снимаем свадьбы так, чтобы их хотелось пересматривать годами.
-        </p>
-
         <a
           href="#contacts"
           className="mt-2 inline-flex items-center gap-3 rounded-full bg-primary px-8 py-4 font-display font-semibold text-primary-foreground shadow-[0_16px_34px_-14px_hsl(var(--primary))] hover:-translate-y-0.5 hover:shadow-[0_22px_40px_-14px_hsl(var(--primary))] transition-all animate-scale-in"
