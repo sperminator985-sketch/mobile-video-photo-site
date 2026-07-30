@@ -35,7 +35,7 @@ const About = () => {
               О нас
             </div>
             <h2 className="font-display font-extrabold text-4xl md:text-5xl leading-[1.05] tracking-[-0.02em] mb-6">
-              Мы — Айсберг-видео, и мы влюблены в чужие свадьбы
+              Мы влюблены в чужие свадьбы
             </h2>
             <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
               <p>
