@@ -37,7 +37,7 @@ const Packages = () => {
     <section id="packages" className="py-24 bg-background">
       <div className="container">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <div className="font-display font-medium text-base tracking-[0.22em] uppercase text-primary mb-4">
+          <div className="font-display font-medium text-xs tracking-[0.22em] uppercase text-primary mb-4">
             Пакеты услуг и цены
           </div>
           <h2 className="font-display font-extrabold text-[clamp(1.5rem,8vw,3rem)] leading-[1.05] tracking-[-0.02em] mb-4">
