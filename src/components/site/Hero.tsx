@@ -19,7 +19,7 @@ const Hero = () => {
             alt="Молодожёны в день свадьбы"
             className="h-full w-full object-cover"
           />
-          <div className="hero-aperture absolute inset-0 pointer-events-none rounded-full border-[6px]" style={{ borderColor: 'var(--hero-x-ring)' }} />
+          <div className="hero-aperture absolute inset-0 pointer-events-none rounded-full border-2" style={{ borderColor: 'var(--hero-x-ring)' }} />
         </div>
 
         <h1 className="font-display font-extrabold leading-[0.98] tracking-[-0.035em] text-[clamp(2.75rem,9vw,5.875rem)] max-w-[15ch] animate-fade-in">
