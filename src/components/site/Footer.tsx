@@ -26,9 +26,8 @@ const Footer = () => {
           </nav>
         </div>
 
-        <div className="mt-10 pt-8 border-t border-accent-foreground/15 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between text-sm text-accent-foreground/70">
+        <div className="mt-10 pt-8 border-t border-accent-foreground/15 text-sm text-accent-foreground/70">
           <p>© {new Date().getFullYear()} Айсберг-видео. Свадебная фото- и видеосъёмка.</p>
-          <p>Снимаем свадьбы так, чтобы их хотелось пересматривать.</p>
         </div>
       </div>
     </footer>
