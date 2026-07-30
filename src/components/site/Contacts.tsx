@@ -80,11 +80,11 @@ const Contacts = () => {
   return (
     <section id="contacts" className="py-24 bg-secondary/50">
       <div className="container">
+        <div className="font-display font-medium text-base tracking-[0.22em] uppercase text-primary mb-4 text-center">
+          Контакты и заявка
+        </div>
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div>
-            <div className="font-display font-medium text-xs tracking-[0.22em] uppercase text-primary mb-4">
-              Контакты и заявка
-            </div>
             <h2 className="font-display font-extrabold text-[clamp(1.35rem,3vw,2.5rem)] leading-[1.05] tracking-[-0.02em] mb-5 whitespace-nowrap">
               Забронируем ваш день
             </h2>
