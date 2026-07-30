@@ -121,7 +121,7 @@ const Portfolio = () => {
             Портфолио
           </div>
           <h2 className="font-display font-extrabold text-4xl md:text-5xl leading-[1.05] tracking-[-0.02em]">
-            Видео и фото со свадеб
+            Фото со свадеб
           </h2>
         </div>
 
