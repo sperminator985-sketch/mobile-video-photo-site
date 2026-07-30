@@ -31,7 +31,7 @@ const About = () => {
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div>
-            <div className="font-display font-medium text-xs tracking-[0.22em] uppercase text-primary mb-4">
+            <div className="font-display font-medium text-xs tracking-[0.22em] uppercase text-primary mb-4 text-center">
               О нас
             </div>
             <h2 className="font-display font-extrabold text-4xl md:text-5xl leading-[1.05] tracking-[-0.02em] mb-6">
