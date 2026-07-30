@@ -44,7 +44,7 @@ const Packages = () => {
           <div className="font-display font-medium text-xs tracking-[0.22em] uppercase text-primary mb-4">
             Пакеты услуг и цены
           </div>
-          <h2 className="font-display font-extrabold text-4xl md:text-5xl leading-[1.05] tracking-[-0.02em] mb-4">
+          <h2 className="font-display font-extrabold text-4xl md:text-5xl leading-[1.05] tracking-[-0.02em] mb-4 whitespace-nowrap">
             Выберите свой формат
           </h2>
           <p className="text-lg text-muted-foreground">
