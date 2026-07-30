@@ -12,6 +12,22 @@ const contacts = [
 
 const SEND_LEAD_URL = 'https://functions.poehali.dev/2c609e31-a278-4787-9035-9753fda9bb86';
 
+const formatPhone = (raw: string) => {
+  let digits = raw.replace(/\D/g, '');
+  if (digits.startsWith('8')) digits = '7' + digits.slice(1);
+  if (!digits.startsWith('7')) digits = '7' + digits;
+  digits = digits.slice(0, 11);
+
+  const rest = digits.slice(1);
+  let result = '+7';
+  if (rest.length > 0) result += ` (${rest.slice(0, 3)}`;
+  if (rest.length >= 3) result += ')';
+  if (rest.length > 3) result += ` ${rest.slice(3, 6)}`;
+  if (rest.length > 6) result += `-${rest.slice(6, 8)}`;
+  if (rest.length > 8) result += `-${rest.slice(8, 10)}`;
+  return result;
+};
+
 const Contacts = () => {
   const [form, setForm] = useState({ name: '', phone: '', date: '', message: '' });
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -111,7 +127,14 @@ const Contacts = () => {
                 <Input
                   id="phone"
                   value={form.phone}
-                  onChange={(e) => set('phone', e.target.value)}
+                  onChange={(e) => {
+                    const digitsOnly = e.target.value.replace(/\D/g, '');
+                    if (!digitsOnly) {
+                      set('phone', '');
+                      return;
+                    }
+                    set('phone', formatPhone(e.target.value));
+                  }}
                   placeholder="+7 (___) ___-__-__"
                   inputMode="tel"
                   className="h-12 rounded-xl bg-background"
