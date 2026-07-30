@@ -2,7 +2,7 @@ import Icon from '@/components/ui/icon';
 
 const packages = [
   {
-    name: 'Роспись',
+    name: 'ЗАГС',
     price: '25 000 ₽',
     tagline: 'Камерный день на двоих',
     featured: false,
