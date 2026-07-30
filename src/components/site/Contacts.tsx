@@ -8,6 +8,12 @@ import { Label } from '@/components/ui/label';
 const contacts = [
   { icon: 'Phone', label: 'Телефон', value: '+7 (909) 547-23-25', href: 'tel:+79095472325' },
   { icon: 'Mail', label: 'Почта', value: 'daumsam@mail.ru', href: 'mailto:daumsam@mail.ru' },
+  {
+    icon: 'MapPin',
+    label: 'Адрес',
+    value: 'Томск, Фрунзе-20, офис-427',
+    href: 'https://yandex.ru/maps/?text=Томск, Фрунзе-20',
+  },
 ];
 
 const SEND_LEAD_URL = 'https://functions.poehali.dev/2c609e31-a278-4787-9035-9753fda9bb86';
