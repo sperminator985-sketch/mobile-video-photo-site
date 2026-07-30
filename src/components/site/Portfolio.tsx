@@ -70,7 +70,7 @@ const items: Item[] = [
     type: 'video',
     title: 'Свадебный клип-2',
     meta: '',
-    img: IMG_2,
+    img: 'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/bucket/65895e07-83ff-4cd8-816e-87b7ce48e0ff.jpg',
     video: 'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/bucket/d48c33a7-4d06-48de-b5f9-8497442820de.mp4',
   },
   {
