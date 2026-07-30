@@ -2,10 +2,6 @@ import { useState } from 'react';
 import Icon from '@/components/ui/icon';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 
-const IMG_1 = 'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/707bc044-9c0e-4739-874b-88874a517938.jpg';
-const IMG_2 = 'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/1633b2c5-1326-4c71-b4a9-18dff460fd1d.jpg';
-const IMG_3 = 'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/4a3a8a68-a69a-4ba9-8007-1132b07be304.jpg';
-
 const MORNING_PHOTOS = [
   'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/f0d0034a-caaf-4373-a2a7-67480f5d113b.jpg',
   'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/57149828-9037-474c-9006-015e3c9bbe94.jpg',
@@ -56,7 +52,6 @@ type Item = {
 };
 
 const items: Item[] = [
-  { id: 1, type: 'video', title: 'Свадебный клип-1', meta: '', img: IMG_1 },
   {
     id: 2,
     type: 'photo',
@@ -66,14 +61,6 @@ const items: Item[] = [
     gallery: REPORTAGE_PHOTOS,
   },
   {
-    id: 3,
-    type: 'video',
-    title: 'Свадебный клип-2',
-    meta: '',
-    img: '/images/svadebny-klip-2-cover.jpg',
-    video: 'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/bucket/d48c33a7-4d06-48de-b5f9-8497442820de.mp4',
-  },
-  {
     id: 4,
     type: 'photo',
     title: 'Утро невесты',
@@ -81,7 +68,6 @@ const items: Item[] = [
     img: MORNING_PHOTOS[0],
     gallery: MORNING_PHOTOS,
   },
-  { id: 5, type: 'video', title: 'Лиза и Артём', meta: 'Свадебный фильм · 7 мин', img: IMG_1 },
   {
     id: 6,
     type: 'photo',
