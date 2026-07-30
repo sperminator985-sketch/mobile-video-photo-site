@@ -27,7 +27,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-10 pt-8 border-t border-accent-foreground/15 text-sm text-accent-foreground/70">
-          <p>© {new Date().getFullYear()} Айсберг-видео. Свадебная фото- и видеосъёмка.</p>
+          <p>© {new Date().getFullYear()} Айсберг-видео.</p>
         </div>
       </div>
     </footer>
