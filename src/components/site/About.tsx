@@ -3,7 +3,7 @@ import Icon from '@/components/ui/icon';
 const stats = [
   { value: '120+', label: 'свадеб отсняли' },
   { value: '8 лет', label: 'в свадебном кино' },
-  { value: '2 недели', label: 'до готового фильма' },
+  { value: '14 дней', label: 'до готового фильма' },
   { value: '4.9', label: 'средняя оценка пар' },
 ];
 
