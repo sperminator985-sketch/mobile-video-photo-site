@@ -29,8 +29,7 @@ const Hero = () => {
         </h1>
 
         <p className="text-muted-foreground text-[1.05rem] md:text-[1.15rem] leading-relaxed max-w-[46ch] animate-fade-in">
-          Снимаем один день так, чтобы пересматривать его годами: тёплое кино на 5–7&nbsp;минут и 300&nbsp;живых
-          кадров&nbsp;— готово за две&nbsp;недели.
+          Снимаем свадьбы так, чтобы их хотелось пересматривать годами.
         </p>
 
         <a
