@@ -7,49 +7,19 @@ const Hero = () => {
         </div>
 
         <div
-          className="hero-medallion relative grid place-items-center rounded-full"
+          className="hero-medallion relative grid place-items-center rounded-full overflow-hidden"
           style={{
             width: 210,
             height: 210,
-            background: 'var(--hero-x-medallion)',
             boxShadow: '0 26px 60px -24px color-mix(in srgb, var(--hero-x-water) 60%, transparent)',
           }}
-          role="img"
-          aria-label="Знак Айсберг-видео: айсберг-объектив"
         >
-          <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" width={210} height={210}>
-            <defs>
-              <clipPath id="disc">
-                <circle cx="100" cy="100" r="88" />
-              </clipPath>
-              <linearGradient id="sky" x1="0" y1="20" x2="0" y2="120" gradientUnits="userSpaceOnUse">
-                <stop stopColor="var(--hero-x-sky-top)" />
-                <stop offset="1" stopColor="var(--hero-x-sky-bot)" />
-              </linearGradient>
-            </defs>
-            <g clipPath="url(#disc)">
-              <rect x="0" y="0" width="200" height="118" fill="url(#sky)" />
-              <circle cx="132" cy="58" r="20" fill="var(--hero-x-sun)" />
-              <rect x="0" y="118" width="200" height="82" fill="var(--hero-x-water)" />
-              <path d="M100 34 L138 118 H62 Z" fill="var(--hero-x-berg)" />
-              <path d="M100 34 L100 118 H62 Z" fill="var(--hero-x-berg-dark)" />
-              <path d="M100 118 L134 176 H66 Z" fill="var(--hero-x-berg)" opacity=".38" />
-              <rect x="0" y="115" width="200" height="4" fill="var(--hero-x-water-line)" opacity=".6" />
-            </g>
-            <g className="hero-aperture">
-              <circle cx="100" cy="100" r="88" stroke="var(--hero-x-ring)" strokeWidth="6" fill="none" />
-              <circle
-                cx="100"
-                cy="100"
-                r="88"
-                stroke="var(--hero-x-ring)"
-                strokeWidth="6"
-                fill="none"
-                strokeDasharray="2 22"
-                opacity=".55"
-              />
-            </g>
-          </svg>
+          <img
+            src="https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/bucket/0ace0339-8601-429c-a627-5fae0c83b4c4.png"
+            alt="Молодожёны в день свадьбы"
+            className="h-full w-full object-cover"
+          />
+          <div className="hero-aperture absolute inset-0 pointer-events-none rounded-full border-[6px]" style={{ borderColor: 'var(--hero-x-ring)' }} />
         </div>
 
         <h1 className="font-display font-extrabold leading-[0.98] tracking-[-0.035em] text-[clamp(2.75rem,9vw,5.875rem)] max-w-[15ch] animate-fade-in">
