@@ -81,7 +81,7 @@ const Contacts = () => {
     <section id="contacts" className="py-24 bg-secondary/50">
       <div className="container">
         <div className="font-display font-medium text-base tracking-[0.22em] uppercase text-primary mb-4 text-center">
-          Контакты и заявка
+          Контакты и заявки
         </div>
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div>
