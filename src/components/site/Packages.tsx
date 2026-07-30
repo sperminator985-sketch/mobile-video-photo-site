@@ -26,7 +26,6 @@ const packages = [
     featured: false,
     features: [
       'Съёмка весь день',
-      'Полный фильм + тизер + highlights',
       '500 обработанных фото',
       'Love-story в подарок',
     ],
