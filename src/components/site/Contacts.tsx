@@ -97,14 +97,14 @@ const Contacts = () => {
                 <a
                   key={c.label}
                   href={c.href}
-                  className="flex items-center gap-4 rounded-2xl bg-card p-4 border border-border hover:-translate-y-0.5 transition-transform"
+                  className={`flex items-center gap-4 rounded-2xl bg-card p-4 border border-border hover:-translate-y-0.5 transition-transform ${c.label === 'Адрес' ? 'sm:col-span-2' : ''}`}
                 >
                   <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-secondary text-accent shrink-0">
                     <Icon name={c.icon} size={20} />
                   </span>
                   <span className="min-w-0">
                     <span className="block text-xs text-muted-foreground">{c.label}</span>
-                    <span className="block font-display font-semibold text-foreground truncate">{c.value}</span>
+                    <span className="block font-display font-semibold text-foreground text-sm whitespace-nowrap">{c.value}</span>
                   </span>
                 </a>
               ))}
