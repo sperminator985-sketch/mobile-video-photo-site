@@ -6,7 +6,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 
 const contacts = [
-  { icon: 'Phone', label: 'Телефон', value: '+7 (900) 000-00-00', href: 'tel:+79000000000' },
+  { icon: 'Phone', label: 'Телефон', value: '+7 (909) 547-23-25', href: 'tel:+79095472325' },
   { icon: 'Mail', label: 'Почта', value: 'daumsam@mail.ru', href: 'mailto:daumsam@mail.ru' },
   { icon: 'Send', label: 'Telegram', value: '@iceberg_video', href: 'https://t.me/iceberg_video' },
   { icon: 'Instagram', label: 'Instagram', value: '@iceberg.video', href: '#' },
