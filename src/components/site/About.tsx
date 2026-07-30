@@ -55,7 +55,7 @@ const About = () => {
                 key={s.label}
                 className="rounded-[1.5rem] bg-card p-6 border border-border shadow-[0_20px_50px_-30px_rgba(46,65,111,0.5)]"
               >
-                <div className="font-display font-extrabold text-4xl text-primary mb-1">{s.value}</div>
+                <div className="font-display font-extrabold text-3xl sm:text-4xl text-primary mb-1 break-words">{s.value}</div>
                 <div className="text-sm text-muted-foreground">{s.label}</div>
               </div>
             ))}
