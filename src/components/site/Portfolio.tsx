@@ -117,7 +117,7 @@ const Portfolio = () => {
     <section id="portfolio" className="py-24 bg-secondary/50">
       <div className="container">
         <div className="mb-10 text-center">
-          <div className="font-display font-medium text-xs tracking-[0.22em] uppercase text-primary mb-4">
+          <div className="font-display font-medium text-base tracking-[0.22em] uppercase text-primary mb-4">
             Портфолио
           </div>
           <h2 className="font-display font-extrabold text-4xl md:text-5xl leading-[1.05] tracking-[-0.02em]">
