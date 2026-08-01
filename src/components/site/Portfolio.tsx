@@ -132,7 +132,6 @@ const Portfolio = () => {
               </div>
               <div className="absolute bottom-0 left-0 right-0 p-5 text-white">
                 <div className="font-display font-bold text-lg">{item.title}</div>
-                <div className="text-sm text-white/80">{item.meta}</div>
               </div>
             </button>
           ))}
