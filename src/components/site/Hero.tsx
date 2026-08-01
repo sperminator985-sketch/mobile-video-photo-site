@@ -37,7 +37,7 @@ const Hero = () => {
         </a>
       </div>
 
-      <div className="container pb-8 flex justify-center text-center text-sm text-muted-foreground">
+      <div className="container pb-8 flex justify-center text-center text-lg text-foreground">
         <span>Снимаем свадьбы так, чтобы их хотелось пересматривать.</span>
       </div>
     </section>
