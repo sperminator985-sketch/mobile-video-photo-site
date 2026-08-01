@@ -11,8 +11,8 @@ const contacts = [
   {
     icon: 'MapPin',
     label: 'Адрес',
-    value: 'г.Томск, ул.Белинского-7, офис-427',
-    href: 'https://yandex.ru/maps/?text=Томск, ул.Белинского-7',
+    value: 'г.Томск, пр.Фрунзе-20, оф-427',
+    href: 'https://yandex.ru/maps/?text=Томск, пр.Фрунзе-20',
   },
 ];
 
