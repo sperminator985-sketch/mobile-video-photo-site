@@ -10,9 +10,9 @@ const MORNING_PHOTOS = [
   'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/2f7675e4-a636-41b1-832a-7b057084b52c.jpg',
   'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/b32878cc-4ffc-4ac6-a89a-f2729b6a13cb.jpg',
   'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/eaa2fd64-06b8-4a5a-9063-63b971b4bd90.jpg',
-  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/a2702d11-376f-49d1-8415-a4a04c1ef721.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/5c1a943e-886b-421f-9863-a478c9b459c4.jpg',
   'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/d0a06bbe-480e-45b0-8ac4-323cfc5f20a0.jpg',
-  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/41d2b6dd-cc46-46ec-8d83-d14be05dd8e8.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/da9b97da-41e9-45cd-ab9a-072b26bd1b6c.jpg',
 ];
 
 const CEREMONY_PHOTOS = [
