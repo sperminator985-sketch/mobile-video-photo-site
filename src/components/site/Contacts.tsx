@@ -11,7 +11,7 @@ const contacts = [
   {
     icon: 'MapPin',
     label: 'Адрес',
-    value: 'г.Томск, пр.Фрунзе-20, оф-427',
+    value: 'г.Томск, пр.Фрунзе-20, оф.-427',
     href: 'https://yandex.ru/maps/?text=Томск, пр.Фрунзе-20',
   },
 ];
