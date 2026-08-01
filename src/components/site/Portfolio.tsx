@@ -3,7 +3,7 @@ import Icon from '@/components/ui/icon';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 
 const MORNING_PHOTOS = [
-  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/f0d0034a-caaf-4373-a2a7-67480f5d113b.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/78605d5a-017a-493c-8e89-a29b0156e515.jpg',
   'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/57149828-9037-474c-9006-015e3c9bbe94.jpg',
   'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/783cb811-6ca8-49af-9199-309c8b819d19.jpg',
   'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/5fe0ffc4-0fb7-4a24-81ab-8d9b270ad22b.jpg',
