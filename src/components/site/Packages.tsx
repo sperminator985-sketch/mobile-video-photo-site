@@ -97,7 +97,7 @@ const Packages = () => {
                     : 'bg-secondary text-foreground hover:bg-primary hover:text-primary-foreground'
                 }`}
               >
-                Забронировать дату
+                Сделать заказ
               </a>
             </div>
           ))}
