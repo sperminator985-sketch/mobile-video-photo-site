@@ -146,7 +146,7 @@ const Contacts = () => {
                 className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-4 font-display font-semibold text-primary-foreground shadow-[0_16px_34px_-14px_hsl(var(--primary))] hover:-translate-y-0.5 transition-transform disabled:opacity-60 disabled:hover:translate-y-0"
               >
                 <Icon name={sending ? 'Loader2' : 'Send'} size={18} className={sending ? 'animate-spin' : ''} />
-                {sending ? 'Отправляем…' : 'Оставить заявку'}
+                {sending ? 'Отправляем…' : 'Отправить заявку'}
               </button>
               <p className="text-center text-xs text-muted-foreground">
                 Нажимая кнопку, вы соглашаетесь на обработку персональных данных.
