@@ -91,7 +91,7 @@ const Packages = () => {
 
               <a
                 href="#contacts"
-                className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-display font-semibold text-sm transition-transform hover:-translate-y-0.5 ${
+                className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-display font-semibold text-lg transition-transform hover:-translate-y-0.5 ${
                   p.featured
                     ? 'bg-primary text-primary-foreground'
                     : 'bg-secondary text-foreground hover:bg-primary hover:text-primary-foreground'

@@ -73,7 +73,7 @@ const Contacts = () => {
           Контакты и заявки
         </div>
         <div className="max-w-xl mx-auto">
-          <h2 className="font-display font-extrabold text-[clamp(1.15rem,4.5vw,1.85rem)] leading-[1.05] tracking-[-0.02em] mb-5 text-center">
+          <h2 className="font-display font-extrabold text-[clamp(1.5rem,6vw,2.5rem)] leading-[1.05] tracking-[-0.02em] mb-5 text-center">
             Сделать заказ
           </h2>
           <p className="text-lg text-muted-foreground mb-10 text-center">
