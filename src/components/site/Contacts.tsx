@@ -86,7 +86,7 @@ const Contacts = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div className="min-w-0">
             <h2 className="font-display font-extrabold text-[clamp(1.15rem,4.5vw,1.85rem)] leading-[1.05] tracking-[-0.02em] mb-5 text-center">
-              Забронировать день
+              Сделать заказ
             </h2>
             <p className="text-lg text-muted-foreground mb-10 max-w-md">
               Оставьте заявку — расскажем о свободных датах сезона 2026, покажем полные работы и поможем выбрать пакет.
