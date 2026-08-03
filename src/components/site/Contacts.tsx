@@ -85,7 +85,7 @@ const Contacts = () => {
         </div>
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div className="min-w-0">
-            <h2 className="font-display font-extrabold text-[clamp(1.15rem,4.5vw,1.85rem)] leading-[1.05] tracking-[-0.02em] mb-5">
+            <h2 className="font-display font-extrabold text-[clamp(1.15rem,4.5vw,1.85rem)] leading-[1.05] tracking-[-0.02em] mb-5 text-center">
               Забронировать день
             </h2>
             <p className="text-lg text-muted-foreground mb-10 max-w-md">
