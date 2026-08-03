@@ -8,7 +8,6 @@ const links = [
   { href: '#about', label: 'О нас' },
   { href: '#portfolio', label: 'Работы' },
   { href: '#packages', label: 'Цены' },
-  { href: '#contacts', label: 'Контакты' },
 ];
 
 const Header = () => {
@@ -51,7 +50,7 @@ const Header = () => {
           </SheetTrigger>
           <SheetContent side="right" className="w-[80%] bg-card border-border">
             <div className="mt-10 flex flex-col gap-2">
-              {links.filter((l) => l.href !== '#contacts').map((l) => (
+              {links.map((l) => (
                 <SheetClose asChild key={l.href}>
                   <a
                     href={l.href}
