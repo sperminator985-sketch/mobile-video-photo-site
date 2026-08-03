@@ -9,6 +9,7 @@ const Footer = () => {
           <span className="font-display font-bold text-base sm:text-lg tracking-tight text-white">Айсберг-видео</span>
         </div>
         <p className="text-sm text-white">Тел: +7 (909) 547-23-25</p>
+        <p className="text-sm text-white">E-mail: daumsam@mail.ru</p>
       </div>
     </footer>
   );
