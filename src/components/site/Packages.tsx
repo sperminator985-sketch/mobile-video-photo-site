@@ -63,7 +63,7 @@ const Packages = () => {
                   Выбирают чаще всего
                 </div>
               )}
-              <div className="font-display font-bold text-2xl mb-1">{p.name}</div>
+              <div className="font-display font-bold text-2xl mb-1 text-center">{p.name}</div>
               <div className={`text-sm mb-6 ${p.featured ? 'text-accent-foreground/80' : 'text-muted-foreground'}`}>
                 {p.tagline}
               </div>
