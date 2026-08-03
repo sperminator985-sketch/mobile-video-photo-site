@@ -42,6 +42,12 @@ const Header = () => {
               {l.label}
             </a>
           ))}
+          <a
+            href="#contacts"
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-display font-semibold text-primary-foreground shadow-[0_14px_30px_-14px_hsl(var(--primary))] hover:-translate-y-0.5 transition-transform"
+          >
+            Оставить заявку
+          </a>
         </nav>
 
         <Sheet>
@@ -60,6 +66,14 @@ const Header = () => {
                   </a>
                 </SheetClose>
               ))}
+              <SheetClose asChild>
+                <a
+                  href="#contacts"
+                  className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3.5 text-base font-display font-semibold text-primary-foreground"
+                >
+                  Оставить заявку
+                </a>
+              </SheetClose>
             </div>
           </SheetContent>
         </Sheet>
