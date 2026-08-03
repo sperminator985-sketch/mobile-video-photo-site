@@ -59,7 +59,7 @@ const Packages = () => {
               }`}
             >
               {p.featured && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-xs font-display font-semibold text-primary-foreground">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-primary px-4 py-1 text-[10px] font-display font-semibold text-primary-foreground">
                   Выбирают чаще всего
                 </div>
               )}
