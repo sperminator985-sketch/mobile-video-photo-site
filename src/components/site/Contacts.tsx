@@ -5,17 +5,6 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 
-const contacts = [
-  { icon: 'Phone', label: 'Телефон', value: '+7 (909) 547-23-25', href: 'tel:+79095472325' },
-  { icon: 'Mail', label: 'Почта', value: 'daumsam@mail.ru', href: 'mailto:daumsam@mail.ru' },
-  {
-    icon: 'MapPin',
-    label: 'Адрес',
-    value: 'г.Томск, пр.Фрунзе-20, оф.-427',
-    href: 'https://yandex.ru/maps/?text=Томск, пр.Фрунзе-20',
-  },
-];
-
 const SEND_LEAD_URL = 'https://functions.poehali.dev/2c609e31-a278-4787-9035-9753fda9bb86';
 
 const formatPhone = (raw: string) => {
@@ -83,33 +72,13 @@ const Contacts = () => {
         <div className="font-display font-medium text-xs tracking-[0.22em] uppercase text-primary mb-4 text-center">
           Контакты и заявки
         </div>
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          <div className="min-w-0">
-            <h2 className="font-display font-extrabold text-[clamp(1.15rem,4.5vw,1.85rem)] leading-[1.05] tracking-[-0.02em] mb-5 text-center">
-              Сделать заказ
-            </h2>
-            <p className="text-lg text-muted-foreground mb-10 max-w-md">
-              Оставьте заявку — расскажем о свободных датах сезона 2026, покажем полные работы и поможем выбрать пакет.
-            </p>
-
-            <div className="grid sm:grid-cols-2 gap-4">
-              {contacts.map((c) => (
-                <a
-                  key={c.label}
-                  href={c.href}
-                  className={`flex items-center gap-4 rounded-2xl bg-card p-4 border border-border hover:-translate-y-0.5 transition-transform min-w-0 ${c.label === 'Адрес' ? 'sm:col-span-2' : ''}`}
-                >
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-secondary text-accent shrink-0">
-                    <Icon name={c.icon} size={20} />
-                  </span>
-                  <span className="min-w-0">
-                    <span className="block text-xs text-muted-foreground">{c.label}</span>
-                    <span className={`block font-display font-semibold text-foreground text-xs sm:text-sm ${c.label === 'Адрес' ? '' : 'whitespace-nowrap'}`}>{c.value}</span>
-                  </span>
-                </a>
-              ))}
-            </div>
-          </div>
+        <div className="max-w-xl mx-auto">
+          <h2 className="font-display font-extrabold text-[clamp(1.15rem,4.5vw,1.85rem)] leading-[1.05] tracking-[-0.02em] mb-5 text-center">
+            Сделать заказ
+          </h2>
+          <p className="text-lg text-muted-foreground mb-10 text-center">
+            Оставьте заявку — расскажем о свободных датах сезона 2026, покажем полные работы и поможем выбрать пакет.
+          </p>
 
           <form
             onSubmit={onSubmit}
