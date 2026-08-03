@@ -51,7 +51,7 @@ const Header = () => {
           </SheetTrigger>
           <SheetContent side="right" className="w-[80%] bg-card border-border">
             <div className="mt-10 flex flex-col gap-2">
-              {links.map((l) => (
+              {links.filter((l) => l.href !== '#contacts').map((l) => (
                 <SheetClose asChild key={l.href}>
                   <a
                     href={l.href}
