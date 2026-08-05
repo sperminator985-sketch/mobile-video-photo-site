@@ -67,7 +67,7 @@ const Contacts = () => {
   };
 
   return (
-    <section id="contacts" className="py-24 bg-secondary/50">
+    <section id="contacts" className="py-14 bg-secondary/50">
       <div className="container">
         <div className="font-display font-medium text-xs tracking-[0.22em] uppercase text-primary mb-4 text-center">
           Контакты и заявки

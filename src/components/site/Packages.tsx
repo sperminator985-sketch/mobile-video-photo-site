@@ -34,7 +34,7 @@ const packages = [
 
 const Packages = () => {
   return (
-    <section id="packages" className="py-24 bg-background">
+    <section id="packages" className="py-14 bg-background">
       <div className="container">
         <div className="text-center max-w-2xl mx-auto mb-14">
           <div className="font-display font-medium text-base tracking-[0.22em] uppercase text-primary mb-4">

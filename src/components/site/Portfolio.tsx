@@ -100,7 +100,7 @@ const Portfolio = () => {
   };
 
   return (
-    <section id="portfolio" className="py-24 bg-secondary/50">
+    <section id="portfolio" className="py-14 bg-secondary/50">
       <div className="container">
         <div className="mb-10 text-center">
           <div className="font-display font-medium text-base tracking-[0.22em] uppercase text-primary mb-4">
