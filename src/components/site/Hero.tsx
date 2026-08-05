@@ -36,15 +36,6 @@ const Hero = () => {
           Оставить заявку
         </a>
       </div>
-
-      <div className="container pb-8 flex justify-center text-center text-primary">
-        <span
-          className="text-[clamp(1.125rem,2.8vw,1.625rem)] leading-tight"
-          style={{ fontFamily: "'Caveat', cursive" }}
-        >
-          Снимаем свадьбы так, чтобы их хотелось пересматривать.
-        </span>
-      </div>
     </section>
   );
 };
