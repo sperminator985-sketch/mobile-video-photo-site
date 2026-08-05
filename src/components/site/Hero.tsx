@@ -36,7 +36,7 @@ const Hero = () => {
           Оставить заявку
         </a>
 
-        <p className="mt-2 font-display font-medium text-sm text-muted-foreground animate-fade-in">
+        <p className="mt-8 font-display font-medium text-lg text-muted-foreground animate-fade-in">
           Максимальное качество в минимальные сроки
         </p>
       </div>
