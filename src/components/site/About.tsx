@@ -27,7 +27,7 @@ const values = [
 
 const About = () => {
   return (
-    <section id="about" className="py-14 bg-background">
+    <section id="about" className="py-8 bg-background">
       <div className="container">
         <div className="font-display font-medium text-base tracking-[0.22em] uppercase text-primary mb-4 text-center">
           О нас
