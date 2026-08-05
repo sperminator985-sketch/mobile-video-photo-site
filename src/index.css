@@ -124,6 +124,10 @@
   html {
     scroll-behavior: smooth;
   }
+
+  section[id] {
+    scroll-margin-top: 72px;
+  }
 }
 
 @layer utilities {
