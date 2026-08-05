@@ -70,7 +70,7 @@ const Contacts = () => {
     <section id="contacts" className="py-14 bg-secondary/50">
       <div className="container">
         <div className="font-display font-medium text-xs tracking-[0.22em] uppercase text-primary mb-4 text-center">
-          Контакты и заявки
+          Контакты
         </div>
         <div className="max-w-xl mx-auto">
           <form
