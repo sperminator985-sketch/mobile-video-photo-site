@@ -35,6 +35,10 @@ const Hero = () => {
           <span className="h-2.5 w-2.5 rounded-full bg-primary-foreground" />
           Оставить заявку
         </a>
+
+        <p className="mt-2 font-display font-medium text-sm text-muted-foreground animate-fade-in">
+          Максимальное качество в минимальные сроки
+        </p>
       </div>
     </section>
   );

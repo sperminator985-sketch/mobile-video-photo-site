@@ -133,10 +133,6 @@ const Contacts = () => {
                 />
               </div>
 
-              <p className="text-center font-display font-medium text-foreground">
-                Максимальное качество в минимальные сроки
-              </p>
-
               <button
                 type="submit"
                 disabled={sending}
