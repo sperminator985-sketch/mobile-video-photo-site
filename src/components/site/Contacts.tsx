@@ -73,10 +73,6 @@ const Contacts = () => {
           Контакты и заявки
         </div>
         <div className="max-w-xl mx-auto">
-          <p className="text-lg text-muted-foreground mb-10 text-center">
-            Оставьте заявку — мы перезвоним в ближайшее время.
-          </p>
-
           <form
             onSubmit={onSubmit}
             className="rounded-[1.75rem] bg-card p-8 border border-border shadow-[0_30px_70px_-40px_rgba(46,65,111,0.6)]"
