@@ -34,9 +34,6 @@ const About = () => {
         </div>
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div>
-            <h2 className="font-display font-extrabold text-4xl md:text-5xl leading-[1.05] tracking-[-0.02em] mb-6">
-              Мы влюблены в чужие свадьбы
-            </h2>
             <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
               <p>
                 Мы начали с одной камеры и большой любви к настоящим историям. С тех пор через наш объектив прошли
