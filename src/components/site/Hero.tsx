@@ -37,8 +37,13 @@ const Hero = () => {
         </a>
       </div>
 
-      <div className="container pb-8 flex justify-center text-center text-lg text-foreground">
-        <span>Снимаем свадьбы так, чтобы их хотелось пересматривать.</span>
+      <div className="container pb-8 flex justify-center text-center text-primary">
+        <span
+          className="text-[clamp(1.5rem,4vw,2.25rem)] leading-tight"
+          style={{ fontFamily: "'Caveat', cursive" }}
+        >
+          Снимаем свадьбы так, чтобы их хотелось пересматривать.
+        </span>
       </div>
     </section>
   );
