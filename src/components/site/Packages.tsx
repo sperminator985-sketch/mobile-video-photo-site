@@ -63,9 +63,6 @@ const Packages = () => {
               </div>
               <div className="font-display font-extrabold text-4xl mb-6">
                 {p.price}
-                <span className={`text-base font-body font-normal ${p.featured ? 'text-accent-foreground/70' : 'text-muted-foreground'}`}>
-                  {' '}от
-                </span>
               </div>
 
               <ul className="space-y-3 mb-8 flex-1">
