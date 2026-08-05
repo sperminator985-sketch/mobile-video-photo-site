@@ -106,9 +106,6 @@ const Portfolio = () => {
           <div className="font-display font-medium text-base tracking-[0.22em] uppercase text-primary mb-4">
             Портфолио
           </div>
-          <h2 className="font-display font-extrabold text-4xl md:text-5xl leading-[1.05] tracking-[-0.02em]">
-            Фото со свадеб
-          </h2>
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
