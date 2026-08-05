@@ -40,9 +40,6 @@ const Packages = () => {
           <div className="font-display font-medium text-xs tracking-[0.22em] uppercase text-primary mb-4">
             Пакеты услуг и цены
           </div>
-          <h2 className="font-display font-extrabold text-[clamp(1.5rem,8vw,3rem)] leading-[1.05] tracking-[-0.02em] mb-4">
-            Выберите свой формат
-          </h2>
           <p className="text-lg text-muted-foreground">
             Прозрачные пакеты без скрытых доплат.
           </p>
