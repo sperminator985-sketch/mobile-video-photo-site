@@ -58,7 +58,7 @@ const Packages = () => {
                 </div>
               )}
               <div className="font-display font-bold text-2xl mb-1 text-center">{p.name}</div>
-              <div className={`text-sm mb-6 ${p.featured ? 'text-accent-foreground/80' : 'text-muted-foreground'}`}>
+              <div className={`text-sm mb-6 text-center ${p.featured ? 'text-accent-foreground/80' : 'text-muted-foreground'}`}>
                 {p.tagline}
               </div>
               <div className="font-display font-extrabold text-4xl mb-6">
