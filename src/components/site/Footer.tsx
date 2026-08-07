@@ -10,7 +10,7 @@ const Footer = () => {
         </div>
         <p className="text-sm text-white">Тел: +7 (909) 547-23-25</p>
         <p className="text-sm text-white">E-mail: daumsam@mail.ru</p>
-        <p className="text-sm text-white">Адрес: г.Томск, пр.Фрунзе-20, офис-427</p>
+        <p className="text-sm text-white">Адрес: пр.Фрунзе-20, офис-427</p>
       </div>
     </footer>
   );
