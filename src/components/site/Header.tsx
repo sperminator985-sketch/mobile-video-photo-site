@@ -48,7 +48,7 @@ const Header = () => {
             rel="noopener noreferrer"
             className="text-sm font-medium text-foreground/75 hover:text-foreground transition-colors"
           >
-            Old
+            Old_Version
           </a>
           <a
             href="#contacts"
@@ -81,7 +81,7 @@ const Header = () => {
                   rel="noopener noreferrer"
                   className="rounded-2xl px-4 py-3 text-lg font-display font-medium text-foreground hover:bg-secondary transition-colors"
                 >
-                  Old
+                  Old_Version
                 </a>
               </SheetClose>
               <SheetClose asChild>
