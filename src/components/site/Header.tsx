@@ -43,7 +43,7 @@ const Header = () => {
             </a>
           ))}
           <a
-            href="https://isbergvideo.ru"
+            href="https://icebergvideo-old.ru"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm font-medium text-foreground/75 hover:text-foreground transition-colors"
