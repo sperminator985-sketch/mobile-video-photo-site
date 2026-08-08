@@ -43,6 +43,14 @@ const Header = () => {
             </a>
           ))}
           <a
+            href="https://isbergvideo.ru"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium text-foreground/75 hover:text-foreground transition-colors"
+          >
+            Old
+          </a>
+          <a
             href="#contacts"
             className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-display font-semibold text-primary-foreground shadow-[0_14px_30px_-14px_hsl(var(--primary))] hover:-translate-y-0.5 transition-transform"
           >
@@ -66,6 +74,16 @@ const Header = () => {
                   </a>
                 </SheetClose>
               ))}
+              <SheetClose asChild>
+                <a
+                  href="https://isbergvideo.ru"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-2xl px-4 py-3 text-lg font-display font-medium text-foreground hover:bg-secondary transition-colors"
+                >
+                  Old
+                </a>
+              </SheetClose>
               <SheetClose asChild>
                 <a
                   href="#contacts"
