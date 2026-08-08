@@ -7,19 +7,21 @@ const Hero = () => {
         </div>
 
         <div
-          className="hero-medallion relative grid place-items-center rounded-full overflow-hidden"
+          className="hero-medallion hero-ring-frame relative grid place-items-center rounded-full"
           style={{
-            width: 210,
-            height: 210,
+            width: 230,
+            height: 230,
             boxShadow: '0 26px 60px -24px color-mix(in srgb, var(--hero-x-water) 60%, transparent)',
           }}
         >
-          <img
-            src="https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/bucket/0ace0339-8601-429c-a627-5fae0c83b4c4.png"
-            alt="Молодожёны в день свадьбы"
-            className="h-full w-full object-cover"
-          />
-          <div className="hero-aperture absolute inset-0 pointer-events-none rounded-full border-2" style={{ borderColor: 'var(--hero-x-ring)' }} />
+          <div className="relative rounded-full overflow-hidden" style={{ width: 198, height: 198 }}>
+            <img
+              src="https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/bucket/0ace0339-8601-429c-a627-5fae0c83b4c4.png"
+              alt="Молодожёны в день свадьбы"
+              className="h-full w-full object-cover"
+            />
+          </div>
+          <div className="hero-aperture absolute inset-0 pointer-events-none rounded-full" />
         </div>
 
         <h1 className="font-display font-extrabold leading-[0.98] tracking-[-0.035em] text-[clamp(2.75rem,9vw,5.875rem)] max-w-[15ch] animate-fade-in">

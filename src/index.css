@@ -168,9 +168,28 @@
 .hero-medallion {
   animation: hero-rise 1s cubic-bezier(0.2, 0.8, 0.25, 1) both;
 }
+.hero-ring-frame {
+  padding: 16px;
+  background: conic-gradient(
+    from 210deg,
+    #fff6d9 0%,
+    #d4a94f 12%,
+    #8a6414 24%,
+    #f6e6ad 36%,
+    #b9822c 48%,
+    #fff6d9 60%,
+    #caa254 72%,
+    #7a5a15 84%,
+    #fff6d9 100%
+  );
+  box-shadow:
+    inset 0 2px 4px rgba(255, 255, 255, 0.6),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.35);
+}
 .hero-aperture {
   transform-origin: 50% 50%;
   animation: hero-spin 40s linear infinite;
+  border: 2px solid color-mix(in srgb, #fff6d9 60%, transparent);
 }
 
 @media (prefers-reduced-motion: reduce) {
