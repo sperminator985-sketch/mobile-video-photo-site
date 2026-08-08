@@ -76,7 +76,7 @@ const Header = () => {
               ))}
               <SheetClose asChild>
                 <a
-                  href="https://isbergvideo.ru"
+                  href="https://icebergvideo-old.ru"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-2xl px-4 py-3 text-lg font-display font-medium text-foreground hover:bg-secondary transition-colors"
