@@ -155,6 +155,7 @@
     }
 
     .hero-stage {
+      background-size: 145% auto;
       background-position: left center;
     }
   }
