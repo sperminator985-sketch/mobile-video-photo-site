@@ -5,6 +5,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/s
 const LOGO = 'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/bucket/14346e37-5113-4231-af71-69c04fab1812.png';
 
 const links = [
+  { href: '#top', label: 'Главная' },
   { href: '#about', label: 'О нас' },
   { href: '#portfolio', label: 'Работы' },
   { href: '#packages', label: 'Цены' },
