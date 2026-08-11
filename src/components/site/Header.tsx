@@ -30,7 +30,7 @@ const Header = () => {
       <div className="container flex items-center justify-between h-[72px] gap-2">
         <a href="#top" className="flex items-center gap-2 sm:gap-3 min-w-0 shrink">
           <img src={LOGO} alt="Айсберг-видео" className="h-8 sm:h-9 w-auto shrink-0" />
-          <span className="ice-logo-text font-extrabold text-xl sm:text-2xl tracking-tight truncate">Айсберг-видео</span>
+          <span className="font-display font-bold text-base sm:text-lg tracking-tight text-foreground truncate">Айсберг-видео</span>
         </a>
 
         <nav className="hidden md:flex items-center gap-8">
