@@ -160,17 +160,26 @@
   }
 
   .ice-logo-text {
+    font-family: "Baloo 2", "Unbounded", sans-serif;
     color: #3fb6e8;
-    background: linear-gradient(
-      180deg,
-      #bfeaff 0%,
-      #6ec8ef 35%,
-      #2ea6e0 70%,
-      #1c85bd 100%
-    );
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.55) 0%,
+        rgba(191, 234, 255, 0.35) 30%,
+        rgba(46, 166, 224, 0.35) 65%,
+        rgba(28, 133, 189, 0.55) 100%
+      ),
+      url("https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/03dde8a2-d86c-4b83-8c50-7bed00289c5d.jpg");
+    background-size:
+      cover,
+      220px auto;
+    background-position: center, center;
+    background-blend-mode: normal, normal;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px rgba(220, 247, 255, 0.9);
     text-shadow:
       0 1px 0 #dff6ff,
       0 2px 0 #a9e2ff,
