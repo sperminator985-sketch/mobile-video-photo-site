@@ -5,8 +5,12 @@ const Footer = () => {
     <footer className="bg-accent text-accent-foreground">
       <div className="container pt-2 pb-6 flex flex-col items-center justify-center gap-2">
         <div className="flex items-center gap-2 sm:gap-3">
-          <img src={LOGO} alt="Айсберг-видео" className="h-8 sm:h-9 w-auto" />
-          <span className="font-display font-bold text-base sm:text-lg tracking-tight text-white">Айсберг-видео</span>
+          <img src={LOGO} alt="" className="h-8 sm:h-9 w-auto" />
+          <img
+            src="/assets/iceberg-video-logo-text.png"
+            alt="Айсберг-видео"
+            className="h-7 sm:h-8 w-auto"
+          />
         </div>
         <p className="text-sm text-white">Тел: +7 (909) 547-23-25</p>
         <p className="text-sm text-white">E-mail: daumsam@mail.ru</p>
