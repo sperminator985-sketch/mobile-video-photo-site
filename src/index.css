@@ -153,6 +153,10 @@
       background-position: center;
       background-repeat: no-repeat;
     }
+
+    .hero-stage {
+      background-position: left center;
+    }
   }
 
   .hover-scale {
