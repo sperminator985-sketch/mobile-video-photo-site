@@ -22,7 +22,7 @@ const Hero = () => {
           <div className="hero-aperture absolute inset-0 pointer-events-none rounded-full" />
         </div>
 
-        <h1 className="font-display font-extrabold leading-[0.98] tracking-[-0.035em] text-[clamp(2.75rem,9vw,5.875rem)] max-w-[15ch] animate-fade-in">
+        <h1 className="font-display font-extrabold leading-[0.98] tracking-[-0.035em] text-[clamp(2.25rem,7vw,4.5rem)] max-w-[15ch] animate-fade-in">
           Ваша свадьба
           <br />
           <span className="text-primary">в главной роли</span>
