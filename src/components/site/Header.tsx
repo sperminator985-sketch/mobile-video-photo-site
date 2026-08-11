@@ -33,7 +33,7 @@ const Header = () => {
           <img
             src="/assets/iceberg-video-logo-text.png"
             alt="Айсберг-видео"
-            className="h-9 sm:h-11 w-auto shrink-0"
+            className="h-7 sm:h-8 w-auto shrink-0"
           />
         </a>
 
