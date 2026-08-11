@@ -9,7 +9,7 @@ const Footer = () => {
           <img
             src="/assets/iceberg-video-logo-text.png"
             alt="Айсберг-видео"
-            className="h-7 sm:h-8 w-auto"
+            className="h-7 sm:h-8 w-auto brightness-0 invert"
           />
         </div>
         <p className="text-sm text-white">Тел: +7 (909) 547-23-25</p>
