@@ -158,6 +158,28 @@
   .hover-scale {
     @apply transition-transform duration-200 hover:scale-105;
   }
+
+  .ice-logo-text {
+    color: #eaf8ff;
+    background: linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #d3f1ff 35%,
+      #8fd8f5 70%,
+      #4fb8e6 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow:
+      0 1px 0 #ffffff,
+      0 2px 0 #eaf8ff,
+      0 3px 1px rgba(79, 184, 230, 0.6),
+      0 4px 2px rgba(46, 130, 179, 0.5),
+      0 5px 6px rgba(21, 90, 133, 0.45),
+      0 8px 14px rgba(21, 90, 133, 0.3);
+    filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.9));
+  }
 }
 
 @keyframes hero-rise {
