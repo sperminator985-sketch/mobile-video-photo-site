@@ -153,10 +153,6 @@
       background-position: center;
       background-repeat: no-repeat;
     }
-
-    .hero-stage {
-      background-position: calc(50% + 75px) center;
-    }
   }
 
   .hover-scale {
