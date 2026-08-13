@@ -114,7 +114,7 @@ const Contacts = () => {
         <div className="font-display font-medium text-base tracking-[0.22em] uppercase text-primary mb-4 text-center">
           Контакты
         </div>
-        <div className="max-w-xl mx-auto">
+        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6 items-start">
           <form
             onSubmit={onSubmit}
             className="rounded-[1.75rem] bg-card p-8 border border-border shadow-[0_30px_70px_-40px_rgba(46,65,111,0.6)]"
@@ -188,9 +188,7 @@ const Contacts = () => {
               </p>
             </div>
           </form>
-        </div>
 
-        <div className="max-w-xl mx-auto mt-10">
           <form
             onSubmit={onCallbackSubmit}
             className="rounded-[1.75rem] bg-card p-8 border border-border shadow-[0_30px_70px_-40px_rgba(46,65,111,0.6)] flex flex-col justify-between"
