@@ -23,7 +23,7 @@ const Hero = () => {
         </div>
 
         <h1 className="font-display font-extrabold leading-[0.98] tracking-[-0.035em] text-[clamp(2.25rem,7vw,4.5rem)] max-w-[15ch] animate-fade-in">
-          Ваша свадьба
+          <span className="text-primary">Ваша свадьба</span>
           <br />
           <span className="text-primary">в главной роли</span>
         </h1>
