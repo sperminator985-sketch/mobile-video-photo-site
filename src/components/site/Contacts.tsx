@@ -4,7 +4,7 @@ import Icon from '@/components/ui/icon';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import CallbackForm, { formatPhone } from './CallbackForm';
+import { formatPhone } from './CallbackForm';
 
 const SEND_LEAD_URL = 'https://functions.poehali.dev/2c609e31-a278-4787-9035-9753fda9bb86';
 
@@ -57,10 +57,10 @@ const Contacts = () => {
         <div className="font-display font-medium text-base tracking-[0.22em] uppercase text-primary mb-4 text-center">
           Контакты
         </div>
-        <div className="flex flex-col md:flex-row md:items-end justify-center gap-6 md:gap-10 md:ml-[9cm]">
+        <div className="max-w-xl mx-auto">
           <form
             onSubmit={onSubmit}
-            className="w-full max-w-lg rounded-[1.75rem] bg-card p-8 border border-border shadow-[0_30px_70px_-40px_rgba(46,65,111,0.6)]"
+            className="rounded-[1.75rem] bg-card p-8 border border-border shadow-[0_30px_70px_-40px_rgba(46,65,111,0.6)]"
           >
             <div className="space-y-5">
               <div>
@@ -128,11 +128,6 @@ const Contacts = () => {
               </button>
             </div>
           </form>
-
-          <CallbackForm
-            idPrefix="contacts-callback"
-            className="w-full max-w-xs mx-auto md:mx-0 rounded-[1.75rem] bg-card p-6 border border-border shadow-[0_30px_70px_-40px_rgba(46,65,111,0.6)] flex flex-col justify-between"
-          />
         </div>
 
         <div className="max-w-4xl mx-auto mt-10">
