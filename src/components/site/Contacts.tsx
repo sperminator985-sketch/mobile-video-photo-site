@@ -4,42 +4,18 @@ import Icon from '@/components/ui/icon';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
+import CallbackForm, { formatPhone } from './CallbackForm';
 
 const SEND_LEAD_URL = 'https://functions.poehali.dev/2c609e31-a278-4787-9035-9753fda9bb86';
-
-const formatPhone = (raw: string) => {
-  let digits = raw.replace(/\D/g, '');
-  if (digits.startsWith('8')) digits = '7' + digits.slice(1);
-  if (!digits.startsWith('7')) digits = '7' + digits;
-  digits = digits.slice(0, 11);
-
-  const rest = digits.slice(1);
-  let result = '+7';
-  if (rest.length > 0) result += ` (${rest.slice(0, 3)}`;
-  if (rest.length >= 3) result += ')';
-  if (rest.length > 3) result += ` ${rest.slice(3, 6)}`;
-  if (rest.length > 6) result += `-${rest.slice(6, 8)}`;
-  if (rest.length > 8) result += `-${rest.slice(8, 10)}`;
-  return result;
-};
 
 const Contacts = () => {
   const [form, setForm] = useState({ name: '', phone: '', date: '', message: '' });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [sending, setSending] = useState(false);
 
-  const [callbackForm, setCallbackForm] = useState({ name: '', phone: '' });
-  const [callbackErrors, setCallbackErrors] = useState<Record<string, string>>({});
-  const [callbackSending, setCallbackSending] = useState(false);
-
   const set = (key: string, value: string) => {
     setForm((f) => ({ ...f, [key]: value }));
     setErrors((e) => ({ ...e, [key]: '' }));
-  };
-
-  const setCallback = (key: string, value: string) => {
-    setCallbackForm((f) => ({ ...f, [key]: value }));
-    setCallbackErrors((e) => ({ ...e, [key]: '' }));
   };
 
   const validate = () => {
@@ -48,15 +24,6 @@ const Contacts = () => {
     const digits = form.phone.replace(/\D/g, '');
     if (digits.length < 10) next.phone = 'Укажите корректный телефон';
     setErrors(next);
-    return Object.keys(next).length === 0;
-  };
-
-  const validateCallback = () => {
-    const next: Record<string, string> = {};
-    if (callbackForm.name.trim().length < 2) next.name = 'Как вас зовут?';
-    const digits = callbackForm.phone.replace(/\D/g, '');
-    if (digits.length < 10) next.phone = 'Укажите корректный телефон';
-    setCallbackErrors(next);
     return Object.keys(next).length === 0;
   };
 
@@ -81,30 +48,6 @@ const Contacts = () => {
       });
     } finally {
       setSending(false);
-    }
-  };
-
-  const onCallbackSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!validateCallback() || callbackSending) return;
-    setCallbackSending(true);
-    try {
-      const res = await fetch(SEND_LEAD_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...callbackForm, date: '', message: 'Заказ обратного звонка' }),
-      });
-      if (!res.ok) throw new Error('send failed');
-      toast.success('Заявка принята!', {
-        description: 'Мы перезвоним вам в ближайшее время.',
-      });
-      setCallbackForm({ name: '', phone: '' });
-    } catch {
-      toast.error('Не удалось отправить заявку', {
-        description: 'Попробуйте ещё раз или позвоните нам по телефону.',
-      });
-    } finally {
-      setCallbackSending(false);
     }
   };
 
@@ -186,58 +129,10 @@ const Contacts = () => {
             </div>
           </form>
 
-          <form
-            onSubmit={onCallbackSubmit}
+          <CallbackForm
+            idPrefix="contacts-callback"
             className="w-full max-w-xs mx-auto md:mx-0 rounded-[1.75rem] bg-card p-6 border border-border shadow-[0_30px_70px_-40px_rgba(46,65,111,0.6)] flex flex-col justify-between"
-          >
-            <div>
-
-              <div className="space-y-3">
-                <div>
-                  <Label htmlFor="callback-name" className="mb-1.5 block font-display text-sm">Ваше имя</Label>
-                  <Input
-                    id="callback-name"
-                    value={callbackForm.name}
-                    onChange={(e) => setCallback('name', e.target.value)}
-                    placeholder="Как к вам обращаться"
-                    className="h-10 rounded-xl bg-background"
-                  />
-                  {callbackErrors.name && <p className="mt-1 text-xs text-destructive">{callbackErrors.name}</p>}
-                </div>
-
-                <div>
-                  <Label htmlFor="callback-phone" className="mb-1.5 block font-display text-sm">Телефон</Label>
-                  <Input
-                    id="callback-phone"
-                    value={callbackForm.phone}
-                    onChange={(e) => {
-                      const digitsOnly = e.target.value.replace(/\D/g, '');
-                      if (!digitsOnly) {
-                        setCallback('phone', '');
-                        return;
-                      }
-                      setCallback('phone', formatPhone(e.target.value));
-                    }}
-                    placeholder="+7 (___) ___-__-__"
-                    inputMode="tel"
-                    className="h-10 rounded-xl bg-background"
-                  />
-                  {callbackErrors.phone && <p className="mt-1 text-xs text-destructive">{callbackErrors.phone}</p>}
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-4">
-              <button
-                type="submit"
-                disabled={callbackSending}
-                className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-display font-semibold text-primary-foreground shadow-[0_16px_34px_-14px_hsl(var(--primary))] hover:-translate-y-0.5 transition-transform disabled:opacity-60 disabled:hover:translate-y-0"
-              >
-                <Icon name={callbackSending ? 'Loader2' : 'PhoneCall'} size={18} className={callbackSending ? 'animate-spin' : ''} />
-                {callbackSending ? 'Отправляем…' : 'Заказать звонок'}
-              </button>
-            </div>
-          </form>
+          />
         </div>
       </div>
     </section>

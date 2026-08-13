@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Icon from '@/components/ui/icon';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import CallbackDialog from './CallbackDialog';
 
 const LOGO = 'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/bucket/14346e37-5113-4231-af71-69c04fab1812.png';
 
@@ -61,6 +62,14 @@ const Header = () => {
           >
             Old_Version
           </a>
+          <CallbackDialog
+            trigger={
+              <button className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-display font-semibold text-primary-foreground hover:-translate-y-0.5 transition-transform">
+                <Icon name="PhoneCall" size={16} />
+                Заказать звонок
+              </button>
+            }
+          />
         </nav>
 
         <Sheet>
@@ -97,6 +106,14 @@ const Header = () => {
                   Оставить заявку
                 </a>
               </SheetClose>
+              <CallbackDialog
+                trigger={
+                  <button className="w-full inline-flex items-center justify-center gap-2 rounded-full border border-primary/40 px-5 py-3.5 text-base font-display font-medium text-primary">
+                    <Icon name="PhoneCall" size={18} />
+                    Заказать звонок
+                  </button>
+                }
+              />
             </div>
           </SheetContent>
         </Sheet>
