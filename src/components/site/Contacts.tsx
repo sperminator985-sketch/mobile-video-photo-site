@@ -114,10 +114,10 @@ const Contacts = () => {
         <div className="font-display font-medium text-base tracking-[0.22em] uppercase text-primary mb-4 text-center">
           Контакты
         </div>
-        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6 items-start">
+        <div className="relative max-w-5xl mx-auto">
           <form
             onSubmit={onSubmit}
-            className="rounded-[1.75rem] bg-card p-8 border border-border shadow-[0_30px_70px_-40px_rgba(46,65,111,0.6)]"
+            className="max-w-xl mx-auto rounded-[1.75rem] bg-card p-8 border border-border shadow-[0_30px_70px_-40px_rgba(46,65,111,0.6)]"
           >
             <div className="space-y-5">
               <div>
@@ -191,7 +191,7 @@ const Contacts = () => {
 
           <form
             onSubmit={onCallbackSubmit}
-            className="rounded-[1.75rem] bg-card p-6 border border-border shadow-[0_30px_70px_-40px_rgba(46,65,111,0.6)] flex flex-col justify-between"
+            className="mt-6 md:mt-0 w-full max-w-xs mx-auto md:mx-0 md:absolute md:right-0 md:top-0 rounded-[1.75rem] bg-card p-6 border border-border shadow-[0_30px_70px_-40px_rgba(46,65,111,0.6)] flex flex-col justify-between"
           >
             <div>
               <h3 className="font-display text-lg font-semibold text-foreground mb-4 text-center">
