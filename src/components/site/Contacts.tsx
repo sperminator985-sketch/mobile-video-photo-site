@@ -130,7 +130,7 @@ const Contacts = () => {
           </form>
         </div>
 
-        <div className="max-w-4xl mx-auto mt-10">
+        <div className="max-w-[calc(56rem+6cm)] mx-auto mt-10">
           <div className="flex items-center gap-2 mb-3 justify-center">
             <Icon name="MapPin" size={18} className="text-primary" />
             <p className="text-sm font-medium text-foreground">г. Томск, пр. Фрунзе, 20, офис-427</p>
