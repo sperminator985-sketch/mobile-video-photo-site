@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { toast } from 'sonner';
 import Icon from '@/components/ui/icon';
 import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 
 const SEND_LEAD_URL = 'https://functions.poehali.dev/2c609e31-a278-4787-9035-9753fda9bb86';
@@ -34,13 +35,22 @@ const infoItems = [
 ] as const;
 
 const Contacts = () => {
-  const [form, setForm] = useState({ name: '', phone: '' });
+  const [form, setForm] = useState({ name: '', phone: '', date: '', message: '' });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [sending, setSending] = useState(false);
+
+  const [callbackForm, setCallbackForm] = useState({ name: '', phone: '' });
+  const [callbackErrors, setCallbackErrors] = useState<Record<string, string>>({});
+  const [callbackSending, setCallbackSending] = useState(false);
 
   const set = (key: string, value: string) => {
     setForm((f) => ({ ...f, [key]: value }));
     setErrors((e) => ({ ...e, [key]: '' }));
+  };
+
+  const setCallback = (key: string, value: string) => {
+    setCallbackForm((f) => ({ ...f, [key]: value }));
+    setCallbackErrors((e) => ({ ...e, [key]: '' }));
   };
 
   const validate = () => {
@@ -52,6 +62,15 @@ const Contacts = () => {
     return Object.keys(next).length === 0;
   };
 
+  const validateCallback = () => {
+    const next: Record<string, string> = {};
+    if (callbackForm.name.trim().length < 2) next.name = 'Как вас зовут?';
+    const digits = callbackForm.phone.replace(/\D/g, '');
+    if (digits.length < 10) next.phone = 'Укажите корректный телефон';
+    setCallbackErrors(next);
+    return Object.keys(next).length === 0;
+  };
+
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate() || sending) return;
@@ -60,13 +79,13 @@ const Contacts = () => {
       const res = await fetch(SEND_LEAD_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, date: '', message: 'Заказ обратного звонка' }),
+        body: JSON.stringify(form),
       });
       if (!res.ok) throw new Error('send failed');
-      toast.success('Заявка принята!', {
-        description: 'Мы перезвоним вам в ближайшее время.',
+      toast.success('Заявка отправлена!', {
+        description: 'Мы свяжемся с вами в течение дня и обсудим детали.',
       });
-      setForm({ name: '', phone: '' });
+      setForm({ name: '', phone: '', date: '', message: '' });
     } catch {
       toast.error('Не удалось отправить заявку', {
         description: 'Попробуйте ещё раз или позвоните нам по телефону.',
@@ -76,14 +95,113 @@ const Contacts = () => {
     }
   };
 
+  const onCallbackSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!validateCallback() || callbackSending) return;
+    setCallbackSending(true);
+    try {
+      const res = await fetch(SEND_LEAD_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...callbackForm, date: '', message: 'Заказ обратного звонка' }),
+      });
+      if (!res.ok) throw new Error('send failed');
+      toast.success('Заявка принята!', {
+        description: 'Мы перезвоним вам в ближайшее время.',
+      });
+      setCallbackForm({ name: '', phone: '' });
+    } catch {
+      toast.error('Не удалось отправить заявку', {
+        description: 'Попробуйте ещё раз или позвоните нам по телефону.',
+      });
+    } finally {
+      setCallbackSending(false);
+    }
+  };
+
   return (
     <section id="contacts" className="contacts-stage pt-6 pb-20 bg-secondary/50">
       <div className="container">
         <div className="font-display font-medium text-base tracking-[0.22em] uppercase text-primary mb-4 text-center">
           Контакты
         </div>
+        <div className="max-w-xl mx-auto">
+          <form
+            onSubmit={onSubmit}
+            className="rounded-[1.75rem] bg-card p-8 border border-border shadow-[0_30px_70px_-40px_rgba(46,65,111,0.6)]"
+          >
+            <div className="space-y-5">
+              <div>
+                <Label htmlFor="name" className="mb-2 block font-display">Ваше имя</Label>
+                <Input
+                  id="name"
+                  value={form.name}
+                  onChange={(e) => set('name', e.target.value)}
+                  placeholder="Как к вам обращаться"
+                  className="h-12 rounded-xl bg-background"
+                />
+                {errors.name && <p className="mt-1.5 text-sm text-destructive">{errors.name}</p>}
+              </div>
 
-        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6 items-stretch">
+              <div>
+                <Label htmlFor="phone" className="mb-2 block font-display">Телефон</Label>
+                <Input
+                  id="phone"
+                  value={form.phone}
+                  onChange={(e) => {
+                    const digitsOnly = e.target.value.replace(/\D/g, '');
+                    if (!digitsOnly) {
+                      set('phone', '');
+                      return;
+                    }
+                    set('phone', formatPhone(e.target.value));
+                  }}
+                  placeholder="+7 (___) ___-__-__"
+                  inputMode="tel"
+                  className="h-12 rounded-xl bg-background"
+                />
+                {errors.phone && <p className="mt-1.5 text-sm text-destructive">{errors.phone}</p>}
+              </div>
+
+              <div>
+                <Label htmlFor="date" className="mb-2 block font-display">Дата свадьбы</Label>
+                <Input
+                  id="date"
+                  type="date"
+                  value={form.date}
+                  onChange={(e) => set('date', e.target.value)}
+                  className="h-12 rounded-xl bg-background"
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="message" className="mb-2 block font-display">Комментарий</Label>
+                <Textarea
+                  id="message"
+                  value={form.message}
+                  onChange={(e) => set('message', e.target.value)}
+                  placeholder="Расскажите о вашей свадьбе: формат, локация, пожелания"
+                  rows={4}
+                  className="rounded-xl bg-background resize-none"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={sending}
+                className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-4 font-display font-semibold text-primary-foreground shadow-[0_16px_34px_-14px_hsl(var(--primary))] hover:-translate-y-0.5 transition-transform disabled:opacity-60 disabled:hover:translate-y-0"
+              >
+                <Icon name={sending ? 'Loader2' : 'Send'} size={18} className={sending ? 'animate-spin' : ''} />
+                {sending ? 'Отправляем…' : 'Отправить заявку'}
+              </button>
+              <p className="text-center text-xs text-muted-foreground">
+                Нажимая кнопку, вы соглашаетесь на обработку персональных данных.
+              </p>
+            </div>
+          </form>
+        </div>
+
+        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6 items-stretch mt-10">
           <div className="rounded-[1.75rem] bg-card p-8 border border-border shadow-[0_30px_70px_-40px_rgba(46,65,111,0.6)] flex flex-col justify-between">
             <div>
               <h3 className="font-display text-xl font-semibold text-foreground mb-2">
@@ -124,7 +242,7 @@ const Contacts = () => {
           </div>
 
           <form
-            onSubmit={onSubmit}
+            onSubmit={onCallbackSubmit}
             className="rounded-[1.75rem] bg-card p-8 border border-border shadow-[0_30px_70px_-40px_rgba(46,65,111,0.6)] flex flex-col justify-between"
           >
             <div>
@@ -137,35 +255,35 @@ const Contacts = () => {
 
               <div className="space-y-5">
                 <div>
-                  <Label htmlFor="name" className="mb-2 block font-display">Ваше имя</Label>
+                  <Label htmlFor="callback-name" className="mb-2 block font-display">Ваше имя</Label>
                   <Input
-                    id="name"
-                    value={form.name}
-                    onChange={(e) => set('name', e.target.value)}
+                    id="callback-name"
+                    value={callbackForm.name}
+                    onChange={(e) => setCallback('name', e.target.value)}
                     placeholder="Как к вам обращаться"
                     className="h-12 rounded-xl bg-background"
                   />
-                  {errors.name && <p className="mt-1.5 text-sm text-destructive">{errors.name}</p>}
+                  {callbackErrors.name && <p className="mt-1.5 text-sm text-destructive">{callbackErrors.name}</p>}
                 </div>
 
                 <div>
-                  <Label htmlFor="phone" className="mb-2 block font-display">Телефон</Label>
+                  <Label htmlFor="callback-phone" className="mb-2 block font-display">Телефон</Label>
                   <Input
-                    id="phone"
-                    value={form.phone}
+                    id="callback-phone"
+                    value={callbackForm.phone}
                     onChange={(e) => {
                       const digitsOnly = e.target.value.replace(/\D/g, '');
                       if (!digitsOnly) {
-                        set('phone', '');
+                        setCallback('phone', '');
                         return;
                       }
-                      set('phone', formatPhone(e.target.value));
+                      setCallback('phone', formatPhone(e.target.value));
                     }}
                     placeholder="+7 (___) ___-__-__"
                     inputMode="tel"
                     className="h-12 rounded-xl bg-background"
                   />
-                  {errors.phone && <p className="mt-1.5 text-sm text-destructive">{errors.phone}</p>}
+                  {callbackErrors.phone && <p className="mt-1.5 text-sm text-destructive">{callbackErrors.phone}</p>}
                 </div>
               </div>
             </div>
@@ -173,11 +291,11 @@ const Contacts = () => {
             <div className="mt-6">
               <button
                 type="submit"
-                disabled={sending}
+                disabled={callbackSending}
                 className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-4 font-display font-semibold text-primary-foreground shadow-[0_16px_34px_-14px_hsl(var(--primary))] hover:-translate-y-0.5 transition-transform disabled:opacity-60 disabled:hover:translate-y-0"
               >
-                <Icon name={sending ? 'Loader2' : 'PhoneCall'} size={18} className={sending ? 'animate-spin' : ''} />
-                {sending ? 'Отправляем…' : 'Заказать звонок'}
+                <Icon name={callbackSending ? 'Loader2' : 'PhoneCall'} size={18} className={callbackSending ? 'animate-spin' : ''} />
+                {callbackSending ? 'Отправляем…' : 'Заказать звонок'}
               </button>
               <p className="text-center text-xs text-muted-foreground mt-3">
                 Нажимая кнопку, вы соглашаетесь на обработку персональных данных.
