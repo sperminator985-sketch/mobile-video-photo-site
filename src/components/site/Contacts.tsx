@@ -109,7 +109,7 @@ const Contacts = () => {
   };
 
   return (
-    <section id="contacts" className="pt-6 pb-20 bg-background">
+    <section id="contacts" className="contacts-stage pt-6 pb-20 bg-secondary/50">
       <div className="container">
         <div className="font-display font-medium text-base tracking-[0.22em] uppercase text-primary mb-4 text-center">
           Контакты
@@ -191,28 +191,28 @@ const Contacts = () => {
 
           <form
             onSubmit={onCallbackSubmit}
-            className="rounded-[1.75rem] bg-card p-8 border border-border shadow-[0_30px_70px_-40px_rgba(46,65,111,0.6)] flex flex-col justify-between"
+            className="rounded-[1.75rem] bg-card p-6 border border-border shadow-[0_30px_70px_-40px_rgba(46,65,111,0.6)] flex flex-col justify-between"
           >
             <div>
-              <h3 className="font-display text-xl font-semibold text-foreground mb-2 text-center">
+              <h3 className="font-display text-lg font-semibold text-foreground mb-4 text-center">
                 Заказать обратный звонок
               </h3>
 
-              <div className="space-y-5">
+              <div className="space-y-3">
                 <div>
-                  <Label htmlFor="callback-name" className="mb-2 block font-display">Ваше имя</Label>
+                  <Label htmlFor="callback-name" className="mb-1.5 block font-display text-sm">Ваше имя</Label>
                   <Input
                     id="callback-name"
                     value={callbackForm.name}
                     onChange={(e) => setCallback('name', e.target.value)}
                     placeholder="Как к вам обращаться"
-                    className="h-12 rounded-xl bg-background"
+                    className="h-10 rounded-xl bg-background"
                   />
-                  {callbackErrors.name && <p className="mt-1.5 text-sm text-destructive">{callbackErrors.name}</p>}
+                  {callbackErrors.name && <p className="mt-1 text-xs text-destructive">{callbackErrors.name}</p>}
                 </div>
 
                 <div>
-                  <Label htmlFor="callback-phone" className="mb-2 block font-display">Телефон</Label>
+                  <Label htmlFor="callback-phone" className="mb-1.5 block font-display text-sm">Телефон</Label>
                   <Input
                     id="callback-phone"
                     value={callbackForm.phone}
@@ -226,18 +226,18 @@ const Contacts = () => {
                     }}
                     placeholder="+7 (___) ___-__-__"
                     inputMode="tel"
-                    className="h-12 rounded-xl bg-background"
+                    className="h-10 rounded-xl bg-background"
                   />
-                  {callbackErrors.phone && <p className="mt-1.5 text-sm text-destructive">{callbackErrors.phone}</p>}
+                  {callbackErrors.phone && <p className="mt-1 text-xs text-destructive">{callbackErrors.phone}</p>}
                 </div>
               </div>
             </div>
 
-            <div className="mt-6">
+            <div className="mt-4">
               <button
                 type="submit"
                 disabled={callbackSending}
-                className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-4 font-display font-semibold text-primary-foreground shadow-[0_16px_34px_-14px_hsl(var(--primary))] hover:-translate-y-0.5 transition-transform disabled:opacity-60 disabled:hover:translate-y-0"
+                className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-display font-semibold text-primary-foreground shadow-[0_16px_34px_-14px_hsl(var(--primary))] hover:-translate-y-0.5 transition-transform disabled:opacity-60 disabled:hover:translate-y-0"
               >
                 <Icon name={callbackSending ? 'Loader2' : 'PhoneCall'} size={18} className={callbackSending ? 'animate-spin' : ''} />
                 {callbackSending ? 'Отправляем…' : 'Заказать звонок'}
