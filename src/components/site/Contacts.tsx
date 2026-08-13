@@ -117,7 +117,7 @@ const Contacts = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-center gap-6 md:gap-10">
           <form
             onSubmit={onSubmit}
-            className="w-full max-w-xl rounded-[1.75rem] bg-card p-8 border border-border shadow-[0_30px_70px_-40px_rgba(46,65,111,0.6)]"
+            className="w-full max-w-lg rounded-[1.75rem] bg-card p-8 border border-border shadow-[0_30px_70px_-40px_rgba(46,65,111,0.6)]"
           >
             <div className="space-y-5">
               <div>
