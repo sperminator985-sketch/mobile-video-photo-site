@@ -183,9 +183,6 @@ const Contacts = () => {
                 <Icon name={sending ? 'Loader2' : 'Send'} size={18} className={sending ? 'animate-spin' : ''} />
                 {sending ? 'Отправляем…' : 'Отправить заявку'}
               </button>
-              <p className="text-center text-xs text-muted-foreground">
-                Нажимая кнопку, вы соглашаетесь на обработку персональных данных.
-              </p>
             </div>
           </form>
 
@@ -239,9 +236,6 @@ const Contacts = () => {
                 <Icon name={callbackSending ? 'Loader2' : 'PhoneCall'} size={18} className={callbackSending ? 'animate-spin' : ''} />
                 {callbackSending ? 'Отправляем…' : 'Заказать звонок'}
               </button>
-              <p className="text-center text-xs text-muted-foreground mt-3">
-                Нажимая кнопку, вы соглашаетесь на обработку персональных данных.
-              </p>
             </div>
           </form>
         </div>
