@@ -140,7 +140,7 @@ const Contacts = () => {
               title="Карта — г. Томск, пр. Фрунзе, 20"
               src="https://yandex.ru/map-widget/v1/?ll=84.957953%2C56.476609&z=17&pt=84.957953%2C56.476609%2Cpm2rdm"
               width="100%"
-              height="360"
+              height="calc(360px + 1cm)"
               style={{ border: 0, display: 'block' }}
               loading="lazy"
             />
