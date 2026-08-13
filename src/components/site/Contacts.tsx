@@ -114,7 +114,7 @@ const Contacts = () => {
         <div className="font-display font-medium text-base tracking-[0.22em] uppercase text-primary mb-4 text-center">
           Контакты
         </div>
-        <div className="flex flex-col md:flex-row md:items-end justify-center gap-6 md:gap-10">
+        <div className="flex flex-col md:flex-row md:items-end justify-center gap-6 md:gap-10 md:ml-[7cm]">
           <form
             onSubmit={onSubmit}
             className="w-full max-w-lg rounded-[1.75rem] bg-card p-8 border border-border shadow-[0_30px_70px_-40px_rgba(46,65,111,0.6)]"
