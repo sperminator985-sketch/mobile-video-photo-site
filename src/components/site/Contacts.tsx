@@ -138,12 +138,12 @@ const Contacts = () => {
         <div className="max-w-4xl mx-auto mt-10">
           <div className="flex items-center gap-2 mb-3 justify-center">
             <Icon name="MapPin" size={18} className="text-primary" />
-            <p className="text-sm font-medium text-foreground">пр. Фрунзе, 20, офис-427</p>
+            <p className="text-sm font-medium text-foreground">г. Томск, пр. Фрунзе, 20, офис-427</p>
           </div>
           <div className="rounded-[1.75rem] overflow-hidden border border-border shadow-[0_30px_70px_-40px_rgba(46,65,111,0.6)]">
             <iframe
-              title="Карта — пр. Фрунзе, 20"
-              src="https://yandex.ru/map-widget/v1/?text=%D0%9D%D0%BE%D0%B2%D0%BE%D1%81%D0%B8%D0%B1%D0%B8%D1%80%D1%81%D0%BA%2C%20%D0%BF%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%20%D0%A4%D1%80%D1%83%D0%BD%D0%B7%D0%B5%2C%2020&z=16"
+              title="Карта — г. Томск, пр. Фрунзе, 20"
+              src="https://yandex.ru/map-widget/v1/?text=%D0%A2%D0%BE%D0%BC%D1%81%D0%BA%2C%20%D0%BF%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%20%D0%A4%D1%80%D1%83%D0%BD%D0%B7%D0%B5%2C%2020&z=16"
               width="100%"
               height="360"
               style={{ border: 0, display: 'block' }}
