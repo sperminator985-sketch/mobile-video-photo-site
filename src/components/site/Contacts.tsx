@@ -52,7 +52,7 @@ const Contacts = () => {
   };
 
   return (
-    <section id="contacts" className="contacts-stage pt-6 pb-20 bg-secondary/50">
+    <section id="contacts" className="pt-6 pb-20 bg-background">
       <div className="container">
         <div className="font-display font-medium text-base tracking-[0.22em] uppercase text-primary mb-4 text-center">
           Контакты
