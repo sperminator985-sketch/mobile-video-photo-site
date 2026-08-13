@@ -194,7 +194,7 @@ const Contacts = () => {
             className="w-full max-w-xs mx-auto md:mx-0 rounded-[1.75rem] bg-card p-6 border border-border shadow-[0_30px_70px_-40px_rgba(46,65,111,0.6)] flex flex-col justify-between"
           >
             <div>
-              <h3 className="font-display text-lg font-semibold text-foreground mb-4 text-center">
+              <h3 className="font-display text-base font-semibold text-foreground mb-4 text-center whitespace-nowrap">
                 Заказать обратный звонок
               </h3>
 
