@@ -7,11 +7,6 @@ import { Label } from '@/components/ui/label';
 
 const SEND_LEAD_URL = 'https://functions.poehali.dev/2c609e31-a278-4787-9035-9753fda9bb86';
 
-const PHONE = '+7 (909) 547-23-25';
-const PHONE_HREF = 'tel:+79095472325';
-const EMAIL = 'daumsam@mail.ru';
-const ADDRESS = 'пр.Фрунзе-20, офис-427';
-
 const formatPhone = (raw: string) => {
   let digits = raw.replace(/\D/g, '');
   if (digits.startsWith('8')) digits = '7' + digits.slice(1);
@@ -27,12 +22,6 @@ const formatPhone = (raw: string) => {
   if (rest.length > 8) result += `-${rest.slice(8, 10)}`;
   return result;
 };
-
-const infoItems = [
-  { icon: 'Phone', label: 'Телефон', value: PHONE, href: PHONE_HREF },
-  { icon: 'Mail', label: 'Email', value: EMAIL, href: `mailto:${EMAIL}` },
-  { icon: 'MapPin', label: 'Адрес', value: ADDRESS, href: undefined },
-] as const;
 
 const Contacts = () => {
   const [form, setForm] = useState({ name: '', phone: '', date: '', message: '' });
@@ -201,46 +190,7 @@ const Contacts = () => {
           </form>
         </div>
 
-        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6 items-stretch mt-10">
-          <div className="rounded-[1.75rem] bg-card p-8 border border-border shadow-[0_30px_70px_-40px_rgba(46,65,111,0.6)] flex flex-col justify-between">
-            <div>
-              <h3 className="font-display text-xl font-semibold text-foreground mb-2">
-                Свяжитесь с нами
-              </h3>
-              <p className="text-sm text-muted-foreground mb-6">
-                Ответим на вопросы, поможем выбрать пакет и рассчитаем стоимость съёмки.
-              </p>
-
-              <div className="space-y-4">
-                {infoItems.map((item) => (
-                  <div key={item.label} className="flex items-center gap-3">
-                    <span className="flex items-center justify-center h-10 w-10 rounded-full bg-primary/10 text-primary shrink-0">
-                      <Icon name={item.icon} size={18} />
-                    </span>
-                    <div className="min-w-0">
-                      <p className="text-xs text-muted-foreground">{item.label}</p>
-                      {item.href ? (
-                        <a href={item.href} className="text-sm font-medium text-foreground hover:text-primary transition-colors break-words">
-                          {item.value}
-                        </a>
-                      ) : (
-                        <p className="text-sm font-medium text-foreground break-words">{item.value}</p>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <a
-              href={PHONE_HREF}
-              className="mt-8 inline-flex items-center justify-center gap-2 rounded-full border border-primary/40 px-6 py-3.5 font-display font-medium text-primary hover:bg-primary/5 transition-colors"
-            >
-              <Icon name="PhoneCall" size={18} />
-              Позвонить сейчас
-            </a>
-          </div>
-
+        <div className="max-w-xl mx-auto mt-10">
           <form
             onSubmit={onCallbackSubmit}
             className="rounded-[1.75rem] bg-card p-8 border border-border shadow-[0_30px_70px_-40px_rgba(46,65,111,0.6)] flex flex-col justify-between"
