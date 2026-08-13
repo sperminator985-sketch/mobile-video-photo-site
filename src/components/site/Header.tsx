@@ -57,9 +57,9 @@ const Header = () => {
           </a>
           <a
             href="#contacts"
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-display font-semibold text-primary-foreground shadow-[0_14px_30px_-14px_hsl(var(--primary))] hover:-translate-y-0.5 transition-transform"
+            className="text-sm font-medium text-foreground/75 hover:text-foreground transition-colors"
           >
-            Оставить заявку
+            Контакты
           </a>
         </nav>
 
