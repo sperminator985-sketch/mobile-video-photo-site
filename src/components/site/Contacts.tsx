@@ -2,10 +2,14 @@ import { useState } from 'react';
 import { toast } from 'sonner';
 import Icon from '@/components/ui/icon';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 
 const SEND_LEAD_URL = 'https://functions.poehali.dev/2c609e31-a278-4787-9035-9753fda9bb86';
+
+const PHONE = '+7 (909) 547-23-25';
+const PHONE_HREF = 'tel:+79095472325';
+const EMAIL = 'daumsam@mail.ru';
+const ADDRESS = 'пр.Фрунзе-20, офис-427';
 
 const formatPhone = (raw: string) => {
   let digits = raw.replace(/\D/g, '');
@@ -23,8 +27,14 @@ const formatPhone = (raw: string) => {
   return result;
 };
 
+const infoItems = [
+  { icon: 'Phone', label: 'Телефон', value: PHONE, href: PHONE_HREF },
+  { icon: 'Mail', label: 'Email', value: EMAIL, href: `mailto:${EMAIL}` },
+  { icon: 'MapPin', label: 'Адрес', value: ADDRESS, href: undefined },
+] as const;
+
 const Contacts = () => {
-  const [form, setForm] = useState({ name: '', phone: '', date: '', message: '' });
+  const [form, setForm] = useState({ name: '', phone: '' });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [sending, setSending] = useState(false);
 
@@ -50,13 +60,13 @@ const Contacts = () => {
       const res = await fetch(SEND_LEAD_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, date: '', message: 'Заказ обратного звонка' }),
       });
       if (!res.ok) throw new Error('send failed');
-      toast.success('Заявка отправлена!', {
-        description: 'Мы свяжемся с вами в течение дня и обсудим детали.',
+      toast.success('Заявка принята!', {
+        description: 'Мы перезвоним вам в ближайшее время.',
       });
-      setForm({ name: '', phone: '', date: '', message: '' });
+      setForm({ name: '', phone: '' });
     } catch {
       toast.error('Не удалось отправить заявку', {
         description: 'Попробуйте ещё раз или позвоните нам по телефону.',
@@ -72,76 +82,104 @@ const Contacts = () => {
         <div className="font-display font-medium text-base tracking-[0.22em] uppercase text-primary mb-4 text-center">
           Контакты
         </div>
-        <div className="max-w-xl mx-auto">
+
+        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6 items-stretch">
+          <div className="rounded-[1.75rem] bg-card p-8 border border-border shadow-[0_30px_70px_-40px_rgba(46,65,111,0.6)] flex flex-col justify-between">
+            <div>
+              <h3 className="font-display text-xl font-semibold text-foreground mb-2">
+                Свяжитесь с нами
+              </h3>
+              <p className="text-sm text-muted-foreground mb-6">
+                Ответим на вопросы, поможем выбрать пакет и рассчитаем стоимость съёмки.
+              </p>
+
+              <div className="space-y-4">
+                {infoItems.map((item) => (
+                  <div key={item.label} className="flex items-center gap-3">
+                    <span className="flex items-center justify-center h-10 w-10 rounded-full bg-primary/10 text-primary shrink-0">
+                      <Icon name={item.icon} size={18} />
+                    </span>
+                    <div className="min-w-0">
+                      <p className="text-xs text-muted-foreground">{item.label}</p>
+                      {item.href ? (
+                        <a href={item.href} className="text-sm font-medium text-foreground hover:text-primary transition-colors break-words">
+                          {item.value}
+                        </a>
+                      ) : (
+                        <p className="text-sm font-medium text-foreground break-words">{item.value}</p>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <a
+              href={PHONE_HREF}
+              className="mt-8 inline-flex items-center justify-center gap-2 rounded-full border border-primary/40 px-6 py-3.5 font-display font-medium text-primary hover:bg-primary/5 transition-colors"
+            >
+              <Icon name="PhoneCall" size={18} />
+              Позвонить сейчас
+            </a>
+          </div>
+
           <form
             onSubmit={onSubmit}
-            className="rounded-[1.75rem] bg-card p-8 border border-border shadow-[0_30px_70px_-40px_rgba(46,65,111,0.6)]"
+            className="rounded-[1.75rem] bg-card p-8 border border-border shadow-[0_30px_70px_-40px_rgba(46,65,111,0.6)] flex flex-col justify-between"
           >
-            <div className="space-y-5">
-              <div>
-                <Label htmlFor="name" className="mb-2 block font-display">Ваше имя</Label>
-                <Input
-                  id="name"
-                  value={form.name}
-                  onChange={(e) => set('name', e.target.value)}
-                  placeholder="Как к вам обращаться"
-                  className="h-12 rounded-xl bg-background"
-                />
-                {errors.name && <p className="mt-1.5 text-sm text-destructive">{errors.name}</p>}
-              </div>
+            <div>
+              <h3 className="font-display text-xl font-semibold text-foreground mb-2">
+                Заказать обратный звонок
+              </h3>
+              <p className="text-sm text-muted-foreground mb-6">
+                Оставьте номер — перезвоним в течение 15 минут.
+              </p>
 
-              <div>
-                <Label htmlFor="phone" className="mb-2 block font-display">Телефон</Label>
-                <Input
-                  id="phone"
-                  value={form.phone}
-                  onChange={(e) => {
-                    const digitsOnly = e.target.value.replace(/\D/g, '');
-                    if (!digitsOnly) {
-                      set('phone', '');
-                      return;
-                    }
-                    set('phone', formatPhone(e.target.value));
-                  }}
-                  placeholder="+7 (___) ___-__-__"
-                  inputMode="tel"
-                  className="h-12 rounded-xl bg-background"
-                />
-                {errors.phone && <p className="mt-1.5 text-sm text-destructive">{errors.phone}</p>}
-              </div>
+              <div className="space-y-5">
+                <div>
+                  <Label htmlFor="name" className="mb-2 block font-display">Ваше имя</Label>
+                  <Input
+                    id="name"
+                    value={form.name}
+                    onChange={(e) => set('name', e.target.value)}
+                    placeholder="Как к вам обращаться"
+                    className="h-12 rounded-xl bg-background"
+                  />
+                  {errors.name && <p className="mt-1.5 text-sm text-destructive">{errors.name}</p>}
+                </div>
 
-              <div>
-                <Label htmlFor="date" className="mb-2 block font-display">Дата свадьбы</Label>
-                <Input
-                  id="date"
-                  type="date"
-                  value={form.date}
-                  onChange={(e) => set('date', e.target.value)}
-                  className="h-12 rounded-xl bg-background"
-                />
+                <div>
+                  <Label htmlFor="phone" className="mb-2 block font-display">Телефон</Label>
+                  <Input
+                    id="phone"
+                    value={form.phone}
+                    onChange={(e) => {
+                      const digitsOnly = e.target.value.replace(/\D/g, '');
+                      if (!digitsOnly) {
+                        set('phone', '');
+                        return;
+                      }
+                      set('phone', formatPhone(e.target.value));
+                    }}
+                    placeholder="+7 (___) ___-__-__"
+                    inputMode="tel"
+                    className="h-12 rounded-xl bg-background"
+                  />
+                  {errors.phone && <p className="mt-1.5 text-sm text-destructive">{errors.phone}</p>}
+                </div>
               </div>
+            </div>
 
-              <div>
-                <Label htmlFor="message" className="mb-2 block font-display">Комментарий</Label>
-                <Textarea
-                  id="message"
-                  value={form.message}
-                  onChange={(e) => set('message', e.target.value)}
-                  placeholder="Расскажите о вашей свадьбе: формат, локация, пожелания"
-                  rows={4}
-                  className="rounded-xl bg-background resize-none"
-                />
-              </div>
-
+            <div className="mt-6">
               <button
                 type="submit"
                 disabled={sending}
                 className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-4 font-display font-semibold text-primary-foreground shadow-[0_16px_34px_-14px_hsl(var(--primary))] hover:-translate-y-0.5 transition-transform disabled:opacity-60 disabled:hover:translate-y-0"
               >
-                <Icon name={sending ? 'Loader2' : 'Send'} size={18} className={sending ? 'animate-spin' : ''} />
-                {sending ? 'Отправляем…' : 'Отправить заявку'}
+                <Icon name={sending ? 'Loader2' : 'PhoneCall'} size={18} className={sending ? 'animate-spin' : ''} />
+                {sending ? 'Отправляем…' : 'Заказать звонок'}
               </button>
-              <p className="text-center text-xs text-muted-foreground">
+              <p className="text-center text-xs text-muted-foreground mt-3">
                 Нажимая кнопку, вы соглашаетесь на обработку персональных данных.
               </p>
             </div>
