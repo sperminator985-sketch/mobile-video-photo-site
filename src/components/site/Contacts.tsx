@@ -197,9 +197,6 @@ const Contacts = () => {
               <h3 className="font-display text-xl font-semibold text-foreground mb-2 text-center">
                 Заказать обратный звонок
               </h3>
-              <p className="text-sm text-muted-foreground mb-6 text-center">
-                Оставьте номер — перезвоним в течение 15 минут.
-              </p>
 
               <div className="space-y-5">
                 <div>
