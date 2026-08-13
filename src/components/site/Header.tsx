@@ -48,18 +48,18 @@ const Header = () => {
             </a>
           ))}
           <a
+            href="#contacts"
+            className="text-sm font-medium text-foreground/75 hover:text-foreground transition-colors"
+          >
+            Контакты
+          </a>
+          <a
             href="https://icebergvideo-old.ru"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm font-medium text-foreground/75 hover:text-foreground transition-colors"
           >
             Old_Version
-          </a>
-          <a
-            href="#contacts"
-            className="text-sm font-medium text-foreground/75 hover:text-foreground transition-colors"
-          >
-            Контакты
           </a>
         </nav>
 
