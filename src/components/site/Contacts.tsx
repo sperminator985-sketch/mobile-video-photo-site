@@ -196,10 +196,10 @@ const Contacts = () => {
             className="rounded-[1.75rem] bg-card p-8 border border-border shadow-[0_30px_70px_-40px_rgba(46,65,111,0.6)] flex flex-col justify-between"
           >
             <div>
-              <h3 className="font-display text-xl font-semibold text-foreground mb-2">
+              <h3 className="font-display text-xl font-semibold text-foreground mb-2 text-center">
                 Заказать обратный звонок
               </h3>
-              <p className="text-sm text-muted-foreground mb-6">
+              <p className="text-sm text-muted-foreground mb-6 text-center">
                 Оставьте номер — перезвоним в течение 15 минут.
               </p>
 
