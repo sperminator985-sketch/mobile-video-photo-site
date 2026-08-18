@@ -94,9 +94,6 @@ const Packages = () => {
           ))}
         </div>
 
-        <p className="text-center text-sm text-muted-foreground mt-8">
-          Нужен индивидуальный формат? Соберём пакет под вашу свадьбу — просто напишите нам.
-        </p>
       </div>
     </section>
   );
