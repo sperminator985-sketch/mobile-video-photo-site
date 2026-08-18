@@ -90,20 +90,20 @@ const Header = () => {
               ))}
               <SheetClose asChild>
                 <a
+                  href="#contacts"
+                  className="rounded-2xl px-4 py-3 text-lg font-display font-medium text-foreground hover:bg-secondary transition-colors"
+                >
+                  Контакты
+                </a>
+              </SheetClose>
+              <SheetClose asChild>
+                <a
                   href="https://icebergvideo-old.ru"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-2xl px-4 py-3 text-lg font-display font-medium text-foreground hover:bg-secondary transition-colors"
                 >
                   Old_Version
-                </a>
-              </SheetClose>
-              <SheetClose asChild>
-                <a
-                  href="#contacts"
-                  className="mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3.5 text-base font-display font-semibold text-primary-foreground"
-                >
-                  Оставить заявку
                 </a>
               </SheetClose>
               <CallbackDialog
