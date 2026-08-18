@@ -8,11 +8,11 @@ const Footer = () => {
         <p className="text-sm text-white">E-mail: daumsam@mail.ru</p>
         <p className="text-sm text-white">Адрес: пр.Фрунзе-20, офис-427</p>
 
-        <div className="absolute left-4 sm:left-6 top-0 bottom-0 flex items-center">
+        <div className="hidden md:flex absolute left-4 sm:left-6 top-0 bottom-0 items-center">
           <p className="text-sm text-white/70">© {new Date().getFullYear()} Siberia Art Ltd.</p>
         </div>
 
-        <div className="absolute right-4 sm:right-6 top-0 bottom-0 flex items-center gap-2 sm:gap-3">
+        <div className="hidden md:flex absolute right-4 sm:right-6 top-0 bottom-0 items-center gap-2 sm:gap-3">
           <img src={LOGO} alt="" className="h-8 sm:h-9 w-auto" />
           <img
             src="/assets/iceberg-video-logo-text.png"
