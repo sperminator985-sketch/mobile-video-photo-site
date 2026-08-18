@@ -10,7 +10,7 @@ const packages = [
   },
   {
     name: 'Свадьба',
-    price: '55 000 ₽',
+    price: '50 000 ₽',
     tagline: 'Полный день от сборов до вечера',
     featured: true,
     features: [
