@@ -22,7 +22,7 @@ const packages = [
   },
   {
     name: 'Премьера',
-    price: '100 000 ₽',
+    price: '90 000 ₽',
     tagline: 'Кино + фото без компромиссов',
     featured: false,
     features: [
