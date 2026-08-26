@@ -147,7 +147,7 @@
 
   @media (min-width: 768px) {
     .hero-stage {
-      background-image: url("/assets/hero-bg-mirrored.jpg");
+      background-image: url("https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/bucket/e1fa2c35-10d6-4c02-9ff9-04c965e31efc.jpg");
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
