@@ -3,7 +3,7 @@ import Icon from '@/components/ui/icon';
 const packages = [
   {
     name: 'Загс',
-    price: '15 000 ₽/час',
+    price: '15 000 ₽',
     tagline: 'Регистрация в загсе',
     featured: false,
     features: ['Съёмка до 3 часов (фото или видео)', '120 обработанных фото', 'Смонтированное видео', 'Готовность 10 дней'],
