@@ -28,8 +28,8 @@ const Header = () => {
         scrolled ? 'bg-card/85 backdrop-blur-md shadow-[0_8px_30px_-18px_rgba(46,65,111,0.5)]' : 'bg-transparent'
       }`}
     >
-      <div className="container flex items-center justify-between h-[72px] gap-2">
-        <a href="#top" className="flex items-center gap-2 sm:gap-3 min-w-0 shrink md:ml-8">
+      <div className="container flex items-center justify-between md:justify-end h-[72px] gap-2 md:gap-6">
+        <a href="#top" className="flex items-center gap-2 sm:gap-3 min-w-0 shrink">
           <img src={LOGO} alt="" className="h-8 sm:h-9 w-auto shrink-0" />
           <img
             src="/assets/iceberg-video-logo-text.png"
