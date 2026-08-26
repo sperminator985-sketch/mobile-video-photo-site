@@ -43,14 +43,14 @@ const Header = () => {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm font-medium text-foreground/75 hover:text-foreground transition-colors"
+              className="md:text-base font-medium text-foreground/75 hover:text-foreground transition-colors"
             >
               {l.label}
             </a>
           ))}
           <a
             href="#contacts"
-            className="text-sm font-medium text-foreground/75 hover:text-foreground transition-colors"
+            className="md:text-base font-medium text-foreground/75 hover:text-foreground transition-colors"
           >
             Контакты
           </a>
@@ -58,7 +58,7 @@ const Header = () => {
             href="https://icebergvideo-old.ru"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-medium text-foreground/75 hover:text-foreground transition-colors"
+            className="md:text-base font-medium text-foreground/75 hover:text-foreground transition-colors"
           >
             Old_Version
           </a>
