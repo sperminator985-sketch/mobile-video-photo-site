@@ -29,7 +29,7 @@ const Header = () => {
       }`}
     >
       <div className="container flex items-center justify-between h-[72px] gap-2">
-        <a href="#top" className="flex items-center gap-2 sm:gap-3 min-w-0 shrink md:ml-24 lg:ml-32">
+        <a href="#top" className="flex items-center gap-2 sm:gap-3 min-w-0 shrink md:ml-8">
           <img src={LOGO} alt="" className="h-8 sm:h-9 w-auto shrink-0" />
           <img
             src="/assets/iceberg-video-logo-text.png"
