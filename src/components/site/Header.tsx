@@ -28,7 +28,7 @@ const Header = () => {
         scrolled ? 'bg-card/85 backdrop-blur-md shadow-[0_8px_30px_-18px_rgba(46,65,111,0.5)]' : 'bg-transparent'
       }`}
     >
-      <div className="container flex items-center justify-between md:justify-end h-[72px] gap-2 md:gap-6">
+      <div className="container relative flex items-center justify-between h-[72px] gap-2">
         <a href="#top" className="flex items-center gap-2 sm:gap-3 min-w-0 shrink">
           <img src={LOGO} alt="" className="h-8 sm:h-9 w-auto shrink-0" />
           <img
@@ -38,7 +38,7 @@ const Header = () => {
           />
         </a>
 
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-8 md:absolute md:left-1/2 md:-translate-x-1/2 whitespace-nowrap">
           {links.map((l) => (
             <a
               key={l.href}
@@ -62,15 +62,16 @@ const Header = () => {
           >
             Old_Version
           </a>
-          <CallbackDialog
-            trigger={
-              <button className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-display font-semibold text-primary-foreground hover:-translate-y-0.5 transition-transform">
-                <Icon name="PhoneCall" size={16} />
-                Заказать звонок
-              </button>
-            }
-          />
         </nav>
+
+        <CallbackDialog
+          trigger={
+            <button className="hidden md:inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-display font-semibold text-primary-foreground hover:-translate-y-0.5 transition-transform shrink-0">
+              <Icon name="PhoneCall" size={16} />
+              Заказать звонок
+            </button>
+          }
+        />
 
         <Sheet>
           <SheetTrigger className="md:hidden inline-flex items-center justify-center h-11 w-11 rounded-full bg-card/80 text-foreground shrink-0">
