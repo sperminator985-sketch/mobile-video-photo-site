@@ -16,11 +16,18 @@ const variants = [
     svg: '/assets/door-sign-427-vertical.svg',
   },
   {
-    title: 'Визитка',
+    title: 'Визитка — лицевая',
     size: '9 × 5 см',
     preview: '/assets/business-card-preview.jpg',
     png: '/assets/business-card-print.png',
     svg: '/assets/business-card.svg',
+  },
+  {
+    title: 'Визитка — оборот',
+    size: '9 × 5 см',
+    preview: '/assets/business-card-back-preview.jpg',
+    png: '/assets/business-card-back-print.png',
+    svg: '/assets/business-card-back.svg',
   },
 ];
 
