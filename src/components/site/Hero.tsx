@@ -7,7 +7,7 @@ const Hero = () => {
         </div>
 
         <div
-          className="hero-medallion hero-ring-frame relative grid place-items-center rounded-full w-[268px] h-[268px] md:w-[338px] md:h-[338px]"
+          className="hero-medallion hero-ring-frame relative grid place-items-center rounded-full w-[250px] h-[250px] md:w-[320px] md:h-[320px]"
           style={{
             boxShadow: '0 26px 60px -24px color-mix(in srgb, var(--hero-x-water) 60%, transparent)',
           }}
