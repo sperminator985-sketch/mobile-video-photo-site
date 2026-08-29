@@ -62,6 +62,14 @@ const Header = () => {
           >
             Old_Version
           </a>
+          <a
+            href="https://chat-tom.ru"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="md:text-base font-medium text-foreground/75 hover:text-foreground transition-colors"
+          >
+            Чат-Общага
+          </a>
         </nav>
 
         <CallbackDialog
@@ -105,6 +113,16 @@ const Header = () => {
                   className="rounded-2xl px-4 py-3 text-lg font-display font-medium text-foreground hover:bg-secondary transition-colors"
                 >
                   Old_Version
+                </a>
+              </SheetClose>
+              <SheetClose asChild>
+                <a
+                  href="https://chat-tom.ru"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-2xl px-4 py-3 text-lg font-display font-medium text-foreground hover:bg-secondary transition-colors"
+                >
+                  Чат-Общага
                 </a>
               </SheetClose>
               <CallbackDialog
