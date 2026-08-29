@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 200" width="350mm" height="200mm">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FBDDD0"/>
+      <stop offset="55%" stop-color="#F8E4DA"/>
+      <stop offset="100%" stop-color="#F1AEA0"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="0%" r="75%">
+      <stop offset="0%" stop-color="#FDF1EB" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#FDF1EB" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFF6D9"/>
+      <stop offset="30%" stop-color="#D4A94F"/>
+      <stop offset="60%" stop-color="#F6E6AD"/>
+      <stop offset="100%" stop-color="#B9822C"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="350" height="200" rx="10" fill="url(#bg)"/>
+  <rect x="0" y="0" width="350" height="200" rx="10" fill="url(#glow)"/>
+  <rect x="4" y="4" width="342" height="192" rx="7" fill="none" stroke="url(#gold)" stroke-width="1.4"/>
+
+  <!-- iceberg icon -->
+  <g transform="translate(20,16) scale(0.115)">
+    <path fill="#5570B4" transform="translate(0.305 0.525)" d="M25.6,0c26.59,33.33,26.54,80.64-.15,113.92,33.28-26.69,80.6-26.74,113.93-.14h0s-35.7,25.17-35.7,25.17H0V36.31L25.6,0ZM139.39,113.7c-26.51-33.25-26.51-80.42,0-113.67v113.67ZM139.33,0C106.08,26.49,58.94,26.49,25.69,0h113.64Z"/>
+  </g>
+  <text x="38" y="29" font-family="Unbounded" font-weight="600" font-size="9" fill="#2B2A44">Айсберг-видео</text>
+  <text x="38" y="37" font-family="Golos Text" font-weight="500" font-size="5" letter-spacing="0.5" fill="#7C6E82">СВАДЕБНОЕ ФОТО И ВИДЕО</text>
+
+  <!-- decorative ring behind number -->
+  <circle cx="175" cy="118" r="52" fill="none" stroke="url(#gold)" stroke-width="1.6" opacity="0.9"/>
+  <circle cx="175" cy="118" r="47" fill="#FDF1EB" opacity="0.55"/>
+
+  <text x="175" y="106" text-anchor="middle" font-family="Golos Text" font-weight="700" font-size="8" letter-spacing="3" fill="#7C6E82">ОФИС</text>
+  <text x="175" y="152" text-anchor="middle" font-family="Unbounded" font-weight="800" font-size="52" fill="#C43D6E">427</text>
+
+  <!-- bottom divider -->
+  <line x1="60" y1="176" x2="290" y2="176" stroke="#C43D6E" stroke-width="0.6" opacity="0.35"/>
+
+  <!-- website -->
+  <g transform="translate(112,182)">
+    <circle cx="4" cy="4" r="4" fill="none" stroke="#2B2A44" stroke-width="0.9"/>
+    <line x1="0" y1="4" x2="8" y2="4" stroke="#2B2A44" stroke-width="0.7"/>
+    <ellipse cx="4" cy="4" rx="1.7" ry="4" fill="none" stroke="#2B2A44" stroke-width="0.7"/>
+  </g>
+  <text x="122" y="188" font-family="Golos Text" font-weight="700" font-size="8" fill="#2B2A44">icebergvideo.ru</text>
+</svg>
