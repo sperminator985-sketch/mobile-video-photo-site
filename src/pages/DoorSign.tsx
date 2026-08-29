@@ -15,6 +15,13 @@ const variants = [
     png: '/assets/door-sign-427-vertical-print.png',
     svg: '/assets/door-sign-427-vertical.svg',
   },
+  {
+    title: 'Визитка',
+    size: '9 × 5 см',
+    preview: '/assets/business-card-preview.jpg',
+    png: '/assets/business-card-print.png',
+    svg: '/assets/business-card.svg',
+  },
 ];
 
 const DoorSign = () => {
@@ -30,10 +37,10 @@ const DoorSign = () => {
         </a>
 
         <h1 className="mt-6 font-display font-extrabold text-3xl md:text-4xl text-primary">
-          Табличка на дверь
+          Печатные материалы
         </h1>
         <p className="mt-2 text-muted-foreground">
-          Два формата на выбор, оба готовы к печати в 300 dpi
+          Таблички на дверь и визитка — всё готово к печати в 300 dpi
         </p>
 
         <div className="mt-8 grid gap-10 md:grid-cols-2 md:items-start">
