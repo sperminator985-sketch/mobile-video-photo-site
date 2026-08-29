@@ -7,12 +7,12 @@ const Hero = () => {
         </div>
 
         <div
-          className="hero-medallion hero-ring-frame relative grid place-items-center rounded-full w-[250px] h-[250px] md:w-[320px] md:h-[320px]"
+          className="hero-medallion hero-ring-frame relative grid place-items-center rounded-full w-[230px] h-[230px] md:w-[320px] md:h-[320px]"
           style={{
             boxShadow: '0 26px 60px -24px color-mix(in srgb, var(--hero-x-water) 60%, transparent)',
           }}
         >
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full overflow-hidden w-[236px] h-[236px] md:w-[296px] md:h-[296px]">
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full overflow-hidden w-[198px] h-[198px] md:w-[296px] md:h-[296px]">
             <img
               src="https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/bucket/0ace0339-8601-429c-a627-5fae0c83b4c4.png"
               alt="Молодожёны в день свадьбы"
