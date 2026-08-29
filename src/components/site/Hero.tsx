@@ -12,7 +12,7 @@ const Hero = () => {
             boxShadow: '0 26px 60px -24px color-mix(in srgb, var(--hero-x-water) 60%, transparent)',
           }}
         >
-          <div className="relative rounded-full overflow-hidden w-[262px] h-[262px] md:w-[334px] md:h-[334px]">
+          <div className="relative rounded-full overflow-hidden w-[236px] h-[236px] md:w-[296px] md:h-[296px]">
             <img
               src="https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/bucket/0ace0339-8601-429c-a627-5fae0c83b4c4.png"
               alt="Молодожёны в день свадьбы"
