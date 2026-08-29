@@ -57,6 +57,12 @@
   <text x="310" y="135" text-anchor="middle" font-family="Golos Text" font-weight="600" font-size="2.7" letter-spacing="0.5" fill="#7C6E82">НАВЕДИ КАМЕРУ</text>
 
   <!-- tagline red -->
-  <text x="175" y="184" text-anchor="middle" font-family="Unbounded" font-weight="700" font-size="9.5" fill="#C43D6E">Ваша свадьба в главной роли</text>
+  <text x="175" y="176" text-anchor="middle" font-family="Unbounded" font-weight="700" font-size="8" fill="#C43D6E">Ваша свадьба в главной роли</text>
+
+  <!-- phone -->
+  <g transform="translate(126,183)">
+    <path fill="#2B2A44" d="M2.2,0.5C1.3,0.5,0.5,1.3,0.5,2.2c0,4.6,3.7,8.3,8.3,8.3c0.9,0,1.7-0.8,1.7-1.7V7.4c0-0.5-0.3-0.9-0.8-1L7.4,5.9C7,5.8,6.6,6,6.4,6.3L5.7,7.4C4.3,6.7,3.3,5.7,2.6,4.3l1.1-0.7C4,3.4,4.2,3,4.1,2.6L3.5,0.3C3.4,0.5,3.4,0.5,2.2,0.5z" transform="scale(1.15)"/>
+  </g>
+  <text x="141" y="192" font-family="Golos Text" font-weight="700" font-size="9" letter-spacing="0.3" fill="#2B2A44">8-909-547-23-25</text>
 
 </svg>
