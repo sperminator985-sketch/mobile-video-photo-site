@@ -1,5 +1,22 @@
 import Icon from '@/components/ui/icon';
 
+const variants = [
+  {
+    title: 'Горизонтальная',
+    size: '35 × 20 см',
+    preview: '/assets/door-sign-427-preview.jpg',
+    png: '/assets/door-sign-427-hero-print.png',
+    svg: '/assets/door-sign-427-hero.svg',
+  },
+  {
+    title: 'Вертикальная',
+    size: '20 × 35 см',
+    preview: '/assets/door-sign-427-vertical-preview.jpg',
+    png: '/assets/door-sign-427-vertical-print.png',
+    svg: '/assets/door-sign-427-vertical.svg',
+  },
+];
+
 const DoorSign = () => {
   return (
     <div className="min-h-screen bg-background py-10">
@@ -16,34 +33,45 @@ const DoorSign = () => {
           Табличка на дверь
         </h1>
         <p className="mt-2 text-muted-foreground">
-          Формат 35 × 20 см, готова к печати в 300 dpi
+          Два формата на выбор, оба готовы к печати в 300 dpi
         </p>
 
-        <div className="mt-8 rounded-3xl bg-card p-3 md:p-5 shadow-[0_20px_60px_-30px_rgba(46,65,111,0.55)]">
-          <img
-            src="/assets/door-sign-427-preview.jpg"
-            alt="Табличка на дверь — офис 427"
-            className="w-full rounded-2xl"
-          />
-        </div>
+        <div className="mt-8 grid gap-10 md:grid-cols-2 md:items-start">
+          {variants.map((v) => (
+            <div key={v.title}>
+              <div className="flex items-baseline gap-3">
+                <h2 className="font-display font-bold text-xl text-foreground">{v.title}</h2>
+                <span className="text-sm text-muted-foreground">{v.size}</span>
+              </div>
 
-        <div className="mt-6 flex flex-wrap gap-3">
-          <a
-            href="/assets/door-sign-427-hero-print.png"
-            download
-            className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 font-display font-semibold text-primary-foreground hover:-translate-y-0.5 transition-transform"
-          >
-            <Icon name="Download" size={18} />
-            Скачать для печати (PNG)
-          </a>
-          <a
-            href="/assets/door-sign-427-hero.svg"
-            download
-            className="inline-flex items-center gap-2 rounded-full border border-primary/40 px-6 py-3 font-display font-semibold text-primary hover:bg-secondary transition-colors"
-          >
-            <Icon name="FileCode" size={18} />
-            Скачать вектор (SVG)
-          </a>
+              <div className="mt-4 rounded-3xl bg-card p-3 shadow-[0_20px_60px_-30px_rgba(46,65,111,0.55)]">
+                <img
+                  src={v.preview}
+                  alt={`Табличка на дверь — офис 427, ${v.title.toLowerCase()}`}
+                  className="w-full rounded-2xl"
+                />
+              </div>
+
+              <div className="mt-4 flex flex-wrap gap-3">
+                <a
+                  href={v.png}
+                  download
+                  className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-display font-semibold text-primary-foreground hover:-translate-y-0.5 transition-transform"
+                >
+                  <Icon name="Download" size={16} />
+                  Для печати (PNG)
+                </a>
+                <a
+                  href={v.svg}
+                  download
+                  className="inline-flex items-center gap-2 rounded-full border border-primary/40 px-5 py-3 text-sm font-display font-semibold text-primary hover:bg-secondary transition-colors"
+                >
+                  <Icon name="FileCode" size={16} />
+                  Вектор (SVG)
+                </a>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
