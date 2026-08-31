@@ -119,9 +119,10 @@ const CallbackForm = ({ idPrefix = 'callback', onSuccess, className = '' }: Call
           {sending ? 'Отправляем…' : 'Заказать звонок'}
         </button>
         <p className="mt-2 text-center text-[11px] leading-snug text-muted-foreground">
-          Нажимая кнопку, вы соглашаетесь с{' '}
+          Нажимая кнопку, вы соглашаетесь
+          <br />
           <Link to="/privacy" className="underline underline-offset-2 hover:text-foreground">
-            политикой конфиденциальности
+            с политикой конфиденциальности
           </Link>
         </p>
       </div>
