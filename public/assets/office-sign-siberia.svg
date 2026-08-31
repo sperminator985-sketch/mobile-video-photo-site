@@ -124,11 +124,9 @@
     <text x="303" y="139" text-anchor="middle" font-family="Golos Text" font-weight="700" font-size="4.6" letter-spacing="1.1" fill="#EAF0FF">АУДИОЗАПИСЬ</text>
   </g>
 
-  <!-- bottom: office plate -->
-  <rect x="262" y="152" width="80" height="36" rx="7" fill="url(#plate)"/>
-  <rect x="262" y="152" width="80" height="36" rx="7" fill="none" stroke="url(#gold)" stroke-width="0.7"/>
-  <text x="302" y="164" text-anchor="middle" font-family="Golos Text" font-weight="700" font-size="4.6" letter-spacing="3.4" fill="#7C6E82">ОФИС</text>
-  <text x="302" y="183" text-anchor="middle" font-family="Unbounded" font-weight="800" font-size="18" fill="#C43D6E">427</text>
+  <!-- bottom: office number -->
+  <text x="342" y="164" text-anchor="end" font-family="Golos Text" font-weight="700" font-size="4.8" letter-spacing="3.4" fill="#C8D4F0">ОФИС</text>
+  <text x="342" y="184" text-anchor="end" font-family="Unbounded" font-weight="800" font-size="19" fill="url(#gold)">427</text>
 
   <!-- bottom: contacts -->
   <text x="18" y="160" font-family="Unbounded" font-weight="700" font-size="7.2" fill="#F6E6AD">Идея. Съёмка. Эфир.</text>
