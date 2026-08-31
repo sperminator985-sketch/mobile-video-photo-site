@@ -9,7 +9,11 @@ const Footer = () => {
         <p className="text-sm text-white">Адрес: пр.Фрунзе-20, офис-427</p>
 
         <div className="hidden md:flex absolute left-4 sm:left-6 top-0 bottom-0 items-center">
-          <p className="text-sm text-white/70">© {new Date().getFullYear()} Siberia Art Ltd.</p>
+          <p className="text-sm text-white/70 leading-snug">
+            © {new Date().getFullYear()} Siberia Art Ltd.
+            <br />
+            Все права защищены.
+          </p>
         </div>
 
         <div className="hidden md:flex absolute right-4 sm:right-6 top-0 bottom-0 items-center gap-2 sm:gap-3">
