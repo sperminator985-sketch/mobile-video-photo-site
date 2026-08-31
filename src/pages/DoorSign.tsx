@@ -2,6 +2,13 @@ import Icon from '@/components/ui/icon';
 
 const variants = [
   {
+    title: 'Офисная — Siberia Art Ltd.',
+    size: '35 × 20 см',
+    preview: '/assets/office-sign-siberia-preview.jpg',
+    png: '/assets/office-sign-siberia-print.png',
+    svg: '/assets/office-sign-siberia.svg',
+  },
+  {
     title: 'Горизонтальная',
     size: '35 × 20 см',
     preview: '/assets/door-sign-427-preview.jpg',
