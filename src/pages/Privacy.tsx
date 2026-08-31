@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
 import Footer from '@/components/site/Footer';
@@ -10,6 +11,10 @@ const Section = ({ title, children }: { title: string; children: React.ReactNode
 );
 
 const Privacy = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <div className="container max-w-3xl py-10 sm:py-14">
