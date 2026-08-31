@@ -2,7 +2,7 @@ const Hero = () => {
   return (
     <section id="top" className="hero-stage relative min-h-screen flex flex-col overflow-hidden">
       <div className="container flex-1 flex flex-col items-center justify-center text-center gap-5 pt-28 pb-16">
-        <div className="font-display font-medium text-[0.72rem] md:text-base tracking-[0.26em] uppercase text-primary animate-fade-in">
+        <div className="font-display font-medium text-[0.72rem] md:text-[1.325rem] tracking-[0.26em] uppercase text-primary animate-fade-in">
           Свадебные фото и видеосъёмки
         </div>
 
