@@ -18,7 +18,7 @@ const Footer = () => {
           </p>
         </div>
 
-        <div className="hidden md:flex absolute left-[22%] lg:left-[25%] top-0 bottom-0 items-center">
+        <div className="hidden md:flex absolute left-[22%] lg:left-[25%] top-0 bottom-0 flex-col items-center justify-center gap-1">
           <Link
             to="/privacy"
             className="text-sm text-white/70 underline underline-offset-4 hover:text-white transition-colors text-center leading-snug"
@@ -26,6 +26,14 @@ const Footer = () => {
             Политика
             <br />
             конфиденциальности
+          </Link>
+          <Link
+            to="/terms"
+            className="text-sm text-white/70 underline underline-offset-4 hover:text-white transition-colors text-center leading-snug"
+          >
+            Пользовательское
+            <br />
+            соглашение
           </Link>
         </div>
 
