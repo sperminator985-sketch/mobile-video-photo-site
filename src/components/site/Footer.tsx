@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const LOGO = 'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/bucket/14346e37-5113-4231-af71-69c04fab1812.png';
 
 const Footer = () => {
@@ -7,6 +9,13 @@ const Footer = () => {
         <p className="text-sm text-white">Тел: +7 (909) 547-23-25</p>
         <p className="text-sm text-white">E-mail: daumsam@mail.ru</p>
         <p className="text-sm text-white">Адрес: пр.Фрунзе-20, офис-427</p>
+
+        <Link
+          to="/privacy"
+          className="text-xs text-white/70 underline underline-offset-4 hover:text-white transition-colors"
+        >
+          Политика конфиденциальности
+        </Link>
 
         <div className="hidden md:flex absolute left-4 sm:left-6 top-0 bottom-0 items-center">
           <p className="text-sm text-white/70 leading-snug">

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { toast } from 'sonner';
 import Icon from '@/components/ui/icon';
 import { Input } from '@/components/ui/input';
@@ -126,6 +127,12 @@ const Contacts = () => {
                 <Icon name={sending ? 'Loader2' : 'Send'} size={18} className={sending ? 'animate-spin' : ''} />
                 {sending ? 'Отправляем…' : 'Отправить заявку'}
               </button>
+              <p className="text-center text-[11px] leading-snug text-muted-foreground">
+                Нажимая кнопку, вы соглашаетесь с{' '}
+                <Link to="/privacy" className="underline underline-offset-2 hover:text-foreground">
+                  политикой конфиденциальности
+                </Link>
+              </p>
             </div>
           </form>
         </div>
