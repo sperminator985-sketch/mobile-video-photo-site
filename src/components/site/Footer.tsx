@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const LOGO = 'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/bucket/14346e37-5113-4231-af71-69c04fab1812.png';
 
 const Footer = () => {
@@ -14,6 +16,17 @@ const Footer = () => {
             <br />
             Все права защищены.
           </p>
+        </div>
+
+        <div className="hidden md:flex absolute left-[22%] lg:left-[25%] top-0 bottom-0 items-center">
+          <Link
+            to="/privacy"
+            className="text-sm text-white/70 underline underline-offset-4 hover:text-white transition-colors text-center leading-snug"
+          >
+            Политика
+            <br />
+            конфиденциальности
+          </Link>
         </div>
 
         <div className="hidden md:flex absolute right-4 sm:right-6 top-0 bottom-0 items-center gap-2 sm:gap-3">
