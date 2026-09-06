@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom';
 
-const LOGO = 'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/bucket/14346e37-5113-4231-af71-69c04fab1812.png';
-
 const Footer = () => {
   return (
     <footer className="bg-accent text-accent-foreground">
@@ -40,13 +38,19 @@ const Footer = () => {
           </Link>
         </div>
 
-        <div className="hidden md:flex absolute right-4 sm:right-6 top-0 bottom-0 items-center gap-2 sm:gap-3">
-          <img src={LOGO} alt="" className="h-8 sm:h-9 w-auto" />
-          <img
-            src="/assets/iceberg-video-logo-text.png"
-            alt="Айсберг-видео"
-            className="h-7 sm:h-8 w-auto brightness-0 invert"
-          />
+        <div className="hidden md:flex absolute right-4 sm:right-6 top-0 bottom-0 items-center">
+          <a
+            href="https://metrika.yandex.ru/stat/?id=112322016&amp;from=informer"
+            target="_blank"
+            rel="nofollow noreferrer"
+            className="block"
+          >
+            <img
+              src="https://informer.yandex.ru/informer/112322016/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
+              alt="Яндекс.Метрика"
+              className="h-[31px] w-[88px]"
+            />
+          </a>
         </div>
       </div>
     </footer>
