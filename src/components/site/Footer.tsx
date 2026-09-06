@@ -39,18 +39,11 @@ const Footer = () => {
         </div>
 
         <div className="hidden md:flex absolute right-4 sm:right-6 top-0 bottom-0 items-center">
-          <a
-            href="https://metrika.yandex.ru/stat/?id=112322016&amp;from=informer"
-            target="_blank"
-            rel="nofollow noreferrer"
-            className="block"
-          >
-            <img
-              src="https://informer.yandex.ru/informer/112322016/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
-              alt="Яндекс.Метрика"
-              className="h-[31px] w-[88px]"
-            />
-          </a>
+          <img
+            src="https://informer.yandex.ru/informer/112322016/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
+            alt="Яндекс.Метрика"
+            className="h-[31px] w-[88px]"
+          />
         </div>
       </div>
     </footer>
