@@ -16,7 +16,7 @@ const Hero = () => {
             <img
               src="https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/bucket/0ace0339-8601-429c-a627-5fae0c83b4c4.png"
               alt="Молодожёны в день свадьбы"
-              className="h-full w-full object-cover brightness-125 contrast-[1.08]"
+              className="h-full w-full object-cover brightness-[1.4] contrast-[1.05]"
             />
           </div>
           <div className="hero-aperture absolute inset-0 pointer-events-none rounded-full" />
