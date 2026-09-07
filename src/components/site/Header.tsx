@@ -29,14 +29,14 @@ const Header = () => {
       }`}
     >
       <div className="container relative flex items-center justify-between h-[72px] gap-2">
-        <a href="#top" className="flex items-center gap-2 sm:gap-3 min-w-0 shrink">
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0 shrink">
           <img src={LOGO} alt="" className="h-8 sm:h-9 w-auto shrink-0" />
           <img
             src="/assets/iceberg-video-logo-text.png"
             alt="Айсберг-видео"
             className="h-7 sm:h-8 w-auto shrink-0"
           />
-        </a>
+        </div>
 
         <nav className="hidden md:flex items-center gap-8 md:absolute md:left-1/2 md:-translate-x-1/2 whitespace-nowrap">
           {links.map((l) => (
