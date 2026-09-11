@@ -3,7 +3,7 @@ import Icon from '@/components/ui/icon';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import CallbackDialog from './CallbackDialog';
 
-const LOGO = 'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/bucket/14346e37-5113-4231-af71-69c04fab1812.png';
+const LOGO = 'https://icebergvideo.ru/photos/14346e37-5113-4231-af71-69c04fab1812.png';
 
 const links = [
   { href: '#top', label: 'Главная' },
