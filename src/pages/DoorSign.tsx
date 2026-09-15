@@ -1,4 +1,5 @@
 import Icon from '@/components/ui/icon';
+import SmartImage from '@/components/ui/smart-image';
 
 const variants = [
   {
@@ -66,7 +67,7 @@ const DoorSign = () => {
               </div>
 
               <div className="mt-4 rounded-3xl bg-card p-3 shadow-[0_20px_60px_-30px_rgba(46,65,111,0.55)]">
-                <img
+                <SmartImage
                   src={v.preview}
                   alt={`Табличка на дверь — офис 427, ${v.title.toLowerCase()}`}
                   className="w-full rounded-2xl"

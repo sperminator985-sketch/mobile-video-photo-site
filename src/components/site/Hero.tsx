@@ -1,3 +1,5 @@
+import SmartImage from '@/components/ui/smart-image';
+
 const Hero = () => {
   return (
     <section id="top" className="hero-stage relative min-h-screen flex flex-col overflow-hidden">
@@ -13,9 +15,10 @@ const Hero = () => {
           }}
         >
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full overflow-hidden w-[198px] h-[198px] md:w-[296px] md:h-[296px]">
-            <img
+            <SmartImage
               src="https://icebergvideo.ru/photos/0ace0339-8601-429c-a627-5fae0c83b4c4.png"
               alt="Молодожёны в день свадьбы"
+              priority
               className="h-full w-full object-cover brightness-125 contrast-[1.08]"
             />
           </div>

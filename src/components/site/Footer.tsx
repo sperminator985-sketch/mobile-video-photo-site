@@ -42,6 +42,7 @@ const Footer = () => {
           <img
             src="https://informer.yandex.ru/informer/112322016/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
             alt="Яндекс.Метрика"
+            loading="lazy"
             className="h-[31px] w-[88px]"
           />
         </div>

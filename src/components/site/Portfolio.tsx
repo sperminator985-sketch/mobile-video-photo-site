@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Icon from '@/components/ui/icon';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
+import SmartImage from '@/components/ui/smart-image';
 
 const MORNING_PHOTOS = [
   'https://icebergvideo.ru/photos/78605d5a-017a-493c-8e89-a29b0156e515.jpg',
@@ -116,7 +117,7 @@ const Portfolio = () => {
               className="group relative text-left overflow-hidden rounded-[1.5rem] border border-border bg-card animate-scale-in"
             >
               <div className="aspect-[4/5] overflow-hidden">
-                <img
+                <SmartImage
                   src={item.img}
                   alt={item.title}
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
@@ -148,9 +149,10 @@ const Portfolio = () => {
                     className="w-full aspect-video bg-black"
                   />
                 ) : (
-                  <img
+                  <SmartImage
                     src={active.gallery ? active.gallery[slide] : active.img}
                     alt={active.title}
+                    priority
                     className="w-full aspect-video object-contain bg-black"
                   />
                 )}
@@ -189,7 +191,7 @@ const Portfolio = () => {
                           i === slide ? 'border-primary' : 'border-transparent'
                         }`}
                       >
-                        <img src={src} alt="" className="h-full w-full object-cover" />
+                        <SmartImage src={src} alt="" className="h-full w-full object-cover" />
                       </button>
                     ))}
                   </div>

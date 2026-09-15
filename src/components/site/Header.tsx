@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Icon from '@/components/ui/icon';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import CallbackDialog from './CallbackDialog';
+import SmartImage from '@/components/ui/smart-image';
 
 const LOGO = 'https://icebergvideo.ru/photos/14346e37-5113-4231-af71-69c04fab1812.png';
 
@@ -30,10 +31,11 @@ const Header = () => {
     >
       <div className="container relative flex items-center justify-between h-[72px] gap-2">
         <a href="#top" className="flex items-center gap-2 sm:gap-3 min-w-0 shrink md:pointer-events-none">
-          <img src={LOGO} alt="" className="h-8 sm:h-9 w-auto shrink-0" />
-          <img
+          <SmartImage src={LOGO} alt="" priority className="h-8 sm:h-9 w-auto shrink-0" />
+          <SmartImage
             src="/assets/iceberg-video-logo-text.png"
             alt="Айсберг-видео"
+            priority
             className="h-7 sm:h-8 w-auto shrink-0"
           />
         </a>
