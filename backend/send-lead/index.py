@@ -39,6 +39,8 @@ def handler(event: dict, context) -> dict:
     phone = (data.get('phone') or '').strip()
     date = (data.get('date') or '').strip()
     message = (data.get('message') or '').strip()
+    package = (data.get('package') or '').strip()
+    source = (data.get('source') or '').strip()
 
     if len(name) < 2 or len(''.join(ch for ch in phone if ch.isdigit())) < 10:
         return {
@@ -57,12 +59,21 @@ def handler(event: dict, context) -> dict:
         f'Имя: {name}',
         f'Телефон: {phone}',
         f'Дата свадьбы: {date or "не указана"}',
-        f'Комментарий: {message or "нет"}',
     ]
+    if package:
+        lines.append(f'Пакет: {package}')
+    lines.append(f'Комментарий: {message or "нет"}')
+    if source:
+        lines.append('')
+        lines.append(f'Источник: {source}')
     body_text = '\n'.join(lines)
 
+    subject = 'Новая заявка с сайта'
+    if source:
+        subject = f'Новая заявка с сайта ({source})'
+
     msg = MIMEText(body_text, 'plain', 'utf-8')
-    msg['Subject'] = Header('Новая заявка с сайта', 'utf-8')
+    msg['Subject'] = Header(subject, 'utf-8')
     msg['From'] = smtp_user
     msg['To'] = recipient
 
