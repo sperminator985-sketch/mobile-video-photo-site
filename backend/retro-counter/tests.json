@@ -1,0 +1,24 @@
+{
+  "tests": [
+    {
+      "name": "Счётчик отдаёт число в JSON",
+      "method": "GET",
+      "path": "/?format=json",
+      "expectedStatus": 200,
+      "expectedBody": {"name": "string", "hits": "number"},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Счётчик отдаёт картинку-табло",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200
+    },
+    {
+      "name": "CORS preflight",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200
+    }
+  ]
+}
