@@ -19,14 +19,66 @@ function val($key) {
     return isset($_POST[$key]) ? trim($_POST[$key]) : '';
 }
 
-// ‘орма стара€, данные приход€т в windows-1251 Ч переводим в UTF-8
+// —ами определ€ем, в какой кодировке пришли данные.
+// —тарые браузеры шлют windows-1251, современные Ч UTF-8.
+function is_utf8($s) {
+    return (bool) preg_match('//u', $s);
+}
+
+// Ѕраузер прислал контрольное слово Ч по нему точно видно кодировку
+function detect_source_charset() {
+    $probe = isset($_POST['charset_probe']) ? $_POST['charset_probe'] : '';
+    if ($probe === '') {
+        return 'auto';
+    }
+    // "рус" в UTF-8 занимает 6 байт, в windows-1251 Ч 3
+    if (strlen($probe) >= 5) {
+        return 'utf-8';
+    }
+    return 'windows-1251';
+}
+
+$SRC_CHARSET = detect_source_charset();
+
 function to_utf8($s) {
+    global $SRC_CHARSET;
+
     if ($s === '') {
         return '';
     }
+
+    if ($SRC_CHARSET === 'utf-8') {
+        return $s;
+    }
+
+    if ($SRC_CHARSET === 'windows-1251') {
+        if (function_exists('iconv')) {
+            $r = @iconv('windows-1251', 'UTF-8//IGNORE', $s);
+            if ($r !== false && $r !== '') {
+                return $r;
+            }
+        }
+        if (function_exists('mb_convert_encoding')) {
+            return mb_convert_encoding($s, 'UTF-8', 'windows-1251');
+        }
+        return $s;
+    }
+
+    // ”же UTF-8 и есть русские буквы Ч переводить не нужно
+    if (is_utf8($s)) {
+        if (preg_match('/[\x{0400}-\x{04FF}]/u', $s)) {
+            return $s;
+        }
+        // “олько латиница и цифры Ч тоже оставл€ем как есть
+        if (!preg_match('/[\x80-\xFF]/', $s)) {
+            return $s;
+        }
+    }
+
+    // »наче считаем, что это windows-1251
     if (function_exists('iconv')) {
         $r = @iconv('windows-1251', 'UTF-8//IGNORE', $s);
-        if ($r !== false) {
+        if ($r !== false && $r !== '') {
             return $r;
         }
     }
@@ -34,6 +86,13 @@ function to_utf8($s) {
         return mb_convert_encoding($s, 'UTF-8', 'windows-1251');
     }
     return $s;
+}
+
+function len_utf8($s) {
+    if (function_exists('mb_strlen')) {
+        return mb_strlen($s, 'UTF-8');
+    }
+    return strlen(preg_replace('/[\x80-\xBF]/', '', $s));
 }
 
 $name    = to_utf8(val('Imya'));
@@ -52,7 +111,7 @@ $error = '';
 
 if ($trap !== '') {
     $error = '«а€вка не прин€та.';
-} elseif (mb_strlen($name, 'UTF-8') < 2) {
+} elseif (len_utf8($name) < 2) {
     $error = 'ѕожалуйста, укажите ваше им€.';
 } elseif (strlen($digits) < 10) {
     $error = 'ѕожалуйста, укажите телефон полностью, с кодом города или оператора.';
