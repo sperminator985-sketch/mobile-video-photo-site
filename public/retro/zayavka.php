@@ -1,81 +1,31 @@
 <?php
 /*
- * Приём заявки с ретро-версии сайта.
+ * РџСЂРёС‘Рј Р·Р°СЏРІРєРё СЃ СЂРµС‚СЂРѕ-РІРµСЂСЃРёРё СЃР°Р№С‚Р°.
  *
- * Форма отправляет данные сюда, этот файл передаёт их в облако,
- * оттуда письмо уходит на почту студии.
- *
- * Работает на том же домене по обычному HTTP,
- * поэтому подходит для очень старых браузеров.
+ * РЎР°Рј С„Р°Р№Р» РЅР°РїРёСЃР°РЅ РІ UTF-8. Р”Р°РЅРЅС‹Рµ РёР· С„РѕСЂРјС‹ РїСЂРёС…РѕРґСЏС‚ РІ windows-1251
+ * (СЃС‚Р°СЂС‹Рµ Р±СЂР°СѓР·РµСЂС‹) РёР»Рё РІ UTF-8 (СЃРѕРІСЂРµРјРµРЅРЅС‹Рµ) вЂ” РѕРїСЂРµРґРµР»СЏРµРј Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё.
+ * Р“РѕС‚РѕРІР°СЏ СЃС‚СЂР°РЅРёС†Р° РѕС‚РґР°С‘С‚СЃСЏ РїРѕСЃРµС‚РёС‚РµР»СЋ РІ windows-1251.
  */
 
 $target = 'https://functions.poehali.dev/2c609e31-a278-4787-9035-9753fda9bb86';
 $mail   = 'daumsam@mail.ru';
 $phone  = '+7 (909) 547-23-25';
 
-header('Content-Type: text/html; charset=windows-1251');
-
 function val($key) {
     return isset($_POST[$key]) ? trim($_POST[$key]) : '';
 }
 
-// Сами определяем, в какой кодировке пришли данные.
-// Старые браузеры шлют windows-1251, современные — UTF-8.
-function is_utf8($s) {
-    return (bool) preg_match('//u', $s);
-}
-
-// Браузер прислал контрольное слово — по нему точно видно кодировку
-function detect_source_charset() {
-    $probe = isset($_POST['charset_probe']) ? $_POST['charset_probe'] : '';
-    if ($probe === '') {
-        return 'auto';
-    }
-    // "рус" в UTF-8 занимает 6 байт, в windows-1251 — 3
-    if (strlen($probe) >= 5) {
-        return 'utf-8';
-    }
-    return 'windows-1251';
-}
-
-$SRC_CHARSET = detect_source_charset();
+/* РљРѕРЅС‚СЂРѕР»СЊРЅРѕРµ СЃР»РѕРІРѕ РёР· С„РѕСЂРјС‹ РїРѕРєР°Р·С‹РІР°РµС‚ РєРѕРґРёСЂРѕРІРєСѓ:
+   "СЂСѓСЃ" РІ windows-1251 Р·Р°РЅРёРјР°РµС‚ 3 Р±Р°Р№С‚Р°, РІ UTF-8 вЂ” 6 */
+$probe = val('charset_probe');
+$src_is_utf8 = (strlen($probe) >= 5);
 
 function to_utf8($s) {
-    global $SRC_CHARSET;
+    global $src_is_utf8;
 
-    if ($s === '') {
-        return '';
-    }
-
-    if ($SRC_CHARSET === 'utf-8') {
+    if ($s === '' || $src_is_utf8) {
         return $s;
     }
-
-    if ($SRC_CHARSET === 'windows-1251') {
-        if (function_exists('iconv')) {
-            $r = @iconv('windows-1251', 'UTF-8//IGNORE', $s);
-            if ($r !== false && $r !== '') {
-                return $r;
-            }
-        }
-        if (function_exists('mb_convert_encoding')) {
-            return mb_convert_encoding($s, 'UTF-8', 'windows-1251');
-        }
-        return $s;
-    }
-
-    // Уже UTF-8 и есть русские буквы — переводить не нужно
-    if (is_utf8($s)) {
-        if (preg_match('/[\x{0400}-\x{04FF}]/u', $s)) {
-            return $s;
-        }
-        // Только латиница и цифры — тоже оставляем как есть
-        if (!preg_match('/[\x80-\xFF]/', $s)) {
-            return $s;
-        }
-    }
-
-    // Иначе считаем, что это windows-1251
     if (function_exists('iconv')) {
         $r = @iconv('windows-1251', 'UTF-8//IGNORE', $s);
         if ($r !== false && $r !== '') {
@@ -95,44 +45,57 @@ function len_utf8($s) {
     return strlen(preg_replace('/[\x80-\xBF]/', '', $s));
 }
 
-$name    = to_utf8(val('Imya'));
-$tel     = to_utf8(val('Telefon'));
-$data    = to_utf8(val('Data'));
-$paket   = to_utf8(val('Paket'));
-$soobsh  = to_utf8(val('Soobshenie'));
+$name   = to_utf8(val('Imya'));
+$tel    = to_utf8(val('Telefon'));
+$data   = to_utf8(val('Data'));
+$paket  = to_utf8(val('Paket'));
+$soobsh = to_utf8(val('Soobshenie'));
 
-// Простая защита от роботов: скрытое поле должно быть пустым
-$trap = val('Adres2');
-
+$trap   = val('Adres2');
 $digits = preg_replace('/[^0-9]/', '', $tel);
 
 $ok    = false;
 $error = '';
 
 if ($trap !== '') {
-    $error = 'Заявка не принята.';
+    $error = 'Р—Р°СЏРІРєР° РЅРµ РїСЂРёРЅСЏС‚Р°.';
 } elseif (len_utf8($name) < 2) {
-    $error = 'Пожалуйста, укажите ваше имя.';
+    $error = 'РџРѕР¶Р°Р»СѓР№СЃС‚Р°, СѓРєР°Р¶РёС‚Рµ РІР°С€Рµ РёРјСЏ.';
 } elseif (strlen($digits) < 10) {
-    $error = 'Пожалуйста, укажите телефон полностью, с кодом города или оператора.';
+    $error = 'РџРѕР¶Р°Р»СѓР№СЃС‚Р°, СѓРєР°Р¶РёС‚Рµ С‚РµР»РµС„РѕРЅ РїРѕР»РЅРѕСЃС‚СЊСЋ, СЃ РєРѕРґРѕРј РіРѕСЂРѕРґР° РёР»Рё РѕРїРµСЂР°С‚РѕСЂР°.';
 } else {
-    $payload = json_encode(array(
+    $fields = array(
         'name'    => $name,
         'phone'   => $tel,
         'date'    => $data,
         'package' => $paket,
         'message' => $soobsh,
-        'source'  => 'ретро-версия',
-    ));
+        'source'  => 'СЂРµС‚СЂРѕ-РІРµСЂСЃРёСЏ',
+    );
+
+    $payload = json_encode($fields);
+
+    // Р•СЃР»Рё С‡С‚Рѕ-С‚Рѕ РїРѕС€Р»Рѕ РЅРµ С‚Р°Рє СЃ РєРѕРґРёСЂРѕРІРєРѕР№ вЂ” СЃРѕР±РёСЂР°РµРј JSON РІСЂСѓС‡РЅСѓСЋ
+    if ($payload === false || $payload === 'null') {
+        $parts = array();
+        foreach ($fields as $k => $v) {
+            $v = str_replace(array('\\', '"', "\r", "\n"), array('\\\\', '\"', '', ' '), $v);
+            $parts[] = '"' . $k . '":"' . $v . '"';
+        }
+        $payload = '{' . implode(',', $parts) . '}';
+    }
 
     if (function_exists('curl_init')) {
         $ch = curl_init($target);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-        curl_setopt($ch, CURLOPT_TIMEOUT, 15);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Content-Type: application/json; charset=utf-8',
+            'Content-Length: ' . strlen($payload),
+        ));
+        curl_setopt($ch, CURLOPT_TIMEOUT, 20);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 6);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
         $res  = curl_exec($ch);
@@ -147,9 +110,9 @@ if ($trap !== '') {
         $ctx = stream_context_create(array(
             'http' => array(
                 'method'  => 'POST',
-                'header'  => "Content-Type: application/json\r\n",
+                'header'  => "Content-Type: application/json; charset=utf-8\r\n",
                 'content' => $payload,
-                'timeout' => 15,
+                'timeout' => 20,
             ),
             'ssl' => array('verify_peer' => false, 'verify_peer_name' => false),
         ));
@@ -159,65 +122,50 @@ if ($trap !== '') {
         }
     }
 
-    // Если облако недоступно — отправляем письмо силами хостинга
+    // Р—Р°РїР°СЃРЅРѕР№ РїСѓС‚СЊ: РїРёСЃСЊРјРѕ СЃРёР»Р°РјРё С…РѕСЃС‚РёРЅРіР°
     if (!$ok && function_exists('mail')) {
-        $text = "Новая заявка с ретро-версии сайта\n\n"
-              . "Имя: $name\n"
-              . "Телефон: $tel\n"
-              . "Дата свадьбы: " . ($data !== '' ? $data : 'не указана') . "\n"
-              . "Пакет: " . ($paket !== '' ? $paket : 'не выбран') . "\n"
-              . "Пожелания: " . ($soobsh !== '' ? $soobsh : 'нет') . "\n";
+        $text = "РќРѕРІР°СЏ Р·Р°СЏРІРєР° СЃ СЂРµС‚СЂРѕ-РІРµСЂСЃРёРё СЃР°Р№С‚Р°\n\n"
+              . "РРјСЏ: $name\n"
+              . "РўРµР»РµС„РѕРЅ: $tel\n"
+              . "Р”Р°С‚Р° СЃРІР°РґСЊР±С‹: " . ($data !== '' ? $data : 'РЅРµ СѓРєР°Р·Р°РЅР°') . "\n"
+              . "РџР°РєРµС‚: " . ($paket !== '' ? $paket : 'РЅРµ РІС‹Р±СЂР°РЅ') . "\n"
+              . "РџРѕР¶РµР»Р°РЅРёСЏ: " . ($soobsh !== '' ? $soobsh : 'РЅРµС‚') . "\n";
         $headers = "MIME-Version: 1.0\r\n"
                  . "Content-Type: text/plain; charset=UTF-8\r\n"
+                 . "Content-Transfer-Encoding: 8bit\r\n"
                  . "From: site@icebergvideo.ru\r\n";
-        if (@mail($mail, '=?UTF-8?B?' . base64_encode('Заявка с ретро-версии') . '?=', $text, $headers)) {
+        $subj = '=?UTF-8?B?' . base64_encode('Р—Р°СЏРІРєР° СЃ СЂРµС‚СЂРѕ-РІРµСЂСЃРёРё') . '?=';
+        if (@mail($mail, $subj, $text, $headers)) {
             $ok = true;
         }
     }
 
     if (!$ok) {
-        $error = 'Не удалось отправить заявку.';
+        $error = 'РќРµ СѓРґР°Р»РѕСЃСЊ РѕС‚РїСЂР°РІРёС‚СЊ Р·Р°СЏРІРєСѓ.';
     }
 }
 
-// --- Ответ посетителю. Всё в старой вёрстке, как на остальных страницах ---
-
-$title   = $ok ? 'Заявка отправлена' : 'Заявка не отправлена';
-$heading = $ok ? 'СПАСИБО, ЗАЯВКА ПРИНЯТА' : 'ЗАЯВКА НЕ ОТПРАВЛЕНА';
+$heading = $ok ? 'РЎРџРђРЎРР‘Рћ, Р—РђРЇР’РљРђ РџР РРќРЇРўРђ' : 'Р—РђРЇР’РљРђ РќР• РћРўРџР РђР’Р›Р•РќРђ';
+$title   = $ok ? 'Р—Р°СЏРІРєР° РѕС‚РїСЂР°РІР»РµРЅР°' : 'Р—Р°СЏРІРєР° РЅРµ РѕС‚РїСЂР°РІР»РµРЅР°';
 
 if ($ok) {
-    $body = '<FONT SIZE="3" COLOR="#2E416F"><B>Ваше сообщение успешно отправлено!</B></FONT><BR><BR>'
-          . 'Мы получили вашу заявку и перезвоним в течение дня, '
-          . 'обсудим детали и забронируем дату.<BR><BR>'
-          . 'Если нужно срочно &#151; звоните: <B>' . $phone . '</B>';
+    $body = '<FONT SIZE="4" COLOR="#2E416F"><B>Р’Р°С€Рµ СЃРѕРѕР±С‰РµРЅРёРµ СѓСЃРїРµС€РЅРѕ РѕС‚РїСЂР°РІР»РµРЅРѕ!</B></FONT><BR><BR>'
+          . 'РњС‹ РїРѕР»СѓС‡РёР»Рё РІР°С€Сѓ Р·Р°СЏРІРєСѓ Рё РїРµСЂРµР·РІРѕРЅРёРј РІ С‚РµС‡РµРЅРёРµ РґРЅСЏ, '
+          . 'РѕР±СЃСѓРґРёРј РґРµС‚Р°Р»Рё Рё Р·Р°Р±СЂРѕРЅРёСЂСѓРµРј РґР°С‚Сѓ.<BR><BR>'
+          . 'Р•СЃР»Рё РЅСѓР¶РЅРѕ СЃСЂРѕС‡РЅРѕ &#151; Р·РІРѕРЅРёС‚Рµ: <B>' . $phone . '</B>';
 } else {
-    $body = $error . '<BR><BR>'
-          . 'Пожалуйста, позвоните нам по телефону <B>' . $phone . '</B> '
-          . 'или напишите на <A HREF="mailto:' . $mail . '">' . $mail . '</A>.';
+    $body = '<FONT SIZE="3" COLOR="#C43D6E"><B>' . $error . '</B></FONT><BR><BR>'
+          . 'РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РїРѕР·РІРѕРЅРёС‚Рµ РЅР°Рј РїРѕ С‚РµР»РµС„РѕРЅСѓ <B>' . $phone . '</B> '
+          . 'РёР»Рё РЅР°РїРёС€РёС‚Рµ РЅР° <A HREF="mailto:' . $mail . '">' . $mail . '</A>.';
 }
 
-// Текст ответа собран в UTF-8, страница отдаётся в windows-1251
-function to_1251($s) {
-    if (function_exists('iconv')) {
-        $r = @iconv('UTF-8', 'windows-1251//IGNORE', $s);
-        if ($r !== false) {
-            return $r;
-        }
-    }
-    if (function_exists('mb_convert_encoding')) {
-        return mb_convert_encoding($s, 'windows-1251', 'UTF-8');
-    }
-    return $s;
-}
-
-$title   = to_1251($title);
-$heading = to_1251($heading);
-$body    = to_1251($body);
+// Р’СЃС‘, С‡С‚Рѕ РЅРёР¶Рµ, СЃРѕР±СЂР°РЅРѕ РІ UTF-8 Рё РїРµСЂРµРІРѕРґРёС‚СЃСЏ РІ windows-1251 РѕРґРёРЅ СЂР°Р·, РЅР° РІС‹С…РѕРґРµ
+ob_start();
 ?>
 <HTML>
 <HEAD>
 <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1251">
-<TITLE><?php echo $title; ?> :: Айсберг-Видео</TITLE>
+<TITLE><?php echo $title; ?> :: РђР№СЃР±РµСЂРі-Р’РёРґРµРѕ</TITLE>
 <META NAME="robots" CONTENT="noindex, nofollow">
 <STYLE TYPE="text/css">
 html, body { height: 100%; margin: 0; padding: 0;
@@ -235,20 +183,20 @@ html, body { height: 100%; margin: 0; padding: 0;
 <TABLE WIDTH="760" BORDER="0" CELLSPACING="0" CELLPADDING="8" BGCOLOR="#2E416F">
 <TR>
   <TD WIDTH="100%" ALIGN="CENTER">
-    <FONT FACE="Arial,Helvetica" SIZE="6" COLOR="#FFFFFF"><B>АЙСБЕРГ-ВИДЕО</B></FONT><BR>
-    <FONT FACE="Arial,Helvetica" SIZE="2" COLOR="#AACCEE">свадебная фото- и видеосъёмка &nbsp;|&nbsp; г. Томск</FONT>
+    <FONT FACE="Arial,Helvetica" SIZE="6" COLOR="#FFFFFF"><B>РђР™РЎР‘Р•Р Р“-Р’РР”Р•Рћ</B></FONT><BR>
+    <FONT FACE="Arial,Helvetica" SIZE="2" COLOR="#AACCEE">СЃРІР°РґРµР±РЅР°СЏ С„РѕС‚Рѕ- Рё РІРёРґРµРѕСЃСЉС‘РјРєР° &nbsp;|&nbsp; Рі. РўРѕРјСЃРє</FONT>
   </TD>
 </TR>
 </TABLE>
 
 <TABLE WIDTH="760" BORDER="0" CELLSPACING="1" CELLPADDING="4" BGCOLOR="#000000">
 <TR>
-  <TD ALIGN="CENTER" BGCOLOR="#F5D8CC"><FONT FACE="Arial" SIZE="2"><A HREF="index.html"><B>Главная</B></A></FONT></TD>
-  <TD ALIGN="CENTER" BGCOLOR="#F5D8CC"><FONT FACE="Arial" SIZE="2"><A HREF="about.html"><B>О нас</B></A></FONT></TD>
-  <TD ALIGN="CENTER" BGCOLOR="#F5D8CC"><FONT FACE="Arial" SIZE="2"><A HREF="foto.html"><B>Фотогалерея</B></A></FONT></TD>
-  <TD ALIGN="CENTER" BGCOLOR="#F5D8CC"><FONT FACE="Arial" SIZE="2"><A HREF="price.html"><B>Цены</B></A></FONT></TD>
-  <TD ALIGN="CENTER" BGCOLOR="#FFCC00"><FONT FACE="Arial" SIZE="2" COLOR="#000000"><B>Заказать</B></FONT></TD>
-  <TD ALIGN="CENTER" BGCOLOR="#F5D8CC"><FONT FACE="Arial" SIZE="2"><A HREF="kontakt.html"><B>Контакты</B></A></FONT></TD>
+  <TD ALIGN="CENTER" BGCOLOR="#F5D8CC"><FONT FACE="Arial" SIZE="2"><A HREF="index.html"><B>Р“Р»Р°РІРЅР°СЏ</B></A></FONT></TD>
+  <TD ALIGN="CENTER" BGCOLOR="#F5D8CC"><FONT FACE="Arial" SIZE="2"><A HREF="about.html"><B>Рћ РЅР°СЃ</B></A></FONT></TD>
+  <TD ALIGN="CENTER" BGCOLOR="#F5D8CC"><FONT FACE="Arial" SIZE="2"><A HREF="foto.html"><B>Р¤РѕС‚РѕРіР°Р»РµСЂРµСЏ</B></A></FONT></TD>
+  <TD ALIGN="CENTER" BGCOLOR="#F5D8CC"><FONT FACE="Arial" SIZE="2"><A HREF="price.html"><B>Р¦РµРЅС‹</B></A></FONT></TD>
+  <TD ALIGN="CENTER" BGCOLOR="#FFCC00"><FONT FACE="Arial" SIZE="2" COLOR="#000000"><B>Р—Р°РєР°Р·Р°С‚СЊ</B></FONT></TD>
+  <TD ALIGN="CENTER" BGCOLOR="#F5D8CC"><FONT FACE="Arial" SIZE="2"><A HREF="kontakt.html"><B>РљРѕРЅС‚Р°РєС‚С‹</B></A></FONT></TD>
 </TR>
 </TABLE>
 
@@ -267,8 +215,8 @@ html, body { height: 100%; margin: 0; padding: 0;
 <BR>
 <TABLE WIDTH="760" BORDER="0" CELLSPACING="0" CELLPADDING="4" BGCOLOR="#FDF1EB">
 <TR>
-  <TD ALIGN="LEFT"><FONT FACE="Arial" SIZE="2"><A HREF="zakaz.html">&lt;&lt; Вернуться к форме</A></FONT></TD>
-  <TD ALIGN="RIGHT"><FONT FACE="Arial" SIZE="2"><A HREF="index.html">На главную &gt;&gt;</A></FONT></TD>
+  <TD ALIGN="LEFT"><FONT FACE="Arial" SIZE="2"><A HREF="zakaz.html">&lt;&lt; Р’РµСЂРЅСѓС‚СЊСЃСЏ Рє С„РѕСЂРјРµ</A></FONT></TD>
+  <TD ALIGN="RIGHT"><FONT FACE="Arial" SIZE="2"><A HREF="index.html">РќР° РіР»Р°РІРЅСѓСЋ &gt;&gt;</A></FONT></TD>
 </TR>
 </TABLE>
 
@@ -277,15 +225,15 @@ html, body { height: 100%; margin: 0; padding: 0;
 <TABLE WIDTH="760" BORDER="0" CELLSPACING="0" CELLPADDING="8" BGCOLOR="#2E416F">
 <TR>
   <TD ALIGN="CENTER"><FONT FACE="Arial" SIZE="1" COLOR="#FFFFFF">
-    <A HREF="index.html"><FONT COLOR="#FFCC00">Главная</FONT></A> |
-    <A HREF="about.html"><FONT COLOR="#FFCC00">О нас</FONT></A> |
-    <A HREF="foto.html"><FONT COLOR="#FFCC00">Фотогалерея</FONT></A> |
-    <A HREF="price.html"><FONT COLOR="#FFCC00">Цены</FONT></A> |
-    <A HREF="zakaz.html"><FONT COLOR="#FFCC00">Заказать</FONT></A> |
-    <A HREF="kontakt.html"><FONT COLOR="#FFCC00">Контакты</FONT></A>
+    <A HREF="index.html"><FONT COLOR="#FFCC00">Р“Р»Р°РІРЅР°СЏ</FONT></A> |
+    <A HREF="about.html"><FONT COLOR="#FFCC00">Рћ РЅР°СЃ</FONT></A> |
+    <A HREF="foto.html"><FONT COLOR="#FFCC00">Р¤РѕС‚РѕРіР°Р»РµСЂРµСЏ</FONT></A> |
+    <A HREF="price.html"><FONT COLOR="#FFCC00">Р¦РµРЅС‹</FONT></A> |
+    <A HREF="zakaz.html"><FONT COLOR="#FFCC00">Р—Р°РєР°Р·Р°С‚СЊ</FONT></A> |
+    <A HREF="kontakt.html"><FONT COLOR="#FFCC00">РљРѕРЅС‚Р°РєС‚С‹</FONT></A>
     <BR><BR>
-    Copyright &copy; 2026 Siberia Art Ltd. Все права защищены.<BR>
-    Тел: +7 (909) 547-23-25 &nbsp;|&nbsp; E-mail: daumsam@mail.ru
+    Copyright &copy; 2026 Siberia Art Ltd. Р’СЃРµ РїСЂР°РІР° Р·Р°С‰РёС‰РµРЅС‹.<BR>
+    РўРµР»: +7 (909) 547-23-25 &nbsp;|&nbsp; E-mail: daumsam@mail.ru
   </FONT></TD>
 </TR>
 </TABLE>
@@ -295,3 +243,18 @@ html, body { height: 100%; margin: 0; padding: 0;
 
 </BODY>
 </HTML>
+<?php
+$html = ob_get_clean();
+
+if (function_exists('iconv')) {
+    $out = @iconv('UTF-8', 'windows-1251//TRANSLIT//IGNORE', $html);
+    if ($out !== false && $out !== '') {
+        $html = $out;
+    }
+} elseif (function_exists('mb_convert_encoding')) {
+    $html = mb_convert_encoding($html, 'windows-1251', 'UTF-8');
+}
+
+header('Content-Type: text/html; charset=windows-1251');
+header('Content-Length: ' . strlen($html));
+echo $html;
