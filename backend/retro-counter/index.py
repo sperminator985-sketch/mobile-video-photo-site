@@ -71,8 +71,14 @@ def handler(event: dict, context) -> dict:
     name = params.get('name', 'retro_index')
     fmt = params.get('format', 'gif')
 
-    ip = ((event.get('requestContext') or {}).get('identity') or {}).get('sourceIp', '')
-    ip_hash = hashlib.sha256((name + '|' + str(ip)).encode()).hexdigest()
+    headers = {k.lower(): v for k, v in (event.get('headers') or {}).items()}
+    ip = (
+        params.get('ip')
+        or headers.get('x-visitor-ip')
+        or ((event.get('requestContext') or {}).get('identity') or {}).get('sourceIp', '')
+    )
+    ua = headers.get('x-visitor-ua', '') or headers.get('user-agent', '')
+    ip_hash = hashlib.sha256((name + '|' + str(ip) + '|' + str(ua)[:120]).encode()).hexdigest()
 
     conn = psycopg2.connect(os.environ['DATABASE_URL'])
     conn.autocommit = True
