@@ -21,19 +21,35 @@
 
     <script>
       (function () {
+        var ua = "";
+        try { ua = navigator.userAgent || ""; } catch (e) {}
+
+        function isOldBrowser() {
+          if (/[?&]retro=1/.test(location.search)) return true;
+
+          if (/MSIE |Trident\/|Netscape|Navigator\/[1-9]\.|Presto\/[12]\.|Opera[ \/][1-9]\./i.test(ua)) return true;
+          if (/Windows 95|Win95|Windows 98|Win98|Win 9x 4\.90|WinME|Windows NT [1-5]\.|Windows CE|Mac_PowerPC|PPC Mac OS X 10_[1-5]/i.test(ua)) return true;
+
+          var m = ua.match(/Firefox\/(\d+)/i);
+          if (m && +m[1] < 60) return true;
+          m = ua.match(/Chrome\/(\d+)/i);
+          if (m && +m[1] < 61) return true;
+          m = ua.match(/Version\/(\d+)[.\d]* Safari/i);
+          if (m && +m[1] < 11) return true;
+
+          if (!window.Promise || !window.fetch || !window.Symbol) return true;
+          if (!document.querySelector || !window.localStorage) return true;
+          if (!("noModule" in document.createElement("script"))) return true;
+          try { new Function("class A{}; const f=(x)=>`${x}`;")(); } catch (e) { return true; }
+
+          return false;
+        }
+
         try {
-          var ua = navigator.userAgent || "";
-          var oldWin = /Windows 95|Win95|Windows 98|Win98|Win 9x 4\.90|WinME|Windows NT 4|Windows CE/i.test(ua);
-          var oldIE = /MSIE [1-7]\./i.test(ua) && !/Trident/i.test(ua);
-          var forced = /[?&]retro=1/.test(location.search);
-          var off = /[?&]retro=0/.test(location.search);
-          if (off) { try { localStorage.setItem("noRetro", "1"); } catch (e) {} return; }
-          var skip = false;
-          try { skip = localStorage.getItem("noRetro") === "1"; } catch (e) {}
-          if (!skip && (forced || oldWin || oldIE)) {
-            location.replace("/retro/index.html");
-          }
-        } catch (e) {}
+          if (isOldBrowser()) location.replace("/retro/index.html");
+        } catch (e) {
+          location.replace("/retro/index.html");
+        }
       })();
     </script>
 
