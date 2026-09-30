@@ -19,6 +19,24 @@
     <meta property="og:image" content="https://cdn.poehali.dev/intertnal/img/phl2/og-main-2.webp">
     <meta name="twitter:image" content="https://cdn.poehali.dev/intertnal/img/phl2/og-main-2.webp">
 
+    <script>
+      (function () {
+        try {
+          var ua = navigator.userAgent || "";
+          var oldWin = /Windows 95|Win95|Windows 98|Win98|Win 9x 4\.90|WinME|Windows NT 4|Windows CE/i.test(ua);
+          var oldIE = /MSIE [1-7]\./i.test(ua) && !/Trident/i.test(ua);
+          var forced = /[?&]retro=1/.test(location.search);
+          var off = /[?&]retro=0/.test(location.search);
+          if (off) { try { localStorage.setItem("noRetro", "1"); } catch (e) {} return; }
+          var skip = false;
+          try { skip = localStorage.getItem("noRetro") === "1"; } catch (e) {}
+          if (!skip && (forced || oldWin || oldIE)) {
+            location.replace("/retro/index.html");
+          }
+        } catch (e) {}
+      })();
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700;800&family=Golos+Text:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap"/>
