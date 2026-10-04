@@ -3,7 +3,6 @@ import Icon from '@/components/ui/icon';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import CallbackDialog from './CallbackDialog';
 import SmartImage from '@/components/ui/smart-image';
-import DownloadDialog from './DownloadDialog';
 
 const LOGO = 'https://icebergvideo.ru/photos/14346e37-5113-4231-af71-69c04fab1812.png';
 
@@ -92,17 +91,6 @@ const Header = () => {
           >
             Чат-Общага
           </a>
-          <DownloadDialog
-            trigger={
-              <button
-                type="button"
-                className="inline-flex items-center gap-1.5 md:text-base font-medium text-foreground/75 hover:text-foreground transition-colors"
-              >
-                <Icon name="Download" size={16} />
-                Скачать
-              </button>
-            }
-          />
         </nav>
 
         <CallbackDialog
@@ -132,17 +120,6 @@ const Header = () => {
                   </a>
                 </SheetClose>
               ))}
-              <DownloadDialog
-                trigger={
-                  <button
-                    type="button"
-                    className="w-full flex items-center gap-3 rounded-2xl px-4 py-2 text-lg font-display font-medium text-foreground hover:bg-secondary transition-colors text-left"
-                  >
-                    <Icon name="Download" size={18} className="shrink-0 text-primary" />
-                    Скачать
-                  </button>
-                }
-              />
               <CallbackDialog
                 trigger={
                   <button className="w-full inline-flex items-center justify-center gap-2 rounded-full border border-primary/40 mt-2 px-5 py-3 text-base font-display font-medium text-primary">

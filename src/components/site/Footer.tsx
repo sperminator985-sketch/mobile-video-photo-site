@@ -1,10 +1,20 @@
 import { Link } from 'react-router-dom';
+import DownloadDialog from './DownloadDialog';
 
 const Footer = () => {
   return (
     <footer className="bg-accent text-accent-foreground">
       <div className="container relative py-6 flex flex-col items-center justify-center gap-2">
-        <p className="text-sm text-white">Тел: +7 (909) 547-23-25</p>
+        <p className="md:hidden text-sm text-white">Тел: +7 (909) 547-23-25</p>
+        <div className="hidden md:block">
+          <DownloadDialog
+            trigger={
+              <button type="button" className="text-sm text-white cursor-pointer">
+                Тел: +7 (909) 547-23-25
+              </button>
+            }
+          />
+        </div>
         <p className="text-sm text-white">E-mail: daumsam@mail.ru</p>
         <p className="text-sm text-white">Адрес: пр.Фрунзе-20, офис-427</p>
 
