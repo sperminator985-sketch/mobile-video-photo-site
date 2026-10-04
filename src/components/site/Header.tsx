@@ -65,6 +65,14 @@ const Header = () => {
             Old_Version
           </a>
           <a
+            href="http://www.icebergvideo-retro.ru"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="md:text-base font-medium text-foreground/75 hover:text-foreground transition-colors"
+          >
+            Retro-Version
+          </a>
+          <a
             href="https://chat-tom.ru"
             target="_blank"
             rel="noopener noreferrer"
@@ -88,12 +96,12 @@ const Header = () => {
             <Icon name="Menu" size={22} />
           </SheetTrigger>
           <SheetContent side="right" className="w-[80%] bg-card border-border">
-            <div className="mt-10 flex flex-col gap-2">
+            <div className="mt-8 flex flex-col gap-0.5">
               {links.map((l) => (
                 <SheetClose asChild key={l.href}>
                   <a
                     href={l.href}
-                    className="rounded-2xl px-4 py-3 text-lg font-display font-medium text-foreground hover:bg-secondary transition-colors"
+                    className="rounded-2xl px-4 py-2 text-lg font-display font-medium text-foreground hover:bg-secondary transition-colors"
                   >
                     {l.label}
                   </a>
@@ -102,7 +110,7 @@ const Header = () => {
               <SheetClose asChild>
                 <a
                   href="#contacts"
-                  className="rounded-2xl px-4 py-3 text-lg font-display font-medium text-foreground hover:bg-secondary transition-colors"
+                  className="rounded-2xl px-4 py-2 text-lg font-display font-medium text-foreground hover:bg-secondary transition-colors"
                 >
                   Контакты
                 </a>
@@ -112,9 +120,19 @@ const Header = () => {
                   href="https://icebergvideo-old.ru"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-2xl px-4 py-3 text-lg font-display font-medium text-foreground hover:bg-secondary transition-colors"
+                  className="rounded-2xl px-4 py-2 text-lg font-display font-medium text-foreground hover:bg-secondary transition-colors"
                 >
                   Old_Version
+                </a>
+              </SheetClose>
+              <SheetClose asChild>
+                <a
+                  href="http://www.icebergvideo-retro.ru"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-2xl px-4 py-2 text-lg font-display font-medium text-foreground hover:bg-secondary transition-colors"
+                >
+                  Retro-Version
                 </a>
               </SheetClose>
               <SheetClose asChild>
@@ -122,14 +140,14 @@ const Header = () => {
                   href="https://chat-tom.ru"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-2xl px-4 py-3 text-lg font-display font-medium text-foreground hover:bg-secondary transition-colors"
+                  className="rounded-2xl px-4 py-2 text-lg font-display font-medium text-foreground hover:bg-secondary transition-colors"
                 >
                   Чат-Общага
                 </a>
               </SheetClose>
               <CallbackDialog
                 trigger={
-                  <button className="w-full inline-flex items-center justify-center gap-2 rounded-full border border-primary/40 px-5 py-3.5 text-base font-display font-medium text-primary">
+                  <button className="w-full inline-flex items-center justify-center gap-2 rounded-full border border-primary/40 mt-2 px-5 py-3 text-base font-display font-medium text-primary">
                     <Icon name="PhoneCall" size={18} />
                     Заказать звонок
                   </button>
