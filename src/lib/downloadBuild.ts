@@ -39,6 +39,8 @@ const fetchBytes = async (path: string) => {
   return new Uint8Array(await res.arrayBuffer());
 };
 
+const SKIP = 'download/site-build.zip';
+
 const localRefs = (text: string) => {
   const found = new Set<string>();
   const re = /["'(]\/((?:assets|retro)\/[^"'()\s?#]+)/g;
@@ -48,8 +50,14 @@ const localRefs = (text: string) => {
 };
 
 export const downloadBuild = async () => {
+  const ready = await fetch(`/download/site-build.zip?t=${Date.now()}`, { cache: 'no-store' }).catch(() => null);
+  if (ready?.ok && (ready.headers.get('content-type') || '').includes('zip')) {
+    saveBlob(await ready.blob());
+    return;
+  }
+
   if (import.meta.env.DEV) {
-    throw new Error('Скачивание работает только на опубликованной версии сайта');
+    throw new Error('Готовый архив сайта не найден');
   }
 
   const files: Record<string, Uint8Array> = {};
@@ -67,6 +75,7 @@ export const downloadBuild = async () => {
     await Promise.all(
       batch.map(async (path) => {
         done.add(path);
+        if (path === SKIP) return;
         const bytes = await fetchBytes(path);
         if (!bytes) return;
         files[path] = bytes;
@@ -78,7 +87,10 @@ export const downloadBuild = async () => {
   }
 
   const zip = zipSync(files, { level: 9 });
-  const blob = new Blob([zip], { type: 'application/zip' });
+  saveBlob(new Blob([zip], { type: 'application/zip' }));
+};
+
+const saveBlob = (blob: Blob) => {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   const date = new Date().toISOString().slice(0, 10);
