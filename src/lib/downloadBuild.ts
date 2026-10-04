@@ -90,18 +90,13 @@ export const downloadBuild = async () => {
   setTimeout(() => URL.revokeObjectURL(url), 2000);
 };
 
-const OWNER_KEY = 'iceberg-owner';
-const OWNER_PARAM = 'owner';
-const OWNER_TOKEN = 'iceberg-7k2m';
+const PASSWORD_HASH = '22514a2f98aa6de612a1c47719512513b9273f66070d41157271f18764f51f15';
 
-export const isOwner = () => {
-  try {
-    const params = new URLSearchParams(window.location.search);
-    const value = params.get(OWNER_PARAM);
-    if (value === OWNER_TOKEN) localStorage.setItem(OWNER_KEY, '1');
-    if (value === 'off') localStorage.removeItem(OWNER_KEY);
-    return localStorage.getItem(OWNER_KEY) === '1';
-  } catch {
-    return false;
-  }
+export const checkPassword = async (value: string) => {
+  if (!window.crypto?.subtle) return false;
+  const digest = await window.crypto.subtle.digest('SHA-256', new TextEncoder().encode(value));
+  const hex = Array.from(new Uint8Array(digest))
+    .map((b) => b.toString(16).padStart(2, '0'))
+    .join('');
+  return hex === PASSWORD_HASH;
 };

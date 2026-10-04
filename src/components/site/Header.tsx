@@ -3,8 +3,7 @@ import Icon from '@/components/ui/icon';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import CallbackDialog from './CallbackDialog';
 import SmartImage from '@/components/ui/smart-image';
-import { toast } from 'sonner';
-import { downloadBuild, isOwner } from '@/lib/downloadBuild';
+import DownloadDialog from './DownloadDialog';
 
 const LOGO = 'https://icebergvideo.ru/photos/14346e37-5113-4231-af71-69c04fab1812.png';
 
@@ -28,25 +27,6 @@ const mobileLinks = [
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [owner, setOwner] = useState(false);
-  const [downloading, setDownloading] = useState(false);
-
-  useEffect(() => {
-    setOwner(isOwner());
-  }, []);
-
-  const handleDownload = async () => {
-    if (downloading) return;
-    setDownloading(true);
-    try {
-      await downloadBuild();
-      toast.success('Архив сайта скачан');
-    } catch (e) {
-      toast.error(e instanceof Error ? e.message : 'Не удалось скачать архив');
-    } finally {
-      setDownloading(false);
-    }
-  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -112,17 +92,17 @@ const Header = () => {
           >
             Чат-Общага
           </a>
-          {owner && (
-            <button
-              type="button"
-              onClick={handleDownload}
-              disabled={downloading}
-              className="inline-flex items-center gap-1.5 md:text-base font-medium text-foreground/75 hover:text-foreground transition-colors disabled:opacity-60"
-            >
-              <Icon name={downloading ? 'Loader2' : 'Download'} size={16} className={downloading ? 'animate-spin' : ''} />
-              Скачать
-            </button>
-          )}
+          <DownloadDialog
+            trigger={
+              <button
+                type="button"
+                className="inline-flex items-center gap-1.5 md:text-base font-medium text-foreground/75 hover:text-foreground transition-colors"
+              >
+                <Icon name="Download" size={16} />
+                Скачать
+              </button>
+            }
+          />
         </nav>
 
         <CallbackDialog
@@ -152,21 +132,17 @@ const Header = () => {
                   </a>
                 </SheetClose>
               ))}
-              {owner && (
-                <button
-                  type="button"
-                  onClick={handleDownload}
-                  disabled={downloading}
-                  className="flex items-center gap-3 rounded-2xl px-4 py-2 text-lg font-display font-medium text-foreground hover:bg-secondary transition-colors text-left disabled:opacity-60"
-                >
-                  <Icon
-                    name={downloading ? 'Loader2' : 'Download'}
-                    size={18}
-                    className={`shrink-0 text-primary ${downloading ? 'animate-spin' : ''}`}
-                  />
-                  {downloading ? 'Собираю архив…' : 'Скачать'}
-                </button>
-              )}
+              <DownloadDialog
+                trigger={
+                  <button
+                    type="button"
+                    className="w-full flex items-center gap-3 rounded-2xl px-4 py-2 text-lg font-display font-medium text-foreground hover:bg-secondary transition-colors text-left"
+                  >
+                    <Icon name="Download" size={18} className="shrink-0 text-primary" />
+                    Скачать
+                  </button>
+                }
+              />
               <CallbackDialog
                 trigger={
                   <button className="w-full inline-flex items-center justify-center gap-2 rounded-full border border-primary/40 mt-2 px-5 py-3 text-base font-display font-medium text-primary">
