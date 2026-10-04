@@ -132,6 +132,17 @@ const Header = () => {
                   </a>
                 </SheetClose>
               ))}
+              <DownloadDialog
+                trigger={
+                  <button
+                    type="button"
+                    className="w-full flex items-center gap-3 rounded-2xl px-4 py-2 text-lg font-display font-medium text-foreground hover:bg-secondary transition-colors text-left"
+                  >
+                    <Icon name="Download" size={18} className="shrink-0 text-primary" />
+                    Скачать
+                  </button>
+                }
+              />
               <CallbackDialog
                 trigger={
                   <button className="w-full inline-flex items-center justify-center gap-2 rounded-full border border-primary/40 mt-2 px-5 py-3 text-base font-display font-medium text-primary">
