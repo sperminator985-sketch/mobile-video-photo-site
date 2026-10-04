@@ -201,9 +201,69 @@
   border: 2px solid color-mix(in srgb, #fff6d9 60%, transparent);
 }
 
+.hero-ring-shine {
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 290deg,
+    rgba(255, 250, 230, 0.35) 320deg,
+    rgba(255, 255, 255, 0.95) 340deg,
+    rgba(255, 250, 230, 0.35) 352deg,
+    transparent 360deg
+  );
+  mix-blend-mode: screen;
+  animation: hero-spin 4.5s linear infinite;
+}
+.hero-sparkle {
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  transform: translate(-50%, -50%) scale(0);
+  background: radial-gradient(circle, #ffffff 0%, #fff3c4 45%, #f2c96b 100%);
+  clip-path: polygon(
+    50% 0%,
+    61% 39%,
+    100% 50%,
+    61% 61%,
+    50% 100%,
+    39% 61%,
+    0% 50%,
+    39% 39%
+  );
+  filter: drop-shadow(0 0 3px rgba(255, 240, 190, 0.95));
+  animation: hero-twinkle 2.8s ease-in-out infinite;
+  pointer-events: none;
+}
+@media (min-width: 768px) {
+  .hero-sparkle {
+    width: 15px;
+    height: 15px;
+  }
+}
+@keyframes hero-twinkle {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  45% {
+    transform: translate(-50%, -50%) scale(1) rotate(45deg);
+    opacity: 1;
+  }
+  60% {
+    transform: translate(-50%, -50%) scale(0.6) rotate(70deg);
+    opacity: 0.7;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-medallion,
-  .hero-aperture {
+  .hero-aperture,
+  .hero-ring-shine,
+  .hero-sparkle {
     animation: none;
+  }
+  .hero-sparkle {
+    display: none;
   }
 }
