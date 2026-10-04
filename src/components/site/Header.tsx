@@ -13,6 +13,17 @@ const links = [
   { href: '#packages', label: 'Цены' },
 ];
 
+const mobileLinks = [
+  { href: '#top', label: 'Главная', icon: 'Home', external: false },
+  { href: '#about', label: 'О нас', icon: 'Users', external: false },
+  { href: '#portfolio', label: 'Работы', icon: 'Film', external: false },
+  { href: '#packages', label: 'Цены', icon: 'Wallet', external: false },
+  { href: '#contacts', label: 'Контакты', icon: 'MapPin', external: false },
+  { href: 'https://icebergvideo-old.ru', label: 'Old_Version', icon: 'History', external: true },
+  { href: 'http://www.icebergvideo-retro.ru', label: 'Retro-Version', icon: 'Monitor', external: true },
+  { href: 'https://chat-tom.ru', label: 'Чат-Общага', icon: 'MessageCircle', external: true },
+];
+
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
 
@@ -97,54 +108,18 @@ const Header = () => {
           </SheetTrigger>
           <SheetContent side="right" className="w-[80%] bg-card border-border">
             <div className="mt-8 flex flex-col gap-0.5">
-              {links.map((l) => (
+              {mobileLinks.map((l) => (
                 <SheetClose asChild key={l.href}>
                   <a
                     href={l.href}
-                    className="rounded-2xl px-4 py-2 text-lg font-display font-medium text-foreground hover:bg-secondary transition-colors"
+                    {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                    className="flex items-center gap-3 rounded-2xl px-4 py-2 text-lg font-display font-medium text-foreground hover:bg-secondary transition-colors"
                   >
+                    <Icon name={l.icon} size={18} className="shrink-0 text-primary" />
                     {l.label}
                   </a>
                 </SheetClose>
               ))}
-              <SheetClose asChild>
-                <a
-                  href="#contacts"
-                  className="rounded-2xl px-4 py-2 text-lg font-display font-medium text-foreground hover:bg-secondary transition-colors"
-                >
-                  Контакты
-                </a>
-              </SheetClose>
-              <SheetClose asChild>
-                <a
-                  href="https://icebergvideo-old.ru"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-2xl px-4 py-2 text-lg font-display font-medium text-foreground hover:bg-secondary transition-colors"
-                >
-                  Old_Version
-                </a>
-              </SheetClose>
-              <SheetClose asChild>
-                <a
-                  href="http://www.icebergvideo-retro.ru"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-2xl px-4 py-2 text-lg font-display font-medium text-foreground hover:bg-secondary transition-colors"
-                >
-                  Retro-Version
-                </a>
-              </SheetClose>
-              <SheetClose asChild>
-                <a
-                  href="https://chat-tom.ru"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-2xl px-4 py-2 text-lg font-display font-medium text-foreground hover:bg-secondary transition-colors"
-                >
-                  Чат-Общага
-                </a>
-              </SheetClose>
               <CallbackDialog
                 trigger={
                   <button className="w-full inline-flex items-center justify-center gap-2 rounded-full border border-primary/40 mt-2 px-5 py-3 text-base font-display font-medium text-primary">
