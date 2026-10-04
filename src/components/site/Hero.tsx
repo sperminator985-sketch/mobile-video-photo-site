@@ -1,12 +1,14 @@
 import SmartImage from '@/components/ui/smart-image';
 
-const SPARKLES = Array.from({ length: 10 }, (_, i) => {
-  const angle = (i / 10) * Math.PI * 2 + 0.3;
+const SPARKLE_COUNT = 20;
+
+const SPARKLES = Array.from({ length: SPARKLE_COUNT }, (_, i) => {
+  const angle = (i / SPARKLE_COUNT) * Math.PI * 2 + 0.3;
   const radius = 48.2;
   return {
     left: 50 + radius * Math.cos(angle),
     top: 50 + radius * Math.sin(angle),
-    delay: ((i * 7) % 10) * 0.28,
+    delay: ((i * 7) % SPARKLE_COUNT) * 0.07,
   };
 });
 
@@ -24,7 +26,6 @@ const Hero = () => {
             boxShadow: '0 26px 60px -24px color-mix(in srgb, var(--hero-x-water) 60%, transparent)',
           }}
         >
-          <div className="hero-ring-shine absolute inset-0 rounded-full pointer-events-none" />
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full overflow-hidden w-[214px] h-[214px] md:w-[296px] md:h-[296px]">
             <SmartImage
               src="https://icebergvideo.ru/photos/0ace0339-8601-429c-a627-5fae0c83b4c4.png"
