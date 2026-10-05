@@ -12,21 +12,47 @@ const SPARKLES = Array.from({ length: SPARKLE_COUNT }, (_, i) => {
   };
 });
 
+const PETALS = [
+  { src: '/assets/petals/pA.webp', l: 62.83, t: 33.9, w: 13.83, dur: 7, delay: 0 },
+  { src: '/assets/petals/pB.webp', l: 41.67, t: 38.8, w: 13, dur: 8.5, delay: -2 },
+  { src: '/assets/petals/pC.webp', l: 56.17, t: 41.06, w: 13.5, dur: 6.5, delay: -4 },
+  { src: '/assets/petals/pD.webp', l: 57.83, t: 47.27, w: 12.17, dur: 7.5, delay: -1 },
+  { src: '/assets/petals/pF.webp', l: 58.33, t: 54.24, w: 13.33, dur: 8, delay: -3 },
+  { src: '/assets/petals/pG.webp', l: 61, t: 74.95, w: 14, dur: 9, delay: -5 },
+];
+
 const Hero = () => {
   return (
     <section id="top" className="hero-stage relative min-h-screen flex flex-col overflow-hidden">
-      <img
-        src="/assets/hero-roses.webp"
-        alt=""
+      <div
         aria-hidden="true"
-        className="hidden lg:block absolute right-0 top-[84px] h-[calc(100%-84px)] w-auto max-w-[32vw] object-cover object-right mix-blend-multiply pointer-events-none select-none animate-fade-in"
+        className="hidden lg:block absolute right-0 top-[84px] h-[calc(100%-84px)] w-[32vw] overflow-hidden mix-blend-multiply pointer-events-none select-none animate-fade-in"
         style={{
           maskImage: 'linear-gradient(to right, transparent, black 35%), linear-gradient(to bottom, transparent, black 10%, black 70%, transparent)',
           WebkitMaskImage: 'linear-gradient(to right, transparent, black 35%), linear-gradient(to bottom, transparent, black 10%, black 70%, transparent)',
           maskComposite: 'intersect',
           WebkitMaskComposite: 'source-in',
         }}
-      />
+      >
+        <div className="absolute right-0 top-0 h-full aspect-[600/1062]">
+          <img src="/assets/hero-roses.webp" alt="" className="absolute inset-0 w-full h-full" />
+          {PETALS.map((p) => (
+            <img
+              key={p.src}
+              src={p.src}
+              alt=""
+              className="hero-petal absolute h-auto"
+              style={{
+                left: `${p.l}%`,
+                top: `${p.t}%`,
+                width: `${p.w}%`,
+                animationDuration: `${p.dur}s`,
+                animationDelay: `${p.delay}s`,
+              }}
+            />
+          ))}
+        </div>
+      </div>
       <div className="container relative flex-1 flex flex-col items-center justify-center text-center gap-5 pt-28 pb-16">
         <div className="font-display font-medium text-[0.72rem] md:text-[1.325rem] tracking-[0.26em] uppercase text-primary animate-fade-in">
           Свадебные фото и видеосъёмки
