@@ -6,7 +6,6 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { formatPhone } from './CallbackForm';
-import RoseCorner from '@/components/site/RoseCorner';
 
 const SEND_LEAD_URL = 'https://functions.poehali.dev/2c609e31-a278-4787-9035-9753fda9bb86';
 
@@ -54,10 +53,8 @@ const Contacts = () => {
   };
 
   return (
-    <section id="contacts" className="relative overflow-hidden pt-6 pb-20 bg-background">
-      <RoseCorner corner="top-right" variant="pink" />
-      <RoseCorner corner="bottom-left" variant="white" />
-      <div className="container relative z-10">
+    <section id="contacts" className="pt-6 pb-20 bg-background">
+      <div className="container">
         <div className="font-display font-medium text-base tracking-[0.22em] uppercase text-primary mb-4 text-center">
           Контакты
         </div>
