@@ -19,7 +19,7 @@ const mobileLinks = [
   { href: '#portfolio', label: 'Работы', icon: 'Film', external: false },
   { href: '#packages', label: 'Цены', icon: 'Wallet', external: false },
   { href: '#contacts', label: 'Контакты', icon: 'MapPin', external: false },
-  { href: 'https://icebergvideo-old.ru', label: 'Old_Version', icon: 'History', external: true },
+  { href: 'https://icebergvideo-old.ru', label: 'Old_Ver.', icon: 'History', external: true },
   { href: 'http://www.icebergvideo-retro.ru', label: 'Retro-Version', icon: 'Monitor', external: true },
   { href: 'https://chat-tom.ru', label: 'Чат-Общага', icon: 'MessageCircle', external: true },
 ];
@@ -73,7 +73,7 @@ const Header = () => {
             rel="noopener noreferrer"
             className="md:text-base font-medium text-foreground/75 hover:text-foreground transition-colors"
           >
-            Old_Version
+            Old_Ver.
           </a>
           <a
             href="http://www.icebergvideo-retro.ru"
