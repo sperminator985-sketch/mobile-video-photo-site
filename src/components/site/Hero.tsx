@@ -13,12 +13,13 @@ const SPARKLES = Array.from({ length: SPARKLE_COUNT }, (_, i) => {
 });
 
 const PETALS = [
-  { src: '/assets/petals/pA.webp', l: 62.83, t: 33.9, w: 13.83, dur: 7, delay: 0 },
-  { src: '/assets/petals/pB.webp', l: 41.67, t: 38.8, w: 13, dur: 8.5, delay: -2 },
-  { src: '/assets/petals/pC.webp', l: 56.17, t: 41.06, w: 13.5, dur: 6.5, delay: -4 },
-  { src: '/assets/petals/pD.webp', l: 57.83, t: 47.27, w: 12.17, dur: 7.5, delay: -1 },
-  { src: '/assets/petals/pF.webp', l: 58.33, t: 54.24, w: 13.33, dur: 8, delay: -3 },
-  { src: '/assets/petals/pG.webp', l: 61, t: 74.95, w: 14, dur: 9, delay: -5 },
+  { src: '/assets/petals/pA.webp', l: 42, w: 2.6, fall: 16, sway: 4.5, delay: 0 },
+  { src: '/assets/petals/pB.webp', l: 58, w: 2.2, fall: 19, sway: 5.5, delay: -6 },
+  { src: '/assets/petals/pC.webp', l: 36, w: 2.4, fall: 17, sway: 5, delay: -11 },
+  { src: '/assets/petals/pD.webp', l: 66, w: 2, fall: 21, sway: 6, delay: -3 },
+  { src: '/assets/petals/pF.webp', l: 50, w: 2.3, fall: 18, sway: 4.8, delay: -14 },
+  { src: '/assets/petals/pG.webp', l: 62, w: 2.5, fall: 20, sway: 5.2, delay: -9 },
+  { src: '/assets/petals/pA.webp', l: 46, w: 1.9, fall: 22, sway: 6.2, delay: -17 },
 ];
 
 const Hero = () => {
@@ -34,24 +35,21 @@ const Hero = () => {
           WebkitMaskComposite: 'source-in',
         }}
       >
-        <div className="absolute right-0 top-0 h-full aspect-[600/1062]">
-          <img src="/assets/hero-roses.webp" alt="" className="absolute inset-0 w-full h-full" />
-          {PETALS.map((p) => (
+        <img src="/assets/hero-roses.webp" alt="" className="absolute right-0 top-0 h-full w-auto max-w-none object-cover object-right" />
+        {PETALS.map((p, i) => (
+          <span
+            key={i}
+            className="hero-petal-fall absolute"
+            style={{ left: `${p.l}%`, width: `${p.w}vw`, animationDuration: `${p.fall}s`, animationDelay: `${p.delay}s` }}
+          >
             <img
-              key={p.src}
               src={p.src}
               alt=""
-              className="hero-petal absolute h-auto"
-              style={{
-                left: `${p.l}%`,
-                top: `${p.t}%`,
-                width: `${p.w}%`,
-                animationDuration: `${p.dur}s`,
-                animationDelay: `${p.delay}s`,
-              }}
+              className="hero-petal-sway block w-full h-auto"
+              style={{ animationDuration: `${p.sway}s`, animationDelay: `${p.delay / 3}s` }}
             />
-          ))}
-        </div>
+          </span>
+        ))}
       </div>
       <div className="container relative flex-1 flex flex-col items-center justify-center text-center gap-5 pt-28 pb-16">
         <div className="font-display font-medium text-[0.72rem] md:text-[1.325rem] tracking-[0.26em] uppercase text-primary animate-fade-in">
