@@ -255,8 +255,8 @@
 }
 
 @keyframes petal-drop {
-  0% { top: var(--start); opacity: 0; }
-  6% { top: var(--start); opacity: 1; }
+  0% { top: -10%; opacity: 0; }
+  6% { opacity: 1; }
   88% { opacity: 1; }
   100% { top: 104%; opacity: 0; }
 }
@@ -267,7 +267,7 @@
 }
 
 .hero-drop {
-  top: var(--start);
+  top: -10%;
   animation: petal-drop 22s cubic-bezier(0.45, 0, 0.75, 1) infinite;
 }
 
@@ -279,4 +279,5 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hero-drop, .hero-drop-sway { animation: none; }
+  .hero-drop { display: none; }
 }
