@@ -12,6 +12,20 @@ const SPARKLES = Array.from({ length: SPARKLE_COUNT }, (_, i) => {
   };
 });
 
+const FALLING_PETALS = [
+  { x: 55.33, y: 7.71, w: 13.5, dur: 22, delay: 0, sway: 4.5 },
+  { x: 46.17, y: 12.42, w: 12.67, dur: 26, delay: -9, sway: 5.2 },
+  { x: 65.0, y: 15.71, w: 14.67, dur: 24, delay: -4, sway: 4.8 },
+  { x: 51.67, y: 23.24, w: 12.67, dur: 28, delay: -15, sway: 5.6 },
+  { x: 62.5, y: 31.51, w: 13.5, dur: 23, delay: -2, sway: 4.2 },
+  { x: 41.17, y: 39.51, w: 14.83, dur: 27, delay: -11, sway: 5.0 },
+  { x: 60.83, y: 46.28, w: 15.17, dur: 25, delay: -7, sway: 5.4 },
+  { x: 51.67, y: 52.68, w: 12.67, dur: 21, delay: -13, sway: 4.6 },
+  { x: 60.0, y: 65.38, w: 13.5, dur: 20, delay: -5, sway: 5.8 },
+  { x: 60.0, y: 75.73, w: 14.33, dur: 18, delay: -1, sway: 4.4 },
+  { x: 51.67, y: 86.55, w: 14.33, dur: 16, delay: -3, sway: 5.1 },
+];
+
 const Hero = () => {
   return (
     <section id="top" className="hero-stage relative min-h-screen flex flex-col overflow-hidden">
@@ -25,7 +39,29 @@ const Hero = () => {
           WebkitMaskComposite: 'source-in',
         }}
       >
-        <img src="/assets/hero-roses-v1.webp" alt="" className="absolute right-0 top-0 h-full w-auto max-w-none object-cover object-right" />
+        <div className="absolute right-0 top-0 h-full aspect-[600/1063]">
+          <img src="/assets/hero-roses-v2.webp" alt="" className="absolute inset-0 w-full h-full" />
+          {FALLING_PETALS.map((p, i) => (
+            <span
+              key={i}
+              className="hero-drop absolute"
+              style={{
+                left: `${p.x}%`,
+                width: `${p.w}%`,
+                ['--start' as string]: `${p.y}%`,
+                animationDuration: `${p.dur}s`,
+                animationDelay: `${p.delay}s`,
+              }}
+            >
+              <img
+                src={`/assets/fall/f${i}.webp?v=2`}
+                alt=""
+                className="hero-drop-sway block w-full h-auto"
+                style={{ animationDuration: `${p.sway}s` }}
+              />
+            </span>
+          ))}
+        </div>
       </div>
       <div className="container relative flex-1 flex flex-col items-center justify-center text-center gap-5 pt-28 pb-16">
         <div className="font-display font-medium text-[0.72rem] md:text-[1.325rem] tracking-[0.26em] uppercase text-primary animate-fade-in">
