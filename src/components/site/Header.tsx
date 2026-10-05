@@ -102,7 +102,7 @@ const Header = () => {
                   lockUntil.current = Date.now() + 1200;
                   setSelected(l.href);
                 }}
-                className={`rounded-full px-4 py-2 md:text-base font-medium transition-all duration-200 ${
+                className={`rounded-full px-4 py-2 md:text-sm font-medium transition-all duration-200 ${
                   on
                     ? 'bg-primary text-primary-foreground -translate-y-0.5 shadow-md'
                     : 'text-foreground/75 hover:text-foreground'
