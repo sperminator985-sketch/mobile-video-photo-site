@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Icon from '@/components/ui/icon';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import CallbackDialog from './CallbackDialog';
@@ -32,6 +32,34 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [selected, setSelected] = useState<string | null>(null);
   const [hovered, setHovered] = useState<string | null>(null);
+  const lockUntil = useRef(0);
+
+  useEffect(() => {
+    const ids = desktopLinks.filter((l) => !l.external).map((l) => l.href.slice(1));
+    const onScroll = () => {
+      if (Date.now() < lockUntil.current) return;
+      const line = 120;
+      let current = ids[0];
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= line) current = id;
+      }
+      const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+      if (atBottom) current = ids[ids.length - 1];
+      setSelected(`#${current}`);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    const onScrollEnd = () => {
+      lockUntil.current = 0;
+      onScroll();
+    };
+    window.addEventListener('scrollend', onScrollEnd);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('scrollend', onScrollEnd);
+    };
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -69,7 +97,10 @@ const Header = () => {
                 href={l.href}
                 {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                 onMouseEnter={() => setHovered(l.href)}
-                onClick={() => setSelected(l.href)}
+                onClick={() => {
+                  if (!l.external) lockUntil.current = Date.now() + 1200;
+                  setSelected(l.href);
+                }}
                 className={`rounded-full px-4 py-2 md:text-base font-medium transition-all duration-200 ${
                   on
                     ? 'bg-primary text-primary-foreground -translate-y-0.5 shadow-md'
