@@ -75,7 +75,7 @@ const Header = () => {
       }`}
     >
       <div className="container relative flex items-center justify-between h-[72px] gap-2">
-        <a href="#top" className="flex items-center gap-2 sm:gap-3 min-w-0 shrink lg:pointer-events-none">
+        <a href="#top" className="flex items-center gap-2 sm:gap-3 min-w-0 shrink xl:pointer-events-none">
           <SmartImage src={LOGO} alt="" priority className="h-8 sm:h-9 w-auto shrink-0" />
           <SmartImage
             src="/assets/iceberg-video-logo-text.png"
@@ -86,7 +86,7 @@ const Header = () => {
         </a>
 
         <nav
-          className="hidden lg:flex flex-1 justify-center items-center gap-0.5 xl:gap-1 xl:flex-none xl:absolute xl:left-1/2 xl:-translate-x-1/2 whitespace-nowrap"
+          className="hidden xl:flex items-center gap-1 xl:absolute xl:left-1/2 xl:-translate-x-1/2 whitespace-nowrap"
           onMouseLeave={() => setHovered(null)}
         >
           {desktopLinks.map((l) => {
@@ -102,7 +102,7 @@ const Header = () => {
                   lockUntil.current = Date.now() + 1200;
                   setSelected(l.href);
                 }}
-                className={`rounded-full px-2.5 xl:px-4 py-2 text-[13px] xl:text-sm font-medium transition-all duration-200 ${
+                className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 ${
                   on
                     ? 'bg-primary text-primary-foreground -translate-y-0.5 shadow-md'
                     : 'text-foreground/75 hover:text-foreground'
@@ -116,15 +116,15 @@ const Header = () => {
 
         <CallbackDialog
           trigger={
-            <button className="hidden lg:inline-flex items-center gap-2 rounded-full bg-primary px-2.5 xl:px-4 py-2 text-sm font-display font-semibold text-primary-foreground hover:-translate-y-0.5 transition-transform shrink-0">
+            <button className="hidden xl:inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-display font-semibold text-primary-foreground hover:-translate-y-0.5 transition-transform shrink-0">
               <Icon name="PhoneCall" size={16} />
-              <span className="hidden xl:inline">Заказать звонок</span>
+              Заказать звонок
             </button>
           }
         />
 
         <Sheet>
-          <SheetTrigger className="lg:hidden inline-flex items-center justify-center h-11 w-11 rounded-full bg-card/80 text-foreground shrink-0">
+          <SheetTrigger className="xl:hidden inline-flex items-center justify-center h-11 w-11 rounded-full bg-card/80 text-foreground shrink-0">
             <Icon name="Menu" size={22} />
           </SheetTrigger>
           <SheetContent side="right" className="w-[80%] bg-card border-border">
