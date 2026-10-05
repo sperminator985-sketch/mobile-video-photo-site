@@ -12,35 +12,15 @@ const SPARKLES = Array.from({ length: SPARKLE_COUNT }, (_, i) => {
   };
 });
 
-const PETALS = [
-  { img: 1, right: 8, top: 2, size: 58, rot: -20 },
-  { img: 2, right: 46, top: 8, size: 40, rot: 35 },
-  { img: 3, right: 22, top: 17, size: 50, rot: 110 },
-  { img: 4, right: 62, top: 26, size: 32, rot: -60 },
-  { img: 5, right: 4, top: 31, size: 64, rot: 15 },
-  { img: 6, right: 36, top: 40, size: 44, rot: 160 },
-  { img: 7, right: 14, top: 52, size: 54, rot: -95 },
-  { img: 8, right: 52, top: 58, size: 36, rot: 70 },
-  { img: 9, right: 28, top: 69, size: 48, rot: -140 },
-  { img: 10, right: 6, top: 78, size: 60, rot: 40 },
-  { img: 2, right: 44, top: 84, size: 34, rot: -30 },
-  { img: 4, right: 70, top: 47, size: 28, rot: 120 },
-];
-
 const Hero = () => {
   return (
     <section id="top" className="hero-stage relative min-h-screen flex flex-col overflow-hidden">
-      <div aria-hidden="true" className="hidden lg:block absolute right-0 top-[96px] bottom-0 w-[30vw] pointer-events-none select-none">
-        {PETALS.map((p, i) => (
-          <img
-            key={i}
-            src={`/assets/petals/p${p.img}.webp`}
-            alt=""
-            className="absolute animate-fade-in drop-shadow-[0_6px_8px_rgba(120,20,30,0.25)]"
-            style={{ right: `${p.right}%`, top: `${p.top}%`, width: p.size, transform: `rotate(${p.rot}deg)` }}
-          />
-        ))}
-      </div>
+      <img
+        src="/assets/hero-roses.webp"
+        alt=""
+        aria-hidden="true"
+        className="hidden lg:block absolute right-0 top-0 h-full w-auto max-w-[32vw] object-cover object-right mix-blend-multiply pointer-events-none select-none animate-fade-in [mask-image:linear-gradient(to_right,transparent,black_35%)]"
+      />
       <div className="container relative flex-1 flex flex-col items-center justify-center text-center gap-5 pt-28 pb-16">
         <div className="font-display font-medium text-[0.72rem] md:text-[1.325rem] tracking-[0.26em] uppercase text-primary animate-fade-in">
           Свадебные фото и видеосъёмки
