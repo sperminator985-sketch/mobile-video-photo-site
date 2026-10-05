@@ -12,16 +12,6 @@ const SPARKLES = Array.from({ length: SPARKLE_COUNT }, (_, i) => {
   };
 });
 
-const PETALS = [
-  { src: '/assets/petals/pA.webp', l: 42, w: 2.6, fall: 16, sway: 4.5, delay: 0 },
-  { src: '/assets/petals/pB.webp', l: 58, w: 2.2, fall: 19, sway: 5.5, delay: -6 },
-  { src: '/assets/petals/pC.webp', l: 36, w: 2.4, fall: 17, sway: 5, delay: -11 },
-  { src: '/assets/petals/pD.webp', l: 66, w: 2, fall: 21, sway: 6, delay: -3 },
-  { src: '/assets/petals/pF.webp', l: 50, w: 2.3, fall: 18, sway: 4.8, delay: -14 },
-  { src: '/assets/petals/pG.webp', l: 62, w: 2.5, fall: 20, sway: 5.2, delay: -9 },
-  { src: '/assets/petals/pA.webp', l: 46, w: 1.9, fall: 22, sway: 6.2, delay: -17 },
-];
-
 const Hero = () => {
   return (
     <section id="top" className="hero-stage relative min-h-screen flex flex-col overflow-hidden">
@@ -36,20 +26,6 @@ const Hero = () => {
         }}
       >
         <img src="/assets/hero-roses-v1.webp" alt="" className="absolute right-0 top-0 h-full w-auto max-w-none object-cover object-right" />
-        {PETALS.map((p, i) => (
-          <span
-            key={i}
-            className="hero-petal-fall absolute"
-            style={{ left: `${p.l}%`, width: `${p.w}vw`, animationDuration: `${p.fall}s`, animationDelay: `${p.delay}s` }}
-          >
-            <img
-              src={p.src}
-              alt=""
-              className="hero-petal-sway block w-full h-auto"
-              style={{ animationDuration: `${p.sway}s`, animationDelay: `${p.delay / 3}s` }}
-            />
-          </span>
-        ))}
       </div>
       <div className="container relative flex-1 flex flex-col items-center justify-center text-center gap-5 pt-28 pb-16">
         <div className="font-display font-medium text-[0.72rem] md:text-[1.325rem] tracking-[0.26em] uppercase text-primary animate-fade-in">
