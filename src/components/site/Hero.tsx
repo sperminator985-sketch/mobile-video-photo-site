@@ -21,8 +21,8 @@ const Hero = () => {
         aria-hidden="true"
         className="hidden lg:block absolute right-0 top-[84px] h-[calc(100%-84px)] w-auto max-w-[32vw] object-cover object-right mix-blend-multiply pointer-events-none select-none animate-fade-in"
         style={{
-          maskImage: 'linear-gradient(to right, transparent, black 35%), linear-gradient(to bottom, transparent, black 10%)',
-          WebkitMaskImage: 'linear-gradient(to right, transparent, black 35%), linear-gradient(to bottom, transparent, black 10%)',
+          maskImage: 'linear-gradient(to right, transparent, black 35%), linear-gradient(to bottom, transparent, black 10%, black 70%, transparent)',
+          WebkitMaskImage: 'linear-gradient(to right, transparent, black 35%), linear-gradient(to bottom, transparent, black 10%, black 70%, transparent)',
           maskComposite: 'intersect',
           WebkitMaskComposite: 'source-in',
         }}
