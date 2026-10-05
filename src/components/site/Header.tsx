@@ -6,11 +6,15 @@ import SmartImage from '@/components/ui/smart-image';
 
 const LOGO = 'https://icebergvideo.ru/photos/14346e37-5113-4231-af71-69c04fab1812.png';
 
-const links = [
-  { href: '#top', label: 'Главная' },
-  { href: '#about', label: 'О нас' },
-  { href: '#portfolio', label: 'Работы' },
-  { href: '#packages', label: 'Цены' },
+const desktopLinks = [
+  { href: '#top', label: 'Главная', external: false },
+  { href: '#about', label: 'О нас', external: false },
+  { href: '#portfolio', label: 'Работы', external: false },
+  { href: '#packages', label: 'Цены', external: false },
+  { href: '#contacts', label: 'Контакты', external: false },
+  { href: 'https://icebergvideo-old.ru', label: 'Old_Ver.', external: true },
+  { href: 'http://www.icebergvideo-retro.ru', label: 'Retro_Ver.', external: true },
+  { href: 'https://chat-tom.ru', label: 'Чат-Общага', external: true },
 ];
 
 const mobileLinks = [
@@ -26,6 +30,8 @@ const mobileLinks = [
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [selected, setSelected] = useState<string | null>(null);
+  const [hovered, setHovered] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -51,46 +57,29 @@ const Header = () => {
           />
         </a>
 
-        <nav className="hidden md:flex items-center gap-8 md:absolute md:left-1/2 md:-translate-x-1/2 whitespace-nowrap">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="md:text-base font-medium text-foreground/75 hover:text-foreground transition-colors"
-            >
-              {l.label}
-            </a>
-          ))}
-          <a
-            href="#contacts"
-            className="md:text-base font-medium text-foreground/75 hover:text-foreground transition-colors"
-          >
-            Контакты
-          </a>
-          <a
-            href="https://icebergvideo-old.ru"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="md:text-base font-medium text-foreground/75 hover:text-foreground transition-colors"
-          >
-            Old_Ver.
-          </a>
-          <a
-            href="http://www.icebergvideo-retro.ru"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="md:text-base font-medium text-foreground/75 hover:text-foreground transition-colors"
-          >
-            Retro_Ver.
-          </a>
-          <a
-            href="https://chat-tom.ru"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="md:text-base font-medium text-foreground/75 hover:text-foreground transition-colors"
-          >
-            Чат-Общага
-          </a>
+        <nav
+          className="hidden md:flex items-center gap-1 md:absolute md:left-1/2 md:-translate-x-1/2 whitespace-nowrap"
+          onMouseLeave={() => setHovered(null)}
+        >
+          {desktopLinks.map((l) => {
+            const on = (hovered ?? selected) === l.href;
+            return (
+              <a
+                key={l.href}
+                href={l.href}
+                {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                onMouseEnter={() => setHovered(l.href)}
+                onClick={() => setSelected(l.href)}
+                className={`rounded-full px-4 py-2 md:text-base font-medium transition-all duration-200 ${
+                  on
+                    ? 'bg-primary text-primary-foreground -translate-y-0.5 shadow-md'
+                    : 'text-foreground/75 hover:text-foreground'
+                }`}
+              >
+                {l.label}
+              </a>
+            );
+          })}
         </nav>
 
         <CallbackDialog
