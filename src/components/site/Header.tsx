@@ -90,15 +90,16 @@ const Header = () => {
           onMouseLeave={() => setHovered(null)}
         >
           {desktopLinks.map((l) => {
-            const on = (hovered ?? selected) === l.href;
+            const on = l.external || (hovered ?? selected) === l.href;
             return (
               <a
                 key={l.href}
                 href={l.href}
                 {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                onMouseEnter={() => setHovered(l.href)}
+                onMouseEnter={() => setHovered(l.external ? null : l.href)}
                 onClick={() => {
-                  if (!l.external) lockUntil.current = Date.now() + 1200;
+                  if (l.external) return;
+                  lockUntil.current = Date.now() + 1200;
                   setSelected(l.href);
                 }}
                 className={`rounded-full px-4 py-2 md:text-base font-medium transition-all duration-200 ${
