@@ -15,7 +15,13 @@ const SPARKLES = Array.from({ length: SPARKLE_COUNT }, (_, i) => {
 const Hero = () => {
   return (
     <section id="top" className="hero-stage relative min-h-screen flex flex-col overflow-hidden">
-      <div className="container flex-1 flex flex-col items-center justify-center text-center gap-5 pt-28 pb-16">
+      <img
+        src="/assets/hero-roses.webp"
+        alt=""
+        aria-hidden="true"
+        className="hidden lg:block absolute right-0 top-0 h-full w-auto max-w-[32vw] object-cover object-right mix-blend-multiply pointer-events-none select-none animate-fade-in [mask-image:linear-gradient(to_right,transparent,black_35%)]"
+      />
+      <div className="container relative flex-1 flex flex-col items-center justify-center text-center gap-5 pt-28 pb-16">
         <div className="font-display font-medium text-[0.72rem] md:text-[1.325rem] tracking-[0.26em] uppercase text-primary animate-fade-in">
           Свадебные фото и видеосъёмки
         </div>
