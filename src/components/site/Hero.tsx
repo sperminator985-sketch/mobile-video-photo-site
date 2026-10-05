@@ -40,7 +40,7 @@ const Hero = () => {
         }}
       >
         <div className="absolute right-0 top-0 h-full aspect-[600/1063]">
-          <img src="/assets/hero-roses-v3.webp" alt="" className="absolute inset-0 w-full h-full" />
+          <img src="/assets/hero-roses-v4.webp" alt="" className="absolute inset-0 w-full h-full" />
           {FALLING_PETALS.map((p, i) => (
             <span
               key={i}
