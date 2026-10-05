@@ -35,7 +35,7 @@ const Hero = () => {
           WebkitMaskComposite: 'source-in',
         }}
       >
-        <img src="/assets/hero-roses.webp" alt="" className="absolute right-0 top-0 h-full w-auto max-w-none object-cover object-right" />
+        <img src="/assets/hero-roses-v1.webp" alt="" className="absolute right-0 top-0 h-full w-auto max-w-none object-cover object-right" />
         {PETALS.map((p, i) => (
           <span
             key={i}
