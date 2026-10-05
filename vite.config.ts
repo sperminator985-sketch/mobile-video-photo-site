@@ -2,6 +2,8 @@ import {defineConfig} from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import {componentTagger} from "pp-tagger";
+import fs from "fs";
+import {zipSync} from "fflate";
 
 // HMR-сокет превью рвёт инфраструктура: ingress-nginx на каждом reload
 // конфига (захват/освобождение любого dev-пода) через 30 с закрывает все
@@ -100,11 +102,37 @@ const hmrKeepalive = {
     transformIndexHtml: () => [{tag: 'script', children: hmrClient, injectTo: 'head-prepend' as const}],
 };
 
+let siteBuildOutDir = '';
+const siteBuildZip = {
+    name: 'site-build-zip',
+    apply: 'build' as const,
+    configResolved(config: any) {
+        siteBuildOutDir = path.resolve(config.root, config.build.outDir);
+    },
+    closeBundle() {
+        const root = siteBuildOutDir;
+        const skip = 'download/site-build.zip';
+        const files: Record<string, Uint8Array> = {};
+        const walk = (dir: string) => {
+            for (const entry of fs.readdirSync(dir, {withFileTypes: true})) {
+                const full = path.join(dir, entry.name);
+                const rel = path.relative(root, full).split(path.sep).join('/');
+                if (entry.isDirectory()) walk(full);
+                else if (rel !== skip) files[rel] = new Uint8Array(fs.readFileSync(full));
+            }
+        };
+        walk(root);
+        fs.mkdirSync(path.join(root, 'download'), {recursive: true});
+        fs.writeFileSync(path.join(root, skip), zipSync(files, {level: 9}));
+    },
+};
+
 // https://vitejs.dev/config/
 export default defineConfig(({mode}) => ({
     plugins: [
         react(),
         hmrKeepalive,
+        siteBuildZip,
         mode === 'development' &&
         componentTagger(),
     ].filter(Boolean),
