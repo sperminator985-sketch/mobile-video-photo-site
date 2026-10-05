@@ -12,56 +12,21 @@ const SPARKLES = Array.from({ length: SPARKLE_COUNT }, (_, i) => {
   };
 });
 
-const FALLING_PETALS = [
-  { x: 52, w: 11, dur: 22, delay: 0, sway: 4.5 },
-  { x: 40, w: 10, dur: 26, delay: -9, sway: 5.2 },
-  { x: 60, w: 12, dur: 24, delay: -4, sway: 4.8 },
-  { x: 46, w: 10, dur: 28, delay: -15, sway: 5.6 },
-  { x: 56, w: 11, dur: 23, delay: -2, sway: 4.2 },
-  { x: 34, w: 12, dur: 27, delay: -11, sway: 5.0 },
-  { x: 62, w: 12, dur: 25, delay: -7, sway: 5.4 },
-  { x: 44, w: 10, dur: 21, delay: -13, sway: 4.6 },
-  { x: 50, w: 11, dur: 20, delay: -5, sway: 5.8 },
-  { x: 38, w: 12, dur: 24, delay: -18, sway: 4.4 },
-  { x: 58, w: 12, dur: 19, delay: -21, sway: 5.1 },
-];
-
 const Hero = () => {
   return (
     <section id="top" className="hero-stage relative min-h-screen flex flex-col overflow-hidden">
-      <div
+      <img
+        src="/assets/hero-roses.webp?v=1"
+        alt=""
         aria-hidden="true"
-        className="hidden lg:block absolute right-0 top-[84px] h-[calc(100%-84px)] w-[32vw] overflow-hidden mix-blend-multiply pointer-events-none select-none animate-fade-in"
+        className="hidden lg:block absolute right-0 top-[84px] h-[calc(100%-84px)] w-auto max-w-[32vw] object-cover object-right mix-blend-multiply pointer-events-none select-none animate-fade-in"
         style={{
           maskImage: 'linear-gradient(to right, transparent, black 35%), linear-gradient(to bottom, transparent, black 10%, black 70%, transparent)',
           WebkitMaskImage: 'linear-gradient(to right, transparent, black 35%), linear-gradient(to bottom, transparent, black 10%, black 70%, transparent)',
           maskComposite: 'intersect',
           WebkitMaskComposite: 'source-in',
         }}
-      >
-        <div className="absolute right-0 top-0 h-full aspect-[600/1063]">
-          <img src="/assets/hero-roses-v4.webp" alt="" className="absolute inset-0 w-full h-full" />
-          {FALLING_PETALS.map((p, i) => (
-            <span
-              key={i}
-              className="hero-drop absolute"
-              style={{
-                left: `${p.x}%`,
-                width: `${p.w}%`,
-                animationDuration: `${p.dur}s`,
-                animationDelay: `${p.delay}s`,
-              }}
-            >
-              <img
-                src={`/assets/fall/f${i}.webp?v=2`}
-                alt=""
-                className="hero-drop-sway block w-full h-auto"
-                style={{ animationDuration: `${p.sway}s` }}
-              />
-            </span>
-          ))}
-        </div>
-      </div>
+      />
       <div className="container relative flex-1 flex flex-col items-center justify-center text-center gap-5 pt-28 pb-16">
         <div className="font-display font-medium text-[0.72rem] md:text-[1.325rem] tracking-[0.26em] uppercase text-primary animate-fade-in">
           Свадебные фото и видеосъёмки
