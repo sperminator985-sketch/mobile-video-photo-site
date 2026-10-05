@@ -1,4 +1,5 @@
 import Icon from '@/components/ui/icon';
+import RoseCorner from '@/components/site/RoseCorner';
 
 const packages = [
   {
@@ -36,8 +37,10 @@ const packages = [
 
 const Packages = () => {
   return (
-    <section id="packages" className="py-8 bg-background">
-      <div className="container">
+    <section id="packages" className="relative overflow-hidden py-8 bg-background">
+      <RoseCorner corner="top-right" variant="pink" />
+      <RoseCorner corner="bottom-left" variant="white" />
+      <div className="container relative z-10">
         <div className="text-center max-w-2xl mx-auto mb-14">
           <div className="font-display font-medium text-base tracking-[0.22em] uppercase text-primary mb-4">
             Цены
