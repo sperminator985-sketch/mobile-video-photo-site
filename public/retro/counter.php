@@ -2,19 +2,26 @@
 /*
  * Счётчик посетителей для ретро-версии сайта.
  *
- * Отдаёт картинку-табло с числом посещений.
- * Лежит на том же домене и работает по обычному HTTP,
- * поэтому старые браузеры видят её без проблем.
+ * Работает полностью на хостинге, без облака.
+ * Число посещений хранится в файле data/counter.txt,
+ * табло собирается из готовых картинок цифр img/cnt/0.gif ... 9.gif.
  *
- * Число берётся из облака. Если облако недоступно —
- * отдаётся последняя сохранённая картинка.
+ * Один и тот же посетитель засчитывается не чаще раза в 12 часов.
+ * Чтобы поменять число на табло — впишите нужное число в data/counter.txt.
  */
 
-$base  = 'https://functions.poehali.dev/83dde32c-9f08-457a-b13c-c87ce2fb125f';
-$cache = __DIR__ . '/img/cnt_fallback.gif';
+$digits   = 5;
+$repeat   = 12 * 3600;
+$dataDir  = __DIR__ . '/data';
+$cntFile  = $dataDir . '/counter.txt';
+$seenFile = $dataDir . '/seen.txt';
+$imgDir   = __DIR__ . '/img/cnt';
+$fallback = __DIR__ . '/img/cnt_fallback.gif';
 
-// Передаём в облако адрес настоящего посетителя,
-// иначе все визиты выглядят как один и счётчик не растёт.
+if (!is_dir($dataDir)) {
+    @mkdir($dataDir, 0775);
+}
+
 $ip = '';
 foreach (array('HTTP_X_FORWARDED_FOR', 'HTTP_X_REAL_IP', 'REMOTE_ADDR') as $key) {
     if (!empty($_SERVER[$key])) {
@@ -23,65 +30,75 @@ foreach (array('HTTP_X_FORWARDED_FOR', 'HTTP_X_REAL_IP', 'REMOTE_ADDR') as $key)
         break;
     }
 }
+$ua = isset($_SERVER['HTTP_USER_AGENT']) ? substr($_SERVER['HTTP_USER_AGENT'], 0, 120) : '';
+$visitor = md5($ip . '|' . $ua);
+$now = time();
 
-$ua = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
+$hits = 0;
+$fp = @fopen($cntFile, 'c+');
+if ($fp) {
+    flock($fp, LOCK_EX);
+    $hits = (int) trim(stream_get_contents($fp));
 
-$source = $base . '?ip=' . urlencode($ip);
+    $seen = array();
+    if (file_exists($seenFile)) {
+        foreach (file($seenFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
+            $p = explode(' ', $line);
+            if (count($p) == 2 && ($now - (int) $p[1]) < $repeat) {
+                $seen[$p[0]] = (int) $p[1];
+            }
+        }
+    }
+
+    if (!isset($seen[$visitor])) {
+        $hits++;
+        $seen[$visitor] = $now;
+
+        ftruncate($fp, 0);
+        rewind($fp);
+        fwrite($fp, (string) $hits);
+        fflush($fp);
+
+        $out = '';
+        foreach ($seen as $k => $t) {
+            $out .= $k . ' ' . $t . "\n";
+        }
+        @file_put_contents($seenFile, $out);
+    }
+
+    flock($fp, LOCK_UN);
+    fclose($fp);
+}
 
 header('Content-Type: image/gif');
 header('Cache-Control: no-cache, no-store, must-revalidate');
 header('Pragma: no-cache');
 header('Expires: 0');
 
-$data = false;
+$text = substr(str_pad((string) $hits, $digits, '0', STR_PAD_LEFT), -$digits);
 
-if (function_exists('curl_init')) {
-    $ch = curl_init($source);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 5);
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-        'X-Visitor-IP: ' . $ip,
-        'X-Visitor-UA: ' . substr($ua, 0, 120),
-    ));
-    $result = curl_exec($ch);
-    $code   = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-    curl_close($ch);
+if (function_exists('imagecreatefromgif')) {
+    $w = 16;
+    $h = 24;
+    $im = imagecreate($w * strlen($text), $h);
+    imagecolorallocate($im, 0, 0, 0);
 
-    if ($result !== false && $code == 200 && strlen($result) > 20) {
-        $data = $result;
+    for ($i = 0; $i < strlen($text); $i++) {
+        $d = @imagecreatefromgif($imgDir . '/' . $text[$i] . '.gif');
+        if ($d) {
+            imagecopy($im, $d, $i * $w, 0, 0, 0, $w, $h);
+            imagedestroy($d);
+        }
     }
+
+    imagegif($im);
+    imagedestroy($im);
+    exit;
 }
 
-if ($data === false && ini_get('allow_url_fopen')) {
-    $ctx = stream_context_create(array(
-        'http' => array(
-            'timeout' => 5,
-            'header'  => "X-Visitor-IP: " . $ip . "\r\n"
-                       . "X-Visitor-UA: " . substr($ua, 0, 120) . "\r\n",
-        ),
-        'ssl' => array('verify_peer' => false, 'verify_peer_name' => false),
-    ));
-    $result = @file_get_contents($source, false, $ctx);
-    if ($result !== false && strlen($result) > 20) {
-        $data = $result;
-    }
+if (file_exists($fallback)) {
+    readfile($fallback);
+    exit;
 }
 
-if ($data !== false) {
-    @file_put_contents($cache, $data);
-}
-
-if ($data === false && file_exists($cache)) {
-    $data = file_get_contents($cache);
-}
-
-if ($data === false) {
-    $data = base64_decode('R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
-}
-
-header('Content-Length: ' . strlen($data));
-echo $data;
+echo base64_decode('R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
