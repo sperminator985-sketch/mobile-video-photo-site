@@ -27,7 +27,7 @@ const Hero = () => {
           WebkitMaskComposite: 'source-in',
         }}
       />
-      <div className="container relative flex-1 flex flex-col items-center justify-center md:justify-start xl:justify-center text-center gap-5 pt-28 md:pt-[137px] xl:pt-28 pb-16">
+      <div className="container relative flex-1 flex flex-col items-center justify-center md:justify-start xl:justify-center text-center gap-5 pt-[84px] md:pt-[137px] xl:pt-28 pb-16">
         <img
           src="/assets/rings-roses.webp?v=8"
           alt=""
