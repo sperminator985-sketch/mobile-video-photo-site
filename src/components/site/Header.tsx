@@ -74,14 +74,14 @@ const Header = () => {
         scrolled ? 'bg-card/85 backdrop-blur-md shadow-[0_8px_30px_-18px_rgba(46,65,111,0.5)]' : 'bg-transparent'
       }`}
     >
-      <div className="container relative flex items-center justify-between h-[72px] gap-2">
+      <div className="container relative flex items-center justify-between h-[72px] md:h-[80px] xl:h-[72px] gap-2">
         <a href="#top" className="flex items-center gap-2 sm:gap-3 min-w-0 shrink md:absolute md:left-1/2 md:-translate-x-1/2 xl:static xl:translate-x-0 xl:pointer-events-none">
-          <SmartImage src={LOGO} alt="" priority className="h-8 sm:h-9 w-auto shrink-0" />
+          <SmartImage src={LOGO} alt="" priority className="h-8 sm:h-9 md:h-12 xl:h-9 w-auto shrink-0" />
           <SmartImage
             src="/assets/iceberg-video-logo-text.png"
             alt="Айсберг-видео"
             priority
-            className="h-7 sm:h-8 w-auto shrink-0"
+            className="h-7 sm:h-8 md:h-11 xl:h-8 w-auto shrink-0"
           />
         </a>
 
