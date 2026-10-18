@@ -40,7 +40,7 @@ const Hero = () => {
         </div>
 
         <div
-          className="hero-medallion hero-ring-frame relative grid place-items-center rounded-full w-[230px] h-[230px] md:w-[320px] md:h-[320px]"
+          className="hero-medallion hero-ring-frame relative grid place-items-center rounded-full md:mt-6 xl:mt-0 w-[230px] h-[230px] md:w-[320px] md:h-[320px]"
           style={{
             boxShadow: '0 26px 60px -24px color-mix(in srgb, var(--hero-x-water) 60%, transparent)',
           }}
