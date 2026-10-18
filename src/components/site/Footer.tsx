@@ -26,7 +26,7 @@ const Footer = () => {
           </p>
         </div>
 
-        <div className="hidden md:flex absolute left-[22%] lg:left-[25%] top-0 bottom-0 items-center">
+        <div className="hidden xl:flex absolute left-[25%] top-0 bottom-0 items-center">
           <Link
             to="/privacy"
             className="text-sm text-white/70 underline underline-offset-4 hover:text-white transition-colors text-center leading-snug"
@@ -37,7 +37,7 @@ const Footer = () => {
           </Link>
         </div>
 
-        <div className="hidden md:flex absolute right-[22%] lg:right-[25%] top-0 bottom-0 items-center">
+        <div className="hidden xl:flex absolute right-[25%] top-0 bottom-0 items-center">
           <Link
             to="/terms"
             className="text-sm text-white/70 underline underline-offset-4 hover:text-white transition-colors text-center leading-snug"
