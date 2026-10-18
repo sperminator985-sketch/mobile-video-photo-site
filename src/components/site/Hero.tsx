@@ -28,6 +28,13 @@ const Hero = () => {
         }}
       />
       <div className="container relative flex-1 flex flex-col items-center justify-center text-center gap-5 pt-28 md:pt-36 xl:pt-28 pb-16">
+        <img
+          src="/assets/rings-roses.webp?v=1"
+          alt=""
+          aria-hidden="true"
+          className="hidden md:block xl:hidden w-[220px] h-auto -mb-2 mix-blend-multiply pointer-events-none select-none animate-fade-in"
+        />
+
         <div className="font-display font-medium text-[0.72rem] md:text-[1.325rem] tracking-[0.26em] uppercase text-primary animate-fade-in">
           Свадебные фото и видеосъёмки
         </div>
