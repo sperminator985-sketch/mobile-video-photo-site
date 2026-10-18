@@ -1,6 +1,4 @@
 import SmartImage from '@/components/ui/smart-image';
-import Icon from '@/components/ui/icon';
-import CallbackDialog from './CallbackDialog';
 
 const SPARKLE_COUNT = 20;
 
@@ -30,17 +28,6 @@ const Hero = () => {
         }}
       />
       <div className="container relative flex-1 flex flex-col items-center justify-center text-center gap-5 pt-28 md:pt-36 xl:pt-28 pb-16">
-        <div className="hidden md:block xl:hidden">
-          <CallbackDialog
-            trigger={
-              <button className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-display font-semibold text-primary-foreground hover:-translate-y-0.5 transition-transform">
-                <Icon name="PhoneCall" size={16} />
-                Заказать звонок
-              </button>
-            }
-          />
-        </div>
-
         <div className="font-display font-medium text-[0.72rem] md:text-[1.325rem] tracking-[0.26em] uppercase text-primary animate-fade-in">
           Свадебные фото и видеосъёмки
         </div>
