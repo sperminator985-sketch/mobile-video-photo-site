@@ -124,7 +124,7 @@ const Header = () => {
         />
 
         <Sheet>
-          <SheetTrigger className="xl:hidden ml-auto inline-flex items-center justify-center h-11 w-11 rounded-full bg-card/80 text-foreground shrink-0">
+          <SheetTrigger className="md:hidden ml-auto inline-flex items-center justify-center h-11 w-11 rounded-full bg-card/80 text-foreground shrink-0">
             <Icon name="Menu" size={22} />
           </SheetTrigger>
           <SheetContent side="right" className="w-[80%] bg-card border-border">
