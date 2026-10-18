@@ -42,6 +42,13 @@ const REPORTAGE_PHOTOS = [
   'https://icebergvideo.ru/photos/8813e902-1c91-47e5-a38d-c21f29770583.jpg',
 ];
 
+const TOMSK_PHOTOS = [
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/d61653f8-d7ef-45aa-84cd-a89b2b0609cf.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/1afc7915-f0cd-4387-b688-ffd7fedbc184.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/e653c0de-137d-4908-afbd-dde1783f6639.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/886aaf76-2264-4e96-b1a9-00e70eadd878.jpg',
+];
+
 type Item = {
   id: number;
   type: 'video' | 'photo';
@@ -50,6 +57,7 @@ type Item = {
   img: string;
   gallery?: string[];
   video?: string;
+  tabletOnly?: boolean;
 };
 
 const items: Item[] = [
@@ -76,6 +84,15 @@ const items: Item[] = [
     meta: 'Репортаж · 10 кадров',
     img: CEREMONY_PHOTOS[0],
     gallery: CEREMONY_PHOTOS,
+  },
+  {
+    id: 7,
+    type: 'photo',
+    title: 'Прогулка по Томску',
+    meta: 'Фотосессия · 4 кадра',
+    img: TOMSK_PHOTOS[0],
+    gallery: TOMSK_PHOTOS,
+    tabletOnly: true,
   },
 ];
 
@@ -114,7 +131,9 @@ const Portfolio = () => {
             <button
               key={item.id}
               onClick={() => openItem(item)}
-              className="group relative text-left overflow-hidden rounded-[1.5rem] border border-border bg-card animate-scale-in"
+              className={`group relative text-left overflow-hidden rounded-[1.5rem] border border-border bg-card animate-scale-in ${
+                item.tabletOnly ? 'hidden sm:block lg:hidden' : ''
+              }`}
             >
               <div className="aspect-[4/5] overflow-hidden">
                 <SmartImage
