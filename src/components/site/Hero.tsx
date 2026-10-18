@@ -32,7 +32,7 @@ const Hero = () => {
           src="/assets/rings-roses.webp?v=8"
           alt=""
           aria-hidden="true"
-          className="hidden md:block xl:hidden w-[560px] h-auto mix-blend-multiply pointer-events-none select-none animate-fade-in"
+          className="block xl:hidden w-full max-w-[360px] md:w-[560px] md:max-w-none h-auto mix-blend-multiply pointer-events-none select-none animate-fade-in"
         />
 
         <div className="font-display font-medium text-[0.72rem] md:text-[1.325rem] tracking-[0.26em] uppercase text-primary animate-fade-in">
@@ -63,7 +63,7 @@ const Hero = () => {
           ))}
         </div>
 
-        <h1 className="font-display font-extrabold leading-[0.98] tracking-[-0.035em] text-[clamp(2.25rem,7vw,4.5rem)] max-w-[15ch] animate-fade-in">
+        <h1 className="font-display font-extrabold leading-[0.98] tracking-[-0.035em] text-[6.4vw] md:text-[clamp(2.25rem,7vw,4.5rem)] whitespace-nowrap md:whitespace-normal md:max-w-[15ch] animate-fade-in">
           <span className="text-primary">Ваша свадьба</span>
           <br />
           <span className="text-primary">в главной роли</span>
