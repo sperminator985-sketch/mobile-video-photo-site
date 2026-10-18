@@ -55,6 +55,19 @@ const TOMSK_PHOTOS = [
   'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/5e88b86f-1047-49f3-933d-e5708fe37739.jpg',
 ];
 
+const WINTER_PHOTOS = [
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/7e35386d-d9f9-41f9-81a1-3237c25dbfba.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/12f2d934-6654-4c3c-81df-6593cffa5636.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/e92b7955-94c7-43e9-bf5b-32361bb2a833.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/241ff0d0-6129-4e62-b98e-f8179ad88819.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/7af0757f-d16c-440c-81f6-9e0d0b2cd1a5.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/77bfc620-8902-437b-ad48-a3c78fb81c96.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/cbe01a6e-6e35-4230-869b-cd4c8f6ae32d.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/e403f292-08af-48f4-a40b-ef1e6c0c89b8.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/0a2df4ce-9a61-41cb-9907-e8c4daf325ea.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/6020b279-b3ac-4d5c-8d46-5c4131fe6818.jpg',
+];
+
 type Item = {
   id: number;
   type: 'video' | 'photo';
@@ -64,6 +77,7 @@ type Item = {
   gallery?: string[];
   video?: string;
   tabletOnly?: boolean;
+  wide?: boolean;
 };
 
 const items: Item[] = [
@@ -99,6 +113,15 @@ const items: Item[] = [
     img: TOMSK_PHOTOS[0],
     gallery: TOMSK_PHOTOS,
     tabletOnly: true,
+  },
+  {
+    id: 8,
+    type: 'photo',
+    title: 'Зимний Томск',
+    meta: 'Фотосессия · 10 кадров',
+    img: WINTER_PHOTOS[0],
+    gallery: WINTER_PHOTOS,
+    wide: true,
   },
 ];
 
@@ -139,9 +162,10 @@ const Portfolio = () => {
               onClick={() => openItem(item)}
               className={`group relative text-left overflow-hidden rounded-[1.5rem] border border-border bg-card animate-scale-in ${
                 item.tabletOnly ? 'hidden sm:block lg:hidden' : ''
+              } ${item.wide ? 'sm:col-span-2 lg:col-span-3' : ''
               }`}
             >
-              <div className="aspect-[4/5] overflow-hidden">
+              <div className={`overflow-hidden ${item.wide ? 'aspect-[4/5] sm:aspect-[16/9] lg:aspect-[21/9]' : 'aspect-[4/5]'}`}>
                 <SmartImage
                   src={item.img}
                   alt={item.title}
