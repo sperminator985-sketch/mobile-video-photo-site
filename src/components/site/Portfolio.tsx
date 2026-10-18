@@ -47,6 +47,12 @@ const TOMSK_PHOTOS = [
   'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/1afc7915-f0cd-4387-b688-ffd7fedbc184.jpg',
   'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/e653c0de-137d-4908-afbd-dde1783f6639.jpg',
   'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/886aaf76-2264-4e96-b1a9-00e70eadd878.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/307028d3-1cce-4236-834f-ea8cad836952.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/38ce299c-9240-42b0-922f-bda90924b671.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/e8878c10-6757-4206-88ec-b4168c695982.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/6eac6394-0700-4fce-a684-a79e03a191e1.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/aa31b104-b769-4639-ba91-689e39bb343b.jpg',
+  'https://cdn.poehali.dev/projects/c8c6bf73-a08e-42bc-96f2-0959e7bb7640/files/5e88b86f-1047-49f3-933d-e5708fe37739.jpg',
 ];
 
 type Item = {
@@ -89,7 +95,7 @@ const items: Item[] = [
     id: 7,
     type: 'photo',
     title: 'Прогулка по Томску',
-    meta: 'Фотосессия · 4 кадра',
+    meta: 'Фотосессия · 10 кадров',
     img: TOMSK_PHOTOS[0],
     gallery: TOMSK_PHOTOS,
     tabletOnly: true,
