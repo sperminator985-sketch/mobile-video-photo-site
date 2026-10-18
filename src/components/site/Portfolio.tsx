@@ -122,6 +122,7 @@ const items: Item[] = [
     img: WINTER_PHOTOS[0],
     gallery: WINTER_PHOTOS,
     wide: true,
+    tabletOnly: true,
   },
 ];
 
@@ -162,10 +163,10 @@ const Portfolio = () => {
               onClick={() => openItem(item)}
               className={`group relative text-left overflow-hidden rounded-[1.5rem] border border-border bg-card animate-scale-in ${
                 item.tabletOnly ? 'hidden sm:block lg:hidden' : ''
-              } ${item.wide ? 'sm:col-span-2 lg:col-span-3' : ''
+              } ${item.wide ? 'sm:col-span-2' : ''
               }`}
             >
-              <div className={`overflow-hidden ${item.wide ? 'aspect-[4/5] sm:aspect-[16/9] lg:aspect-[21/9]' : 'aspect-[4/5]'}`}>
+              <div className={`overflow-hidden ${item.wide ? 'aspect-[4/5] sm:aspect-[16/9]' : 'aspect-[4/5]'}`}>
                 <SmartImage
                   src={item.img}
                   alt={item.title}

@@ -27,7 +27,7 @@ const Hero = () => {
           WebkitMaskComposite: 'source-in',
         }}
       />
-      <div className="container relative flex-1 flex flex-col items-center justify-center text-center gap-5 pt-28 pb-16">
+      <div className="container relative flex-1 flex flex-col items-center justify-center text-center gap-5 pt-28 md:pt-36 xl:pt-28 pb-16">
         <div className="font-display font-medium text-[0.72rem] md:text-[1.325rem] tracking-[0.26em] uppercase text-primary animate-fade-in">
           Свадебные фото и видеосъёмки
         </div>

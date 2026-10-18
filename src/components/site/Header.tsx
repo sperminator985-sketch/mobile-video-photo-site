@@ -153,6 +153,29 @@ const Header = () => {
           </SheetContent>
         </Sheet>
       </div>
+
+      <nav className="hidden md:flex xl:hidden container justify-center items-center gap-0.5 pb-2 -mt-1 whitespace-nowrap">
+        {desktopLinks.map((l) => {
+          const on = !l.external && selected === l.href;
+          return (
+            <a
+              key={l.href}
+              href={l.href}
+              {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              onClick={() => {
+                if (l.external) return;
+                lockUntil.current = Date.now() + 1200;
+                setSelected(l.href);
+              }}
+              className={`rounded-full px-2.5 py-1.5 text-[13px] font-medium transition-colors ${
+                on ? 'bg-primary text-primary-foreground' : 'text-foreground/75 hover:text-foreground'
+              }`}
+            >
+              {l.label}
+            </a>
+          );
+        })}
+      </nav>
     </header>
   );
 };
