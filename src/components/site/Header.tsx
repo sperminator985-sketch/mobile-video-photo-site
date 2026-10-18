@@ -75,7 +75,7 @@ const Header = () => {
       }`}
     >
       <div className="container relative flex items-center justify-between h-[72px] gap-2">
-        <a href="#top" className="flex items-center gap-2 sm:gap-3 min-w-0 shrink xl:pointer-events-none">
+        <a href="#top" className="flex items-center gap-2 sm:gap-3 min-w-0 shrink md:absolute md:left-1/2 md:-translate-x-1/2 xl:static xl:translate-x-0 xl:pointer-events-none">
           <SmartImage src={LOGO} alt="" priority className="h-8 sm:h-9 w-auto shrink-0" />
           <SmartImage
             src="/assets/iceberg-video-logo-text.png"
@@ -124,7 +124,7 @@ const Header = () => {
         />
 
         <Sheet>
-          <SheetTrigger className="xl:hidden inline-flex items-center justify-center h-11 w-11 rounded-full bg-card/80 text-foreground shrink-0">
+          <SheetTrigger className="xl:hidden ml-auto inline-flex items-center justify-center h-11 w-11 rounded-full bg-card/80 text-foreground shrink-0">
             <Icon name="Menu" size={22} />
           </SheetTrigger>
           <SheetContent side="right" className="w-[80%] bg-card border-border">
