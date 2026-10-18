@@ -29,7 +29,7 @@ const Hero = () => {
       />
       <div className="container relative flex-1 flex flex-col items-center justify-center md:justify-start xl:justify-center text-center gap-5 pt-28 md:pt-[137px] xl:pt-28 pb-16">
         <img
-          src="/assets/rings-roses.webp?v=7"
+          src="/assets/rings-roses.webp?v=8"
           alt=""
           aria-hidden="true"
           className="hidden md:block xl:hidden w-[560px] h-auto mix-blend-multiply pointer-events-none select-none animate-fade-in"
