@@ -156,7 +156,7 @@ const Header = () => {
 
       <nav className="hidden md:flex xl:hidden container justify-center items-center gap-0.5 pb-2 -mt-1 whitespace-nowrap">
         {desktopLinks.map((l) => {
-          const on = !l.external && selected === l.href;
+          const on = l.external || selected === l.href;
           return (
             <a
               key={l.href}
