@@ -10,7 +10,7 @@ import { formatPhone } from './CallbackForm';
 const SEND_LEAD_URL = 'https://functions.poehali.dev/2c609e31-a278-4787-9035-9753fda9bb86';
 
 const Contacts = () => {
-  const [form, setForm] = useState({ name: '', phone: '', date: '', message: '' });
+  const [form, setForm] = useState({ name: '', phone: '', message: '' });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [sending, setSending] = useState(false);
 
@@ -42,7 +42,7 @@ const Contacts = () => {
       toast.success('Заявка отправлена!', {
         description: 'Мы свяжемся с вами в течение дня и обсудим детали.',
       });
-      setForm({ name: '', phone: '', date: '', message: '' });
+      setForm({ name: '', phone: '', message: '' });
     } catch {
       toast.error('Не удалось отправить заявку', {
         description: 'Попробуйте ещё раз или позвоните нам по телефону.',
@@ -94,17 +94,6 @@ const Contacts = () => {
                   className="h-12 rounded-xl bg-background"
                 />
                 {errors.phone && <p className="mt-1.5 text-sm text-destructive">{errors.phone}</p>}
-              </div>
-
-              <div>
-                <Label htmlFor="date" className="mb-2 block font-display">Дата свадьбы</Label>
-                <Input
-                  id="date"
-                  type="date"
-                  value={form.date}
-                  onChange={(e) => set('date', e.target.value)}
-                  className="h-12 rounded-xl bg-background"
-                />
               </div>
 
               <div>

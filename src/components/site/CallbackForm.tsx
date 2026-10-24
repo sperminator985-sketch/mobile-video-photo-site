@@ -56,7 +56,7 @@ const CallbackForm = ({ idPrefix = 'callback', onSuccess, className = '' }: Call
       const res = await fetch(SEND_LEAD_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, date: '', message: 'Заказ обратного звонка' }),
+        body: JSON.stringify({ ...form, message: 'Заказ обратного звонка' }),
       });
       if (!res.ok) throw new Error('send failed');
       toast.success('Заявка принята!', {

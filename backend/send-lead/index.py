@@ -37,7 +37,6 @@ def handler(event: dict, context) -> dict:
 
     name = (data.get('name') or '').strip()
     phone = (data.get('phone') or '').strip()
-    date = (data.get('date') or '').strip()
     message = (data.get('message') or '').strip()
     package = (data.get('package') or '').strip()
     source = (data.get('source') or '').strip()
@@ -58,7 +57,6 @@ def handler(event: dict, context) -> dict:
         '',
         f'Имя: {name}',
         f'Телефон: {phone}',
-        f'Дата свадьбы: {date or "не указана"}',
     ]
     if package:
         lines.append(f'Пакет: {package}')
