@@ -36,11 +36,12 @@ const Header = () => {
     const ids = desktopLinks.filter((l) => !l.external).map((l) => l.href.slice(1));
     const onScroll = () => {
       if (Date.now() < lockUntil.current) return;
-      const line = 120;
       let current = ids[0];
       for (const id of ids) {
         const el = document.getElementById(id);
-        if (el && el.getBoundingClientRect().top <= line) current = id;
+        if (!el) continue;
+        const line = (parseFloat(getComputedStyle(el).scrollMarginTop) || 0) + 24;
+        if (el.getBoundingClientRect().top <= line) current = id;
       }
       const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
       if (atBottom) current = ids[ids.length - 1];
@@ -61,7 +62,7 @@ const Header = () => {
 
   const pick = (l: { href: string; external: boolean }) => {
     if (l.external) return;
-    lockUntil.current = Date.now() + 1200;
+    lockUntil.current = Date.now() + 2500;
     setSelected(l.href);
   };
   const bg = (l: { href: string; external: boolean }) =>
