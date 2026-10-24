@@ -74,19 +74,19 @@ const Header = () => {
         scrolled ? 'bg-card/85 backdrop-blur-md shadow-[0_8px_30px_-18px_rgba(46,65,111,0.5)]' : 'bg-transparent'
       }`}
     >
-      <div className="container relative flex items-center justify-between h-[72px] md:h-[80px] xl:h-[72px] gap-2">
-        <a href="#top" className="xl:hidden flex items-center gap-2 sm:gap-3 min-w-0 shrink absolute left-1/2 -translate-x-1/2">
-          <SmartImage src={LOGO} alt="" priority className="absolute right-full mr-2 sm:mr-3 md:static md:mr-0 h-8 sm:h-9 md:h-12 w-auto shrink-0" />
+      <div className="container relative flex items-center justify-between h-[72px] md:h-[80px] xl:h-auto xl:flex-col xl:justify-start xl:gap-2 xl:py-3 gap-2">
+        <a href="#top" className="flex items-center gap-2 sm:gap-3 min-w-0 shrink absolute left-1/2 -translate-x-1/2 xl:static xl:translate-x-0">
+          <SmartImage src={LOGO} alt="" priority className="absolute right-full mr-2 sm:mr-3 md:static md:mr-0 h-8 sm:h-9 md:h-12 xl:h-11 w-auto shrink-0" />
           <SmartImage
             src="/assets/iceberg-video-logo-text.png"
             alt="Айсберг-видео"
             priority
-            className="h-7 sm:h-8 md:h-11 w-auto shrink-0"
+            className="h-7 sm:h-8 md:h-11 xl:h-10 w-auto shrink-0"
           />
         </a>
 
         <nav
-          className="hidden xl:flex items-center gap-1 xl:absolute xl:left-1/2 xl:-translate-x-1/2 whitespace-nowrap"
+          className="hidden xl:flex items-center gap-1 whitespace-nowrap"
           onMouseLeave={() => setHovered(null)}
         >
           {desktopLinks.map((l) => {
