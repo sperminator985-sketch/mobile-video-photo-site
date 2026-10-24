@@ -29,7 +29,7 @@ const Hero = () => {
           WebkitMaskComposite: 'source-in',
         }}
       />
-      <div className="container relative flex-1 flex flex-col items-center justify-center md:justify-center text-center gap-5 pt-[84px] md:pt-[156px] xl:pt-[132px] pb-16 md:pb-[9px] xl:pb-16">
+      <div className="container relative flex-1 flex flex-col items-center justify-center md:justify-center text-center gap-5 pt-[84px] md:pt-[156px] xl:pt-[156px] pb-16 md:pb-[9px] xl:pb-16">
         <a href="#top" className="relative hidden items-center animate-fade-in">
           <SmartImage
             src={LOGO}
