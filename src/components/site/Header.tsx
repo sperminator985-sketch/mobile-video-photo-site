@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Icon from '@/components/ui/icon';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import CallbackDialog from './CallbackDialog';
@@ -30,6 +30,44 @@ const mobileLinks = [
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [selected, setSelected] = useState<string | null>(null);
+  const lockUntil = useRef(0);
+
+  useEffect(() => {
+    const ids = desktopLinks.filter((l) => !l.external).map((l) => l.href.slice(1));
+    const onScroll = () => {
+      if (Date.now() < lockUntil.current) return;
+      const line = 120;
+      let current = ids[0];
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= line) current = id;
+      }
+      const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+      if (atBottom) current = ids[ids.length - 1];
+      setSelected(`#${current}`);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    const onScrollEnd = () => {
+      lockUntil.current = 0;
+      onScroll();
+    };
+    window.addEventListener('scrollend', onScrollEnd);
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('scrollend', onScrollEnd);
+    };
+  }, []);
+
+  const pick = (l: { href: string; external: boolean }) => {
+    if (l.external) return;
+    lockUntil.current = Date.now() + 1200;
+    setSelected(l.href);
+  };
+  const bg = (l: { href: string; external: boolean }) =>
+    !l.external && selected === l.href ? 'bg-[var(--logo-blue)]' : 'bg-primary';
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
@@ -60,7 +98,8 @@ const Header = () => {
               key={l.href}
               href={l.href}
               {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              className="rounded-full px-4 py-2 text-sm font-medium bg-primary text-primary-foreground -translate-y-0.5 shadow-md transition-colors duration-200 hover:bg-[var(--logo-blue)]"
+              onClick={() => pick(l)}
+              className={`rounded-full px-4 py-2 text-sm font-medium ${bg(l)} text-primary-foreground -translate-y-0.5 shadow-md transition-colors duration-200 hover:bg-[var(--logo-blue)]`}
             >
               {l.label}
             </a>
@@ -104,7 +143,8 @@ const Header = () => {
             key={l.href}
             href={l.href}
             {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-            className="rounded-full px-3 py-2 text-[15px] font-medium bg-primary text-primary-foreground transition-colors duration-200 hover:bg-[var(--logo-blue)]"
+            onClick={() => pick(l)}
+            className={`rounded-full px-3 py-2 text-[15px] font-medium ${bg(l)} text-primary-foreground transition-colors duration-200 hover:bg-[var(--logo-blue)]`}
           >
             {l.label}
           </a>
