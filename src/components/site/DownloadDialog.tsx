@@ -69,7 +69,7 @@ const DownloadDialog = ({ trigger }: DownloadDialogProps) => {
           <button
             type="submit"
             disabled={loading || !password}
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 font-display font-semibold text-primary-foreground disabled:opacity-60"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 font-display font-semibold text-primary-foreground transition-colors duration-200 hover:bg-[var(--logo-blue)] disabled:opacity-60"
           >
             <Icon name={loading ? 'Loader2' : 'Download'} size={18} className={loading ? 'animate-spin' : ''} />
             {loading ? 'Собираю архив…' : 'Скачать'}

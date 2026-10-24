@@ -113,7 +113,7 @@ const CallbackForm = ({ idPrefix = 'callback', onSuccess, className = '' }: Call
         <button
           type="submit"
           disabled={sending}
-          className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-display font-semibold text-primary-foreground shadow-[0_16px_34px_-14px_hsl(var(--primary))] hover:-translate-y-0.5 transition-transform disabled:opacity-60 disabled:hover:translate-y-0"
+          className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-display font-semibold text-primary-foreground shadow-[0_16px_34px_-14px_hsl(var(--primary))] hover:-translate-y-0.5 hover:bg-[var(--logo-blue)] hover:shadow-[0_16px_34px_-14px_var(--logo-blue)] transition-all duration-200 disabled:opacity-60 disabled:hover:translate-y-0"
         >
           <Icon name={sending ? 'Loader2' : 'PhoneCall'} size={18} className={sending ? 'animate-spin' : ''} />
           {sending ? 'Отправляем…' : 'Заказать звонок'}
