@@ -216,8 +216,8 @@
 
 .hero-sparkle {
   position: absolute;
-  width: 16px;
-  height: 16px;
+  width: 9px;
+  height: 9px;
   transform: translate(-50%, -50%) scale(0);
   background: radial-gradient(circle, #ffffff 0%, #fff3c4 45%, #f2c96b 100%);
   clip-path: polygon(
@@ -230,14 +230,14 @@
     0% 50%,
     39% 39%
   );
-  filter: drop-shadow(0 0 4px rgba(255, 240, 190, 1));
-  animation: hero-twinkle 1.4s ease-in-out infinite;
+  filter: drop-shadow(0 0 3px rgba(255, 240, 190, 1));
+  animation: hero-twinkle 2.2s ease-in-out infinite;
   pointer-events: none;
 }
 @media (min-width: 768px) {
   .hero-sparkle {
-    width: 20px;
-    height: 20px;
+    width: 11px;
+    height: 11px;
   }
 }
 @keyframes hero-twinkle {

@@ -10,7 +10,8 @@ const SPARKLES = Array.from({ length: SPARKLE_COUNT }, (_, i) => {
   return {
     left: 50 + radius * Math.cos(angle),
     top: 50 + radius * Math.sin(angle),
-    delay: ((i * 7) % SPARKLE_COUNT) * 0.07,
+    delay: Math.abs(Math.sin(i * 12.9898) * 43758.5453) % 3.2,
+    duration: 1.6 + (Math.abs(Math.sin(i * 78.233) * 12345.678) % 1.6),
   };
 });
 
@@ -75,7 +76,7 @@ const Hero = () => {
             <span
               key={i}
               className="hero-sparkle"
-              style={{ left: `${s.left}%`, top: `${s.top}%`, animationDelay: `${s.delay}s` }}
+              style={{ left: `${s.left}%`, top: `${s.top}%`, animationDelay: `${s.delay.toFixed(2)}s`, animationDuration: `${s.duration.toFixed(2)}s` }}
             />
           ))}
         </div>
