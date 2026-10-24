@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Icon from '@/components/ui/icon';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
-import CallbackDialog from './CallbackDialog';
 import SmartImage from '@/components/ui/smart-image';
 
 const LOGO = 'https://icebergvideo.ru/photos/14346e37-5113-4231-af71-69c04fab1812.png';
@@ -124,14 +123,6 @@ const Header = () => {
                   </a>
                 </SheetClose>
               ))}
-              <CallbackDialog
-                trigger={
-                  <button className="w-full inline-flex items-center justify-center gap-2 rounded-full border border-primary/40 mt-2 px-5 py-3 text-base font-display font-medium text-primary">
-                    <Icon name="PhoneCall" size={18} />
-                    Заказать звонок
-                  </button>
-                }
-              />
             </div>
           </SheetContent>
         </Sheet>
