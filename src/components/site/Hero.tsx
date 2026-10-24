@@ -29,7 +29,7 @@ const Hero = () => {
           WebkitMaskComposite: 'source-in',
         }}
       />
-      <div className="container relative flex-1 flex flex-col items-center justify-center md:justify-center text-center gap-5 pt-[84px] md:pt-[124px] xl:pt-24 pb-16 md:pb-[9px] xl:pb-16">
+      <div className="container relative flex-1 flex flex-col items-center justify-center md:justify-center text-center gap-5 pt-[84px] md:pt-[156px] xl:pt-24 pb-16 md:pb-[9px] xl:pb-16">
         <a href="#top" className="relative hidden xl:flex items-center animate-fade-in">
           <SmartImage
             src={LOGO}
@@ -93,7 +93,7 @@ const Hero = () => {
           Оставить заявку
         </a>
 
-        <p className="mt-8 md:mt-6 xl:mt-8 font-display font-medium text-[0.72rem] md:text-[0.93rem] tracking-[0.26em] uppercase text-muted-foreground animate-fade-in">
+        <p className="mt-8 md:mt-14 xl:mt-8 font-display font-medium text-[0.72rem] md:text-[0.93rem] tracking-[0.26em] uppercase text-muted-foreground animate-fade-in">
           Максимальное качество в минимальные сроки
         </p>
       </div>
