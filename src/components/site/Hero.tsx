@@ -1,5 +1,7 @@
 import SmartImage from '@/components/ui/smart-image';
 
+const LOGO = 'https://icebergvideo.ru/photos/14346e37-5113-4231-af71-69c04fab1812.png';
+
 const SPARKLE_COUNT = 20;
 
 const SPARKLES = Array.from({ length: SPARKLE_COUNT }, (_, i) => {
@@ -27,7 +29,22 @@ const Hero = () => {
           WebkitMaskComposite: 'source-in',
         }}
       />
-      <div className="container relative flex-1 flex flex-col items-center justify-center md:justify-start xl:justify-center text-center gap-5 pt-[84px] md:pt-[137px] xl:pt-28 pb-16">
+      <div className="container relative flex-1 flex flex-col items-center justify-center md:justify-start xl:justify-center text-center gap-5 pt-[72px] md:pt-[80px] xl:pt-24 pb-16">
+        <a href="#top" className="relative flex items-center animate-fade-in">
+          <SmartImage
+            src={LOGO}
+            alt=""
+            priority
+            className="absolute right-full mr-3 md:mr-4 h-14 md:h-24 xl:h-20 w-auto"
+          />
+          <SmartImage
+            src="/assets/iceberg-video-logo-text.png"
+            alt="Айсберг-видео"
+            priority
+            className="h-12 md:h-20 xl:h-16 w-auto max-w-[62vw]"
+          />
+        </a>
+
         <img
           src="/assets/rings-roses.webp?v=8"
           alt=""
