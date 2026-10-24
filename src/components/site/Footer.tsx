@@ -49,12 +49,16 @@ const Footer = () => {
         </div>
 
         <div className="hidden md:flex absolute right-4 sm:right-6 top-0 bottom-0 items-center">
-          <img
-            src="https://informer.yandex.ru/informer/113765855/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
-            alt="Яндекс.Метрика"
-            loading="lazy"
-            className="h-[31px] w-[88px]"
-          />
+          <div className="shrink-0 border-2 border-white/45 bg-white/15 p-1">
+            <img
+              src="https://informer.yandex.ru/informer/113765855/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
+              alt="Яндекс.Метрика"
+              loading="lazy"
+              width={88}
+              height={31}
+              className="block h-[31px] w-[88px]"
+            />
+          </div>
         </div>
       </div>
     </footer>
