@@ -50,7 +50,7 @@ const Footer = () => {
 
         <div className="hidden md:flex absolute right-4 sm:right-6 top-0 bottom-0 items-center">
           <img
-            src="https://informer.yandex.ru/informer/112322016/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
+            src="https://informer.yandex.ru/informer/113765855/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
             alt="Яндекс.Метрика"
             loading="lazy"
             className="h-[31px] w-[88px]"
