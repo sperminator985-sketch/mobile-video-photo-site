@@ -71,7 +71,7 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-card/85 backdrop-blur-md shadow-[0_8px_30px_-18px_rgba(46,65,111,0.5)]' : 'bg-transparent md:pt-[56px] xl:pt-0'
+        scrolled ? 'bg-card/85 backdrop-blur-md shadow-[0_8px_30px_-18px_rgba(46,65,111,0.5)]' : 'bg-transparent'
       }`}
     >
       <div className="container relative flex items-center justify-between h-[72px] md:h-[80px] xl:h-[72px] gap-2">
