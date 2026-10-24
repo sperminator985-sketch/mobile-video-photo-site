@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Icon from '@/components/ui/icon';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import CallbackDialog from './CallbackDialog';
@@ -30,37 +30,6 @@ const mobileLinks = [
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [selected, setSelected] = useState<string | null>(null);
-  const [hovered, setHovered] = useState<string | null>(null);
-  const lockUntil = useRef(0);
-
-  useEffect(() => {
-    const ids = desktopLinks.filter((l) => !l.external).map((l) => l.href.slice(1));
-    const onScroll = () => {
-      if (Date.now() < lockUntil.current) return;
-      const line = 120;
-      let current = ids[0];
-      for (const id of ids) {
-        const el = document.getElementById(id);
-        if (el && el.getBoundingClientRect().top <= line) current = id;
-      }
-      const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
-      if (atBottom) current = ids[ids.length - 1];
-      setSelected(`#${current}`);
-    };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    const onScrollEnd = () => {
-      lockUntil.current = 0;
-      onScroll();
-    };
-    window.addEventListener('scrollend', onScrollEnd);
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('scrollend', onScrollEnd);
-    };
-  }, []);
-
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
@@ -85,33 +54,17 @@ const Header = () => {
           />
         </a>
 
-        <nav
-          className="hidden xl:flex items-center gap-1 whitespace-nowrap"
-          onMouseLeave={() => setHovered(null)}
-        >
-          {desktopLinks.map((l) => {
-            const on = l.external || (hovered ?? selected) === l.href;
-            return (
-              <a
-                key={l.href}
-                href={l.href}
-                {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                onMouseEnter={() => setHovered(l.external ? null : l.href)}
-                onClick={() => {
-                  if (l.external) return;
-                  lockUntil.current = Date.now() + 1200;
-                  setSelected(l.href);
-                }}
-                className={`rounded-full px-4 py-2 text-sm font-medium transition-all duration-200 ${
-                  on
-                    ? 'bg-primary text-primary-foreground -translate-y-0.5 shadow-md'
-                    : 'text-foreground/75 hover:text-foreground'
-                }`}
-              >
-                {l.label}
-              </a>
-            );
-          })}
+        <nav className="hidden xl:flex items-center gap-1 whitespace-nowrap">
+          {desktopLinks.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+              className="rounded-full px-4 py-2 text-sm font-medium bg-primary text-primary-foreground -translate-y-0.5 shadow-md"
+            >
+              {l.label}
+            </a>
+          ))}
         </nav>
 
         <Sheet>
@@ -146,26 +99,16 @@ const Header = () => {
       </div>
 
       <nav className="hidden md:flex xl:hidden container justify-center items-center gap-0.5 pb-2 -mt-1 whitespace-nowrap">
-        {desktopLinks.map((l) => {
-          const on = l.external || selected === l.href;
-          return (
-            <a
-              key={l.href}
-              href={l.href}
-              {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              onClick={() => {
-                if (l.external) return;
-                lockUntil.current = Date.now() + 1200;
-                setSelected(l.href);
-              }}
-              className={`rounded-full px-3 py-2 text-[15px] font-medium transition-colors ${
-                on ? 'bg-primary text-primary-foreground' : 'text-foreground/75 hover:text-foreground'
-              }`}
-            >
-              {l.label}
-            </a>
-          );
-        })}
+        {desktopLinks.map((l) => (
+          <a
+            key={l.href}
+            href={l.href}
+            {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+            className="rounded-full px-3 py-2 text-[15px] font-medium bg-primary text-primary-foreground"
+          >
+            {l.label}
+          </a>
+        ))}
       </nav>
     </header>
   );
