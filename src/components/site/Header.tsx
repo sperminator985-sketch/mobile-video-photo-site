@@ -60,7 +60,7 @@ const Header = () => {
               key={l.href}
               href={l.href}
               {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-              className="rounded-full px-4 py-2 text-sm font-medium bg-primary text-primary-foreground -translate-y-0.5 shadow-md"
+              className="rounded-full px-4 py-2 text-sm font-medium bg-primary text-primary-foreground -translate-y-0.5 shadow-md transition-colors duration-200 hover:bg-[var(--logo-blue)]"
             >
               {l.label}
             </a>
@@ -104,7 +104,7 @@ const Header = () => {
             key={l.href}
             href={l.href}
             {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-            className="rounded-full px-3 py-2 text-[15px] font-medium bg-primary text-primary-foreground"
+            className="rounded-full px-3 py-2 text-[15px] font-medium bg-primary text-primary-foreground transition-colors duration-200 hover:bg-[var(--logo-blue)]"
           >
             {l.label}
           </a>
