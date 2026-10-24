@@ -114,15 +114,6 @@ const Header = () => {
           })}
         </nav>
 
-        <CallbackDialog
-          trigger={
-            <button className="hidden xl:inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-display font-semibold text-primary-foreground hover:-translate-y-0.5 transition-transform shrink-0">
-              <Icon name="PhoneCall" size={16} />
-              Заказать звонок
-            </button>
-          }
-        />
-
         <Sheet>
           <SheetTrigger className="md:hidden ml-auto inline-flex items-center justify-center h-11 w-11 rounded-full bg-card/80 text-foreground shrink-0">
             <Icon name="Menu" size={22} />
