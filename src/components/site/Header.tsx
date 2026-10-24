@@ -81,7 +81,7 @@ const Header = () => {
       }`}
     >
       <div className="container relative flex items-center justify-between h-[72px] md:h-[80px] xl:h-auto xl:flex-col xl:justify-start xl:gap-2 xl:py-3 gap-2">
-        <a href="#top" className="flex items-center gap-2 sm:gap-3 min-w-0 shrink absolute left-1/2 -translate-x-1/2 xl:static xl:translate-x-0">
+        <a href="#top" className="md:pointer-events-none md:cursor-default flex items-center gap-2 sm:gap-3 min-w-0 shrink absolute left-1/2 -translate-x-1/2 xl:static xl:translate-x-0">
           <SmartImage src={LOGO} alt="" priority className="absolute right-full mr-2 sm:mr-3 md:static md:mr-0 h-8 sm:h-9 md:h-12 xl:h-[60px] w-auto shrink-0" />
           <SmartImage
             src="/assets/iceberg-video-logo-text.png"
