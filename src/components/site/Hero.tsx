@@ -88,7 +88,7 @@ const Hero = () => {
 
         <a
           href="#contacts"
-          className="mt-2 md:mt-4 xl:mt-2 inline-flex items-center gap-3 rounded-full bg-primary px-8 py-4 font-display font-semibold text-primary-foreground shadow-[0_16px_34px_-14px_hsl(var(--primary))] hover:-translate-y-0.5 hover:shadow-[0_22px_40px_-14px_hsl(var(--primary))] transition-all animate-scale-in"
+          className="mt-2 md:mt-4 xl:mt-2 inline-flex items-center gap-3 rounded-full bg-primary px-8 py-4 font-display font-semibold text-primary-foreground shadow-[0_16px_34px_-14px_hsl(var(--primary))] hover:-translate-y-0.5 hover:bg-[var(--logo-blue)] hover:shadow-[0_22px_40px_-14px_var(--logo-blue)] transition-all duration-200 animate-scale-in"
         >
           Оставить заявку
         </a>
