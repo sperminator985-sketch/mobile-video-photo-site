@@ -29,7 +29,7 @@ const Hero = () => {
           WebkitMaskComposite: 'source-in',
         }}
       />
-      <div className="container relative flex-1 flex flex-col items-center justify-center md:justify-start xl:justify-center text-center gap-5 pt-[84px] md:pt-[137px] xl:pt-24 pb-16">
+      <div className="container relative flex-1 flex flex-col items-center justify-center md:justify-center text-center gap-5 pt-[84px] md:pt-[124px] xl:pt-24 pb-16 md:pb-[9px] xl:pb-16">
         <a href="#top" className="relative hidden xl:flex items-center animate-fade-in">
           <SmartImage
             src={LOGO}
@@ -49,7 +49,7 @@ const Hero = () => {
           src="/assets/rings-roses.webp?v=8"
           alt=""
           aria-hidden="true"
-          className="block xl:hidden w-full max-w-[360px] md:w-[560px] md:max-w-none h-auto mix-blend-multiply pointer-events-none select-none animate-fade-in"
+          className="block xl:hidden w-full max-w-[360px] md:w-[500px] md:max-w-none h-auto mix-blend-multiply pointer-events-none select-none animate-fade-in"
         />
 
         <div className="font-display font-medium text-[0.72rem] md:text-[1.325rem] tracking-[0.26em] uppercase text-primary animate-fade-in">
@@ -57,12 +57,12 @@ const Hero = () => {
         </div>
 
         <div
-          className="hero-medallion hero-ring-frame relative grid place-items-center rounded-full md:mt-10 xl:mt-0 w-[230px] h-[230px] md:w-[320px] md:h-[320px]"
+          className="hero-medallion hero-ring-frame relative grid place-items-center rounded-full md:mt-4 xl:mt-0 w-[230px] h-[230px] md:w-[280px] md:h-[280px] xl:w-[320px] xl:h-[320px]"
           style={{
             boxShadow: '0 26px 60px -24px color-mix(in srgb, var(--hero-x-water) 60%, transparent)',
           }}
         >
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full overflow-hidden w-[214px] h-[214px] md:w-[296px] md:h-[296px]">
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full overflow-hidden w-[214px] h-[214px] md:w-[259px] md:h-[259px] xl:w-[296px] xl:h-[296px]">
             <SmartImage
               src="https://icebergvideo.ru/photos/0ace0339-8601-429c-a627-5fae0c83b4c4.png"
               alt="Молодожёны в день свадьбы"
@@ -80,7 +80,7 @@ const Hero = () => {
           ))}
         </div>
 
-        <h1 className="font-display font-extrabold leading-[0.98] tracking-[-0.035em] text-[6.4vw] md:text-[clamp(2.25rem,7vw,4.5rem)] whitespace-nowrap md:whitespace-normal md:max-w-[15ch] animate-fade-in">
+        <h1 className="font-display font-extrabold leading-[0.98] tracking-[-0.035em] text-[6.4vw] md:text-[3.25rem] xl:text-[clamp(2.25rem,7vw,4.5rem)] whitespace-nowrap xl:whitespace-normal xl:max-w-[15ch] animate-fade-in">
           <span className="text-primary">Ваша свадьба</span>
           <br />
           <span className="text-primary">в главной роли</span>
@@ -88,12 +88,12 @@ const Hero = () => {
 
         <a
           href="#contacts"
-          className="mt-2 md:mt-14 xl:mt-2 inline-flex items-center gap-3 rounded-full bg-primary px-8 py-4 font-display font-semibold text-primary-foreground shadow-[0_16px_34px_-14px_hsl(var(--primary))] hover:-translate-y-0.5 hover:shadow-[0_22px_40px_-14px_hsl(var(--primary))] transition-all animate-scale-in"
+          className="mt-2 md:mt-4 xl:mt-2 inline-flex items-center gap-3 rounded-full bg-primary px-8 py-4 font-display font-semibold text-primary-foreground shadow-[0_16px_34px_-14px_hsl(var(--primary))] hover:-translate-y-0.5 hover:shadow-[0_22px_40px_-14px_hsl(var(--primary))] transition-all animate-scale-in"
         >
           Оставить заявку
         </a>
 
-        <p className="mt-8 font-display font-medium text-[0.72rem] md:text-[0.93rem] tracking-[0.26em] uppercase text-muted-foreground animate-fade-in">
+        <p className="mt-8 md:mt-6 xl:mt-8 font-display font-medium text-[0.72rem] md:text-[0.93rem] tracking-[0.26em] uppercase text-muted-foreground animate-fade-in">
           Максимальное качество в минимальные сроки
         </p>
       </div>
