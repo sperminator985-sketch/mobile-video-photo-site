@@ -35,13 +35,13 @@ const Hero = () => {
             src={LOGO}
             alt=""
             priority
-            className="absolute right-full mr-3 md:mr-4 h-12 md:h-20 xl:h-[68px] w-auto"
+            className="absolute right-full mr-3 md:mr-4 h-14 md:h-24 xl:h-[68px] w-auto"
           />
           <SmartImage
             src="/assets/iceberg-video-logo-text.png"
             alt="Айсберг-видео"
             priority
-            className="h-10 md:h-[68px] xl:h-14 w-auto max-w-[56vw]"
+            className="h-12 md:h-20 xl:h-14 w-auto max-w-[62vw]"
           />
         </a>
 
