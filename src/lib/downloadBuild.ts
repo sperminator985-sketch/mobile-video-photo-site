@@ -63,7 +63,7 @@ const localRefs = (text: string) => {
 
 export const downloadBuild = async () => {
   if (import.meta.env.DEV) {
-    throw new Error('Скачивание работает на опубликованном сайте');
+    throw new Error('Свежие файлы сайта: меню «Скачать → Скачать билд» вверху редактора');
   }
 
   const files: Record<string, Uint8Array> = {};
