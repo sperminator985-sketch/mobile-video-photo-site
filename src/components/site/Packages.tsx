@@ -90,7 +90,7 @@ const Packages = () => {
                     : 'bg-secondary text-foreground hover:bg-[var(--logo-blue)] hover:text-white'
                 }`}
               >
-                Сделать заказ
+                Заказать
               </a>
             </div>
           ))}
