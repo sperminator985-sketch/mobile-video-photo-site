@@ -84,7 +84,7 @@ const Packages = () => {
 
               <a
                 href="#contacts"
-                className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-display font-semibold text-lg transition-all duration-200 hover:-translate-y-0.5 ${
+                className={`self-center inline-flex items-center justify-center gap-2 rounded-full px-8 py-3.5 font-display font-semibold text-lg transition-all duration-200 hover:-translate-y-0.5 ${
                   p.featured
                     ? 'bg-primary text-primary-foreground hover:bg-[var(--logo-blue)]'
                     : 'bg-secondary text-foreground hover:bg-[var(--logo-blue)] hover:text-white'
