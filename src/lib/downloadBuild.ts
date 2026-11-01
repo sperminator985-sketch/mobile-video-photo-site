@@ -29,6 +29,18 @@ const PUBLIC_FILES = [
   'retro/img/p6.jpg',
   'retro/img/p7.jpg',
   'retro/img/p8.jpg',
+  'retro/img/cnt/0.gif',
+  'retro/img/cnt/1.gif',
+  'retro/img/cnt/2.gif',
+  'retro/img/cnt/3.gif',
+  'retro/img/cnt/4.gif',
+  'retro/img/cnt/5.gif',
+  'retro/img/cnt/6.gif',
+  'retro/img/cnt/7.gif',
+  'retro/img/cnt/8.gif',
+  'retro/img/cnt/9.gif',
+  'retro/data/.htaccess',
+  'root-content.html',
 ];
 
 const fetchBytes = async (path: string) => {
@@ -50,14 +62,8 @@ const localRefs = (text: string) => {
 };
 
 export const downloadBuild = async () => {
-  const ready = await fetch(`/download/site-build.zip?t=${Date.now()}`, { cache: 'no-store' }).catch(() => null);
-  if (ready?.ok && (ready.headers.get('content-type') || '').includes('zip')) {
-    saveBlob(await ready.blob());
-    return;
-  }
-
   if (import.meta.env.DEV) {
-    throw new Error('Готовый архив сайта не найден');
+    throw new Error('Скачивание работает на опубликованном сайте');
   }
 
   const files: Record<string, Uint8Array> = {};
