@@ -62,8 +62,14 @@ const localRefs = (text: string) => {
 };
 
 export const downloadBuild = async () => {
+  const ready = await fetch(`/download/site-build.zip?t=${Date.now()}`, { cache: 'no-store' }).catch(() => null);
+  if (ready?.ok && (ready.headers.get('content-type') || '').includes('zip')) {
+    saveBlob(await ready.blob());
+    return;
+  }
+
   if (import.meta.env.DEV) {
-    throw new Error('Свежие файлы сайта: меню «Скачать → Скачать билд» вверху редактора');
+    throw new Error('Готовый архив сайта не найден');
   }
 
   const files: Record<string, Uint8Array> = {};
