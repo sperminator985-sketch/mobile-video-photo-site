@@ -99,7 +99,7 @@ const Header = () => {
               href={l.href}
               {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
               onClick={() => pick(l)}
-              className={`rounded-full px-4 py-2 text-sm font-medium ${bg(l)} text-primary-foreground -translate-y-0.5 shadow-md transition-colors duration-200 hover:bg-[var(--logo-blue)]`}
+              className={`rounded-full px-4 py-2 text-sm font-medium ${bg(l)} btn-3d text-primary-foreground hover:bg-[var(--logo-blue)]`}
             >
               {l.label}
             </a>
@@ -129,14 +129,14 @@ const Header = () => {
         </Sheet>
       </div>
 
-      <nav className="hidden md:flex xl:hidden container justify-center items-center gap-0.5 pb-2 -mt-1 whitespace-nowrap">
+      <nav className="hidden md:flex xl:hidden container justify-center items-center gap-1 pb-3 -mt-1 whitespace-nowrap">
         {desktopLinks.map((l) => (
           <a
             key={l.href}
             href={l.href}
             {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
             onClick={() => pick(l)}
-            className={`rounded-full px-3 py-2 text-[15px] font-medium ${bg(l)} text-primary-foreground transition-colors duration-200 hover:bg-[var(--logo-blue)]`}
+            className={`rounded-full px-3 py-2 text-[15px] font-medium ${bg(l)} btn-3d text-primary-foreground hover:bg-[var(--logo-blue)]`}
           >
             {l.label}
           </a>
