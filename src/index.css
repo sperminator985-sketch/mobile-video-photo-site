@@ -167,6 +167,10 @@
     }
   }
 
+  .min-h-screen {
+    min-height: calc(100vh / var(--site-zoom, 1));
+  }
+
   .hover-scale {
     @apply transition-transform duration-200 hover:scale-105;
   }
