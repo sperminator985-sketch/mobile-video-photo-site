@@ -66,7 +66,7 @@ const Header = () => {
     setSelected(l.href);
   };
   const bg = (l: { href: string; external: boolean }) =>
-    !l.external && selected === l.href ? 'bg-[var(--logo-blue)]' : 'bg-primary';
+    !l.external && selected === l.href ? 'bg-[var(--logo-blue)] btn-3d-pressed' : 'bg-primary';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
