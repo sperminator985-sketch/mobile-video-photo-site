@@ -58,7 +58,7 @@
         var BASE = 1920, MIN = 1280;
         function fit() {
           var w = window.innerWidth, r = document.documentElement;
-          var z = w >= MIN ? w / BASE : 1;
+          var z = w >= MIN && w < BASE ? w / BASE : 1;
           r.style.zoom = z === 1 ? "" : String(z);
           r.style.setProperty("--site-zoom", String(z));
         }
